@@ -1,0 +1,13 @@
+{
+	"java.format.settings.url": ".vscode/java-formatter.xml",
+	"favorites.resources": [
+		{
+			"filePath": "node_modules\\react-bootstrap",
+			"group": "Default"
+		},
+		{
+			"filePath": "node_modules\\bootstrap",
+			"group": "Default"
+		}
+	]
+}
