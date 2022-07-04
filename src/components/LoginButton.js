@@ -1,5 +1,6 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { showLogin } from '../redux/features/AuthenticationSlice'
 
 import { Button } from 'react-bootstrap'
 
@@ -7,10 +8,12 @@ import { Button } from 'react-bootstrap'
 
 const { log } = console
 
-function LoginButton(props) {
+export default function LoginButton(props) {
+	let dispatch = useDispatch()
+
 	function showLoginDialog() {
 		log('clicked showLoginDialog')
-		//props.dispatch(getShowLoginDialogAction()) //sendet die Action, die wir definiert haben an den Store (und der dann an den Reducer oder so)
+		dispatch(showLogin()) //sendet die Action, die wir definiert haben an den Store (und der dann an den Reducer oder so)
 	}
 
 	return (
@@ -26,5 +29,3 @@ function LoginButton(props) {
 		</div>
 	)
 }
-
-export default connect()(LoginButton)

@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 
 import App from './App'
 
@@ -14,9 +15,11 @@ import store from './redux/Store'
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
 	<React.StrictMode>
-		<Provider store={store}>
-			{/* damit ist store für die ganze App ("global") verfügbar. */}
-			<App />
-		</Provider>
+		<BrowserRouter>
+			<Provider store={store}>
+				{/* damit ist store für die ganze App ("global") verfügbar. */}
+				<App />
+			</Provider>
+		</BrowserRouter>
 	</React.StrictMode>
 )

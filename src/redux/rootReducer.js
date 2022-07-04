@@ -1,4 +1,4 @@
-import authenticationReducer from './features/AuthenticationFeature'
+import authenticationReducer from './features/AuthenticationSlice'
 
 const rootReducer = {
 	authenticater: authenticationReducer,

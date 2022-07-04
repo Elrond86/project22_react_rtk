@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import * as authenticationService from './AuthenticationService'
 
 const initialState = {
 	user: null, //das wird später der user, wenn ich mich eingelogt habe
@@ -18,6 +19,11 @@ let authenticationSlice = createSlice({
 		hideLogin: function (state, action) {
 			state.showLoginDialog = false
 		},
+
+		authExec: function (state, action){
+			state.user = "loggedInUser"
+		}
+
 /* 		authPending: function (state, action) {
 			state.loginPending = true
 		},
@@ -32,7 +38,13 @@ let authenticationSlice = createSlice({
 	},
 })
 
-export const { showLogin, hideLogin, authPending, authSuccess, userLogout } =
-	authenticationSlice.actions
+export const {
+	showLogin,
+	hideLogin,
+	authExec,
+	authPending,
+	authSuccess,
+	userLogout,
+} = authenticationSlice.actions
 
 export default authenticationSlice.reducer
