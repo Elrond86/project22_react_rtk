@@ -1,10 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { showLogin } from '../redux/features/AuthenticationSlice'
+import { showLoginModal } from '../redux/slices/ui/UISlice'
 
 import { Button } from 'react-bootstrap'
-
-//import { getShowLoginDialogAction } from '../actions/AuthenticationActions'
 
 const { log } = console
 
@@ -13,17 +11,12 @@ export default function LoginButton(props) {
 
 	function showLoginDialog() {
 		log('clicked showLoginDialog')
-		dispatch(showLogin()) //sendet die Action, die wir definiert haben an den Store (und der dann an den Reducer oder so)
+		dispatch(showLoginModal()) //sendet die Action, die wir definiert haben an den Store (und der dann an den Reducer oder so)
 	}
 
 	return (
 		<div>
-			<Button
-				id='OpenLoginDialogButton'
-				variant='outline-secondary'
-				active
-				onClick={showLoginDialog}
-			>
+			<Button id='OpenLoginDialogButton' variant='outline-secondary' active onClick={showLoginDialog}>
 				Login
 			</Button>
 		</div>

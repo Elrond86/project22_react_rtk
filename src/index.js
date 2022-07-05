@@ -10,9 +10,10 @@ import 'bootstrap/dist/css/bootstrap.min.css' //minified version of bootstrap.cs
 import 'react-bootstrap/dist/react-bootstrap.js'
 
 import { Provider } from 'react-redux' //Bridge-Library between redux.json & redux library
-import store from './redux/Store'
+import store from './redux/store/Store'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
+
 root.render(
 	<React.StrictMode>
 		<BrowserRouter>

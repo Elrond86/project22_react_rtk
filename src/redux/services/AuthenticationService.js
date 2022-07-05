@@ -1,4 +1,4 @@
-export function authenticateUser(userID, password) {
+/* export function authenticateUser(userID, password) {
 	console.log('Authenticate')
 
 	return dispatch => {
@@ -54,3 +54,4 @@ async function handleResponse(resolvedResponse) {
 		return userSession
 	}
 }
+ */

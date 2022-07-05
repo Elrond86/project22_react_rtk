@@ -9,5 +9,9 @@
 			"filePath": "node_modules\\bootstrap",
 			"group": "Default"
 		}
-	]
+	],
+	"editor.tokenColorCustomizations": {
+		"comments": "",
+		"textMateRules": []
+	}
 }
