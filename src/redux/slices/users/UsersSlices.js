@@ -1,4 +1,5 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import axios from 'axios'
 
 const initialState = {
 	user: null, //das wird später der user, wenn ich mich eingelogt habe
@@ -30,7 +31,7 @@ const initialState = {
  */
 
 export const loginUserAction = createAsyncThunk(
-	'user/login',
+	'user/login', // naming convention followed is {reducerName}/{actionType}
 	async (payload, { rejectWithValue, getState, dispatch } /* condition = true */) => {
 		/**we ned to tell the server with this litle config, that we're sending json-data.
 		 * express expects that anyway, but this is good practice
@@ -76,25 +77,42 @@ export async function login({ userID, password }) {
 
 /** Slices */
 
-const userSclices = createSlice({
+const usersSlices = createSlice({
 	name: 'users',
-	initialState,
-	extraReducers: builder => {},
+	initialState: {},
+
+	/** we use extraReducer , when we call the API
+	 * builder helps to make a request or to determine (bestimmen) how our state get changed
+	 *  in addCase our action becomes our case
+	 */
+	extraReducers: builder => {
+		//   Login action
+		builder.addCase(loginUserAction.pending, (state, action) => {
+			state.userLoading = true
+			state.userAppError = undefined
+			state.userServerErr = undefined
+		})
+
+		// handle success state
+		builder.addCase(loginUserAction.fulfilled, (state, action) => {
+			state.userAuth = action?.payload
+			state.userLoading = false
+			state.userAppError = undefined
+			state.userServerErr = undefined
+		})
+
+		//handle rejectet state
+		builder.addCase(loginUserAction.rejected, (state, action) => {
+			state.userLoading = false
+			state.userAppError = action?.payload.message
+			state.userServerErr = action?.error?.message
+		})
+	},
 })
 
-/** we use extraReducer , when we call the API */
-extraReducers: () => {}
+/** Errors:
+ * 1. System Error
+ * 2. Systwem interruption
+ */
 
-/* authExec: function (state, action){
-		state.user = "loggedInUser" 
-		authPending: function (state, action) {
-			state.loginPending = true
-		},
-		authSuccess: function (state, action) {
-			state.user = action.user,
-			state.accessToken = action.accessToken
-		},
-		userLogout: function (state, action) {
-			state.user = null, 
-			state.accessToken = null
-		}, */
+export default usersSlices.reducer
