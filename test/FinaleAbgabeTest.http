@@ -16,6 +16,10 @@ Authorization: Basic admin:1234
 
 @adminToken = {{loginAdminCorrect.response.headers.Authorization}}
 
+###
+GET https://localhost/authenticate
+admin:1234
+
 ### Auflisten aller Nutzer ohne Token
 GET https://localhost/users
 

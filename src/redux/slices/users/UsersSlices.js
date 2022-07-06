@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
+import jwt_decode from 'jwt-decode'
 
 const initialState = {
 	user: null, //das wird später der user, wenn ich mich eingelogt habe
@@ -33,22 +34,22 @@ const initialState = {
 export const loginUserAction = createAsyncThunk(
 	'user/login', // naming convention followed is {reducerName}/{actionType}
 	async (payload, { rejectWithValue, getState, dispatch } /* condition = true */) => {
-		/**we ned to tell the server with this litle config, that we're sending json-data.
-		 * express expects that anyway, but this is good practice
-		 *  */
-		const config = {
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		}
+		const { userID, password } = payload
+
 		try {
 			//make http call here ^= https://localhost/authenticate
-			// we'll use '{ data }' instead of 'res' / 'response'. to get the actuall data from inside the response
-			const { data } = await axios.get(`${process.env.REACT_APP_API_BASEURL}/authenticate`, {
-				payload,
-				config,
+			const res = await axios.get(`${process.env.REACT_APP_API_BASEURL}/authenticate`, {
+				auth: { username: userID, password },
 			})
-			return data
+
+			console.log('data: ')
+			console.log(res.data)
+			console.log('Authoroization - Header: ')
+			console.log(res.headers.authorization)
+
+			let token = res.headers.authorization
+			let decoded = jwt_decode(token)
+			return { token, decoded }
 		} catch (error) {
 			if (!error?.response) {
 				throw error //wir schmeißen costum error, wenn es keinen server-error-gibt
@@ -80,6 +81,15 @@ export async function login({ userID, password }) {
 const usersSlices = createSlice({
 	name: 'users',
 	initialState: {},
+
+	reducers: {
+		logoutUserAction: (state, action) => {
+			state.userAuth = null
+			state.userLoading = false
+			state.userAppError = undefined
+			state.userServerErr = undefined
+		},
+	},
 
 	/** we use extraReducer , when we call the API
 	 * builder helps to make a request or to determine (bestimmen) how our state get changed
@@ -114,5 +124,5 @@ const usersSlices = createSlice({
  * 1. System Error
  * 2. Systwem interruption
  */
-
+export const { logoutUserAction } = usersSlices.actions
 export default usersSlices.reducer
