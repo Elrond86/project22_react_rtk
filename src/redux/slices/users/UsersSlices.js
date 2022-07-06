@@ -6,6 +6,7 @@ const initialState = {
 	user: null, //das wird später der user, wenn ich mich eingelogt habe
 	accessToken: null,
 	error: null,
+	isLoggedIn: false,
 }
 
 /** Login action */
@@ -85,9 +86,10 @@ const usersSlices = createSlice({
 	reducers: {
 		logoutUserAction: (state, action) => {
 			state.userAuth = null
+			state.isLoggedIn = false
 			state.userLoading = false
-			state.userAppError = undefined
-			state.userServerErr = undefined
+			state.userAppError = null
+			state.userServerErr = null
 		},
 	},
 
@@ -98,22 +100,24 @@ const usersSlices = createSlice({
 	extraReducers: builder => {
 		//   Login action
 		builder.addCase(loginUserAction.pending, (state, action) => {
-			state.userLoading = true
-			state.userAppError = undefined
-			state.userServerErr = undefined
+			state.userLoading = 'pending'
+			state.userAppError = null
+			state.userServerErr = null
 		})
 
 		// handle success state
 		builder.addCase(loginUserAction.fulfilled, (state, action) => {
 			state.userAuth = action?.payload
-			state.userLoading = false
-			state.userAppError = undefined
-			state.userServerErr = undefined
+			state.isLoggedIn = true
+			state.userLoading = 'done'
+			state.userAppError = null
+			state.userServerErr = null
 		})
 
 		//handle rejectet state
 		builder.addCase(loginUserAction.rejected, (state, action) => {
 			state.userLoading = false
+			state.isLoggedIn = false
 			state.userAppError = action?.payload.message
 			state.userServerErr = action?.error?.message
 		})
@@ -122,7 +126,7 @@ const usersSlices = createSlice({
 
 /** Errors:
  * 1. System Error
- * 2. Systwem interruption
+ * 2. System interruption
  */
 export const { logoutUserAction } = usersSlices.actions
 export default usersSlices.reducer

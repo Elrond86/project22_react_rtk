@@ -2,7 +2,6 @@ import React from 'react'
 
 import { Route, Routes } from 'react-router-dom'
 
-import PublicPage from './components/PublicPage'
 import NavBar from './components/NavBar'
 import MainPage from './components/MainPage'
 

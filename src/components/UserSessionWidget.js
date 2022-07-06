@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
+import Nav from 'react-bootstrap/Nav'
 import Spinner from 'react-bootstrap/Spinner'
 
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
@@ -17,8 +18,17 @@ function UserSessionWidget(props) {
 
 	/** get State-Data from Redux Store */
 	let UIState = useSelector(state => {
-		return state['UI'] // returns the UI-Segemt of the state
+		return state['UI'] // returns the UI-Segment of the state
 	})
+	let UsersState = useSelector(state => {
+		return state['users'] // returns the users-Segment of the state
+	})
+
+	//get userLoading-Value from UsersState-Segment
+	let { userLoading } = UsersState
+	if (userLoading == 'done') {
+		handleClose()
+	}
 
 	//get ShowLoginDialog-Value from UI-Segment
 	let { showLoginDialog } = UIState
@@ -59,8 +69,11 @@ function UserSessionWidget(props) {
 
 	function handleLogout() {}
 
+	let userID = UsersState?.userAuth?.decoded?.userID
+	let { isLoggedIn } = UsersState
+
 	let Btn
-	if (props.user && props.user != null) {
+	if (userID && userID != null) {
 		Btn = (
 			<Button variant='primary' id='LogoutButton' onClick={handleLogout}>
 				Logout
