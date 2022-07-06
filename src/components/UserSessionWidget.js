@@ -10,7 +10,8 @@ import Spinner from 'react-bootstrap/Spinner'
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 import { showLoginModal, hideLoginModal } from '../redux/slices/ui/UISlice'
-import { loginUserAction } from '../redux/slices/users/UsersSlices'
+
+import { loginUserAction, logoutUserAction } from '../redux/slices/users/UsersSlices'
 
 function UserSessionWidget(props) {
 	/** to excecute actions */
@@ -67,8 +68,10 @@ function UserSessionWidget(props) {
 		console.log('Pushed Submit')
 	}
 
-	function handleLogout() {}
-
+	function handleLogout() {
+		console.log('clicked LogoutButton in Navbar')
+		dispatch(logoutUserAction()) //sendet die Action, die wir definiert haben an den Store (und der dann an den Reducer oder so)
+	}
 	let userID = UsersState?.userAuth?.decoded?.userID
 	let { isLoggedIn } = UsersState
 

@@ -14,7 +14,7 @@ export default function PrivatPage() {
 	} = UsersState
 
 	return (
-		<div className='main'>
+		<div className='main' is='PrivatePage'>
 			<h1>Private Page</h1>
 			<section className='card'>
 				<div className='watchBox'>
