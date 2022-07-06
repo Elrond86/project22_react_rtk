@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
+//dank useDispatch brauchen wir kein mapToProps - stuff mehr!
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
@@ -9,6 +9,7 @@ import Spinner from 'react-bootstrap/Spinner'
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 import { showLoginModal, hideLoginModal } from '../redux/slices/ui/UISlice'
+import { loginUserAction } from '../redux/slices/users/UsersSlices'
 
 function UserSessionWidget(props) {
 	/** to excecute actions */
@@ -25,12 +26,21 @@ function UserSessionWidget(props) {
 		showLoginDialog = false
 	}
 
-	/* 
 	const [credentials, setCredentials] = useState({
 		userID: '',
 		password: '',
 	})
- */
+
+	const handleChange = event => {
+		const { name, value } = event.target
+		setCredentials({
+			...credentials,
+			[name]: value,
+		})
+		console.log('credentials: ')
+		console.log(JSON.stringify(credentials))
+	}
+
 	function handleClose(event) {
 		dispatch(hideLoginModal())
 	}
@@ -39,13 +49,12 @@ function UserSessionWidget(props) {
 		dispatch(showLoginModal())
 	}
 
-	const handleChange = event => {}
-
 	const handleSubmit = event => {
 		event.preventDefault()
-		const userID = event.target.elements.userID.value
-		const password = event.target.elements.password.value
-		//dispatch(authExec({ userID, password }))
+		const { userID, password } = credentials
+		console.log(`Sending userID: ${userID} and password: ${password} `)
+		dispatch(loginUserAction({ userID, password }))
+		console.log('Pushed Submit')
 	}
 
 	function handleLogout() {}
