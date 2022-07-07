@@ -1,6 +1,7 @@
 import PrivatePage from './PrivatPage'
 import PublicPage from './PublicPage'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { hideLoginModal } from '../redux/slices/ui/UISlice'
 
 export default function MainPage() {
 	/** get State-Data from Redux Store */
@@ -9,8 +10,11 @@ export default function MainPage() {
 	})
 
 	let userID = UsersState?.user?.userID
+	const dispatch = useDispatch()
 
 	if (userID !== undefined) {
+		console.log('dispatch(hideLoginModal): ')
+		dispatch(hideLoginModal)
 		console.log(`Öffne persöhnliche Seite für ${userID}...`)
 		//get users-Value from UsersState-Segment
 	}

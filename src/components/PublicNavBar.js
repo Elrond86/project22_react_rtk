@@ -9,9 +9,9 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 import BestLogin from '../pages/UserSessionWidget'
 
-export default function NavBar() {
+export default function PublicNavBar() {
 	return (
-		<div>
+		<div id='PublicNavbar'>
 			<Navbar bg='dark' variant='dark' expand='lg'>
 				<Container>
 					<Navbar.Brand href='#home'>Web2 - Menu</Navbar.Brand>

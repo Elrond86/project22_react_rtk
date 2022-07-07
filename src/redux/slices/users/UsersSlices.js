@@ -7,6 +7,7 @@ const initialState = {
 	accessToken: null,
 	error: null,
 	isLoggedIn: false,
+	isAdministrator: false
 }
 
 /** Login action */
@@ -40,7 +41,7 @@ export const loginUserAction = createAsyncThunk(
 		try {
 			//make http call here ^= https://localhost/authenticate
 			const res = await axios.get(`${process.env.REACT_APP_API_BASEURL}/authenticate`, {
-				auth: { username: userID, password },
+				auth: { username: userID, password }
 			})
 
 			console.log('data: ')
@@ -60,25 +61,6 @@ export const loginUserAction = createAsyncThunk(
 	}
 )
 
-/** ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- * evtl. muss doch sowas hier gesendet und returnt werden:
- *   auth: { username: userID, password }
-    }
-  )
-  return res.headers.authorization ... mal sehen
-
-
-von gesammt: 
-export async function login({ userID, password }) {
-	const res = await axios.get(`${process.env.REACT_APP_API_BASEURL}/authenticate`, {
-		auth: { username: userID, password },
-	})
-	return res.headers.authorization
-}
-*/
-
-/** Slices */
-
 const usersSlices = createSlice({
 	name: 'users',
 	initialState: {},
@@ -91,7 +73,7 @@ const usersSlices = createSlice({
 			state.userAppError = null
 			state.userServerErr = null
 			state.accessToken = null
-		},
+		}
 	},
 
 	/** we use extraReducer , when we call the API
@@ -123,7 +105,7 @@ const usersSlices = createSlice({
 			state.userAppError = action?.payload.message
 			state.userServerErr = action?.error?.message
 		})
-	},
+	}
 })
 
 /** Errors:
@@ -131,4 +113,11 @@ const usersSlices = createSlice({
  * 2. System interruption
  */
 export const { logoutUserAction } = usersSlices.actions
+
+export const selectUserID = state => state?.users?.user?.userID
+export const selectUserName = state => state?.users?.user?.userName
+export const selectAdminstatus = state => state?.users?.user?.isAdministrator
+export const selectAccessToken = state => state?.users?.accessToken
+export const selectAuthStatus = state => state?.users?.isLoggedIn
+
 export default usersSlices.reducer

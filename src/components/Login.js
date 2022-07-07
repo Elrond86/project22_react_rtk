@@ -3,7 +3,6 @@ import { useFormik } from 'formik'
 import { useDispatch, useSelector } from 'react-redux'
 import * as Yup from 'yup'
 import { loginUserAction } from '../redux/slices/users/UsersSlices'
-import { hideLoginModal } from '../redux/slices/ui/UISlice'
 
 import DisabledButton from './DisabledButton'
 
@@ -28,7 +27,6 @@ const Login = () => {
 			password: '',
 		},
 		onSubmit: values => {
-			dispatch(hideLoginModal())
 			dispatch(loginUserAction(values))
 		},
 		validationSchema: formSchema,
