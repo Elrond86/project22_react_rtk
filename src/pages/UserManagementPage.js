@@ -1,8 +1,10 @@
 import Table from 'react-bootstrap/Table'
+import { useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { selectShowUsers } from '../redux/slices/ui/UISlice'
 
 function UserManagement() {
+	const inputRef = useRef().current
 	let show = useSelector(selectShowUsers)
 	console.log(show)
 	if (show == false) {
