@@ -1,4 +1,4 @@
-import LogoutButton from './LogoutButton'
+import LogoutButton from '../components/LogoutButton'
 import { useSelector } from 'react-redux'
 
 export default function PrivatPage() {

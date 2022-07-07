@@ -7,8 +7,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
-import UserSessionWidget from './UserSessionWidget'
-import BetterLogin from './BetterLogin'
+import BestLogin from '../pages/UserSessionWidget'
 
 export default function NavBar() {
 	return (
@@ -30,7 +29,7 @@ export default function NavBar() {
 							</NavDropdown>
 						</Nav>
 						<Nav>
-							<BetterLogin />
+							<BestLogin />
 						</Nav>
 					</Navbar.Collapse>
 				</Container>
