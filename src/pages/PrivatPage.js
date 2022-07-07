@@ -8,9 +8,7 @@ export default function PrivatPage() {
 	})
 
 	let {
-		userAuth: {
-			decoded: { userID },
-		},
+		user: { userID },
 	} = UsersState
 
 	return (

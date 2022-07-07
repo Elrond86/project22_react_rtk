@@ -8,7 +8,7 @@ export default function MainPage() {
 		return state['users'] // returns the users-Segment of the state
 	})
 
-	let userID = UsersState?.userAuth?.decoded?.userID
+	let userID = UsersState?.user?.userID
 
 	if (userID !== undefined) {
 		console.log(`Öffne Navbar für private Seite..`)

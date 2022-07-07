@@ -85,7 +85,7 @@ const usersSlices = createSlice({
 
 	reducers: {
 		logoutUserAction: (state, action) => {
-			state.userAuth = null
+			state.user = null
 			state.isLoggedIn = false
 			state.userLoading = false
 			state.userAppError = null
@@ -107,7 +107,8 @@ const usersSlices = createSlice({
 
 		// handle success state
 		builder.addCase(loginUserAction.fulfilled, (state, action) => {
-			state.userAuth = action?.payload
+			state.user = action?.payload?.decoded
+			state.accessToken = action?.payload?.token
 			state.isLoggedIn = true
 			state.userLoading = 'done'
 			state.userAppError = null
