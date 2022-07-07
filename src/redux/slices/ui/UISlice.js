@@ -1,6 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { ListGroup } from 'react-bootstrap'
-//import * as authService from '../services/AuthenticationService'
 
 const initialState = {
 	loginPending: false, //Ladeanzeige, während etwas passiert, damit Benutzer sieht, dass er gerade läd
@@ -16,9 +14,13 @@ let UISlice = createSlice({
 	reducers: {
 		showLoginModal: (state, action) => {
 			state.showLoginDialog = true /** ...state not requiered... Denn es benutzt intern IMMER-Library!! :D */
+			console.log('state.showLoginDialog: ')
+			console.log(state.showLoginDialog)
 		},
 		hideLoginModal: (state, action) => {
 			state.showLoginDialog = false
+			console.log('state.showLoginDialog: ')
+			console.log(state.showLoginDialog)
 		},
 	},
 })

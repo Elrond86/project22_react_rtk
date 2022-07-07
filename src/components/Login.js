@@ -2,7 +2,9 @@ import React, { useEffect } from 'react'
 import { useFormik } from 'formik'
 import { useDispatch, useSelector } from 'react-redux'
 import * as Yup from 'yup'
-import { loginUserAction, logoutUserAction } from '../redux/slices/users/UsersSlices'
+import { loginUserAction } from '../redux/slices/users/UsersSlices'
+import { hideLoginModal } from '../redux/slices/ui/UISlice'
+
 import DisabledButton from './DisabledButton'
 
 //form validations
@@ -14,8 +16,8 @@ const formSchema = Yup.object({
 const Login = () => {
 	//dispatch
 	const dispatch = useDispatch()
-	//get data from store
 
+	//get data from store
 	const user = useSelector(state => state?.users)
 	const { userAppErr, userServerErr, userLoading, userAuth } = user
 
@@ -26,6 +28,7 @@ const Login = () => {
 			password: '',
 		},
 		onSubmit: values => {
+			dispatch(hideLoginModal())
 			dispatch(loginUserAction(values))
 		},
 		validationSchema: formSchema,

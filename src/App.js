@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Route, Routes } from 'react-router-dom'
 
-import NavBar from './components/PublicNavBar'
+import NavBar from './pages/NavBar'
 import MainPage from './pages/MainPage'
 
 /** <></> entspricht <React.Fragment></React.Fragment> */
