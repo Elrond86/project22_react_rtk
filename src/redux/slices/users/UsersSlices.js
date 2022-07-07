@@ -90,6 +90,7 @@ const usersSlices = createSlice({
 			state.userLoading = false
 			state.userAppError = null
 			state.userServerErr = null
+			state.accessToken = null
 		},
 	},
 
