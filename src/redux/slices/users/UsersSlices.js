@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
+import { showUserManagement } from '../ui/UISlice'
 
 const initialState = {
 	user: null, //das wird später der user, wenn ich mich eingelogt habe
@@ -105,6 +106,13 @@ const usersSlices = createSlice({
 			state.userAppError = action?.payload.message
 			state.userServerErr = action?.error?.message
 		})
+
+		//Load all Users from Database on Sate change
+		/* 		builder.addCase((showUserManagement = true), (state, action) => {
+			state.showLoginDialog = false
+			console.log('state.showLoginDialog: ')
+			console.log(state.showLoginDialog)
+		}) */
 	}
 })
 

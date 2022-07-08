@@ -14,7 +14,7 @@ function App() {
 		<>
 			<NavBar />
 			<Routes>
-				<Route path={'/'} element={<TestPage />} />
+				<Route path={'/'} element={<MainPage />} />
 
 				<Route path='/userManagement' element={<UserManagementPage />} />
 			</Routes>
