@@ -36,18 +36,20 @@ export default function UserManagement() {
 	console.log('showEditDialog')
 	console.log(showEditDialog)
 
-	console.log('bouncer asking for adminstatus..')
+	console.log('UserManagement-bouncer asking for adminstatus..')
 	if (!isAdmin) {
 		return <Navigate to='/' />
 	}
 	console.log('passed the bouncer... returning some UserManagmentView..')
 
-	if (showEditDialog) return UserEdit
+	if (showEditDialog) return <UserEdit />
+
+	console.log('passed the showEditDialog... returning some UserManagmentTable..')
 
 	if (!showManagement) return
 
 	return (
-		<Container>
+		<>
 			<h2 className='mb-3'>User Management</h2>
 			<p>
 				<Button id='OpenCreateUserDialogButton' onClick={() => dispatch(showCreateUserDialog())}>
@@ -55,7 +57,7 @@ export default function UserManagement() {
 				</Button>
 			</p>
 			<UserList />
-		</Container>
+		</>
 	)
 }
 

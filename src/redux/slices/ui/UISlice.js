@@ -64,6 +64,7 @@ let UISlice = createSlice({
 		})
 		builder.addCase(logoutUserAction, (state, action) => {
 			state.showUserManagement = false
+			state.showEditUser = false
 			console.log('state.showLoginDialog: ')
 			console.log(state.showLoginDialog)
 		})
@@ -87,6 +88,6 @@ export const selectShowUsers = state => state.UI.showUserManagement
 export const selectCreateUserDialog = state => state.UI.showCreateUser
 export const selectEditUserDialog = state => state.UI.showEditUser
 export const selectDeleteUserConfirmDialog = state => state.UI.showDeleteUserConfirm
-export const selectHandleUserID = state => state.ui.handleUserID
+export const selectHandleUserID = state => state.UI.handleUserID
 
 export default UISlice.reducer
