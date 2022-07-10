@@ -1,10 +1,14 @@
 import React from 'react'
+
+// bootstrap
 import Button from 'react-bootstrap/Button'
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
 import Form from 'react-bootstrap/Form'
 import Modal from 'react-bootstrap/Modal'
 import Spinner from 'react-bootstrap/Spinner'
 import Stack from 'react-bootstrap/Stack'
+
+// redux
 import { useDispatch, useSelector } from 'react-redux'
 import { useEditUserMutation, useGetAllUsersQuery } from '../redux/slices/users/userManagement'
 import { hideEditUserDialog, selectEditUserDialog, selectHandleUserID } from '../redux/slices/ui/UISlice'
@@ -29,6 +33,7 @@ export default function UserEdit() {
 	const showEditModal = useSelector(selectEditUserDialog)
 	console.log('showEditModal')
 	console.log(showEditModal)
+
 	return (
 		<Modal show={showEditModal} onHide={() => dispatch(hideEditUserDialog())}>
 			<Modal.Header closeButton>

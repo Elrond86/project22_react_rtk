@@ -22,6 +22,8 @@ import { useGetAllUsersQuery } from '../redux/slices/users/userManagement'
 
 //import my components
 import UserEdit from './UserEdit'
+import DeleteUserConfirmDialog from './DeleteUserConfirmDialog'
+import CreateUserDialog from './CreateUserDialog'
 import { ListGroup } from 'react-bootstrap'
 
 export default function UserManagement() {
@@ -29,12 +31,7 @@ export default function UserManagement() {
 	const isAdmin = useSelector(selectAdminstatus)
 	const showManagement = useSelector(selectShowUsers)
 	const showEditDialog = useSelector(selectEditUserDialog)
-	console.log('isAdmin')
-	console.log(isAdmin)
-	console.log('showManagement')
-	console.log(showManagement)
-	console.log('showEditDialog')
-	console.log(showEditDialog)
+	const showDeleteDialog = useSelector(showDeleteUserConfirmDialog)
 
 	console.log('UserManagement-bouncer asking for adminstatus..')
 	if (!isAdmin) {
@@ -42,7 +39,8 @@ export default function UserManagement() {
 	}
 	console.log('passed the bouncer... returning some UserManagmentView..')
 
-	if (showEditDialog) return <UserEdit />
+	//	if (showEditDialog) return <UserEdit />
+	/* if (showDeleteDialog) return <DeleteUserConfirmDialog /> */
 
 	console.log('passed the showEditDialog... returning some UserManagmentTable..')
 
@@ -50,6 +48,9 @@ export default function UserManagement() {
 
 	return (
 		<>
+			<UserEdit />
+			<DeleteUserConfirmDialog />
+			<CreateUserDialog />
 			<h2 className='mb-3'>User Management</h2>
 			<p>
 				<Button id='OpenCreateUserDialogButton' onClick={() => dispatch(showCreateUserDialog())}>

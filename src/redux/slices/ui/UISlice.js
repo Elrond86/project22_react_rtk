@@ -2,11 +2,13 @@ import { createSlice } from '@reduxjs/toolkit'
 import { loginUserAction, logoutUserAction } from '../users/UsersSlices'
 
 const initialState = {
-	loginPending: false, //Ladeanzeige, während etwas passiert, damit Benutzer sieht, dass er gerade läd
+	loginPending: false, //Ladeanzeige, während etwas passiert, damit Benutzer sieht, dass er gerade lädt
 	showLoginDialog: false, //das is des, was vorher im Widged war. Kommt jetzt in den Zentralen store
 	error: null,
 	showUserManagement: false,
-	showEditUser: false
+	showEditUser: false,
+	showDeleteUserConfirm: false,
+	showCreateUser: false
 }
 
 let UISlice = createSlice({
