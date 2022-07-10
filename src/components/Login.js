@@ -9,7 +9,7 @@ import DisabledButton from './DisabledButton'
 //form validations
 const formSchema = Yup.object({
 	userID: Yup.string().required('userID is required'),
-	password: Yup.string().required('Password is required'),
+	password: Yup.string().required('Password is required')
 })
 
 const Login = () => {
@@ -24,12 +24,12 @@ const Login = () => {
 	const formik = useFormik({
 		initialValues: {
 			userID: '',
-			password: '',
+			password: ''
 		},
 		onSubmit: values => {
 			dispatch(loginUserAction(values))
 		},
-		validationSchema: formSchema,
+		validationSchema: formSchema
 	})
 
 	return (
@@ -45,6 +45,7 @@ const Login = () => {
 			) : null}
 			<form onSubmit={formik.handleSubmit}>
 				<input
+					id='LoginUserIDInput'
 					value={formik.values.userID}
 					onChange={formik.handleChange('userID')}
 					onBlur={formik.handleBlur('userID')}
@@ -55,6 +56,7 @@ const Login = () => {
 				{/* Err */}
 				<div className='text-danger mb-2'>{formik.touched.userID && formik.errors.userID}</div>
 				<input
+					id='LoginPasswordInput'
 					value={formik.values.password}
 					onChange={formik.handleChange('password')}
 					onBlur={formik.handleBlur('password')}
@@ -69,7 +71,7 @@ const Login = () => {
 					{userLoading ? (
 						<DisabledButton />
 					) : (
-						<button type='submit' className='btn btn-primary py-2 w-100 mb-4'>
+						<button id='LoginButton' type='submit' className='btn btn-primary py-2 w-100 mb-4'>
 							Login
 						</button>
 					)}

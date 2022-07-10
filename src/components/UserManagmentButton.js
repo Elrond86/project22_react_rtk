@@ -15,7 +15,7 @@ export default function UserManagementButton(props) {
 
 	return (
 		<div>
-			<Button id='OpenUserManagementButton">' variant='outline-secondary' onClick={showManagement}>
+			<Button id='OpenUserManagementButton">' variant='outline-info' onClick={showManagement}>
 				UserManagement
 			</Button>
 		</div>

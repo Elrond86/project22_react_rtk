@@ -30,8 +30,6 @@ export default function UserManagement() {
 	const dispatch = useDispatch()
 	const isAdmin = useSelector(selectAdminstatus)
 	const showManagement = useSelector(selectShowUsers)
-	const showEditDialog = useSelector(selectEditUserDialog)
-	const showDeleteDialog = useSelector(showDeleteUserConfirmDialog)
 
 	console.log('UserManagement-bouncer asking for adminstatus..')
 	if (!isAdmin) {
@@ -53,7 +51,11 @@ export default function UserManagement() {
 			<CreateUserDialog />
 			<h2 className='mb-3'>User Management</h2>
 			<p>
-				<Button id='OpenCreateUserDialogButton' onClick={() => dispatch(showCreateUserDialog())}>
+				<Button
+					variant='secondary'
+					id='OpenCreateUserDialogButton'
+					onClick={() => dispatch(showCreateUserDialog())}
+				>
 					Create New User
 				</Button>
 			</p>
@@ -73,7 +75,7 @@ function UserList() {
 		)
 	} else if (isSuccess) {
 		return (
-			<Table striped bordered hover>
+			<Table variant='secondary' striped bordered hover>
 				<thead>
 					<tr>
 						<th>userID</th>
@@ -89,7 +91,7 @@ function UserList() {
 		)
 	} else if (isError) {
 		return (
-			<Alert variant='danger'>
+			<Alert variant='dark'>
 				{error.status} {JSON.stringify(error.data)}
 			</Alert>
 		)
@@ -111,6 +113,7 @@ function UserRow({ user }) {
 			<td>
 				<Stack direction='horizontal' gap={1}>
 					<Button
+						variant='secondary'
 						id={'EditButton' + user.userID}
 						size='sm'
 						onClick={() => dispatch(showEditUserDialog(user.userID))}
@@ -118,7 +121,7 @@ function UserRow({ user }) {
 						<PencilFill /> Edit
 					</Button>
 					<Button
-						variant='danger'
+						variant='dark'
 						size='sm'
 						id={'DeleteButton' + user.userID}
 						onClick={() => dispatch(showDeleteUserConfirmDialog(user.userID))}
@@ -130,42 +133,3 @@ function UserRow({ user }) {
 		</tr>
 	)
 }
-/* export default function UserManagementPage() {
-	const inputRef = useRef().current
-	let show = useSelector(selectShowUsers)
-	console.log(show)
-	if (show == false) {
-		return null
-	}
-	return (
-		<Table striped bordered hover>
-			<thead>
-				<tr>
-					<th>#</th>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Username</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>1</td>
-					<td>Mark</td>
-					<td>Otto</td>
-					<td>@mdo</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>Jacob</td>
-					<td>Thornton</td>
-					<td>@fat</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td colSpan={2}>Larry the Bird</td>
-					<td>@twitter</td>
-				</tr>
-			</tbody>
-		</Table>
-	)
-} */

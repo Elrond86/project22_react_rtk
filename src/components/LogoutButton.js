@@ -17,7 +17,7 @@ export default function LogoutButton(props) {
 
 	return (
 		<div>
-			<Button id='LogoutButton' variant='outline-secondary' active onClick={handleLogout}>
+			<Button id='LogoutButton' variant='outline-info' active onClick={handleLogout}>
 				Logout
 			</Button>
 		</div>

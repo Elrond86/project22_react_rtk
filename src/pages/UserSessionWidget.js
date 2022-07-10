@@ -41,7 +41,7 @@ export default function BestLogin() {
 
 	return (
 		<>
-			<Button variant='primary' onClick={handleShow}>
+			<Button id='OpenLoginDialogButton' variant='primary' onClick={handleShow}>
 				Login
 			</Button>
 

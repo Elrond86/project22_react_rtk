@@ -17,7 +17,7 @@ export default function PrivatPage() {
 function Welcome() {
 	return (
 		<>
-			<div className='main' is='PrivatePage'>
+			<div className='main' id='PrivatePage'>
 				<h1>Private Page</h1>
 				<section className='card'>
 					<div className='watchBox'>

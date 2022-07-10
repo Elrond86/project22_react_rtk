@@ -16,7 +16,7 @@ export default function HomeButton() {
 
 	return (
 		<div>
-			<Button id='OpenUserManagementButton">' variant='outline-secondary' onClick={hideManagement}>
+			<Button id='OpenPrivatePageButton">' variant='outline-info' onClick={hideManagement}>
 				Home
 			</Button>
 		</div>
