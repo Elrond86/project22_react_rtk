@@ -5,7 +5,8 @@ const initialState = {
 	loginPending: false, //Ladeanzeige, während etwas passiert, damit Benutzer sieht, dass er gerade läd
 	showLoginDialog: false, //das is des, was vorher im Widged war. Kommt jetzt in den Zentralen store
 	error: null,
-	showUserManagement: false
+	showUserManagement: false,
+	showEditUser: false
 }
 
 let UISlice = createSlice({
@@ -29,6 +30,7 @@ let UISlice = createSlice({
 		},
 		hideUserManagement: (state, action) => {
 			state.showUserManagement = false
+			state.showEditUser = false
 		},
 		showCreateUserDialog: state => {
 			state.showCreateUser = true
@@ -82,5 +84,9 @@ export const {
 } = UISlice.actions
 
 export const selectShowUsers = state => state.UI.showUserManagement
+export const selectCreateUserDialog = state => state.UI.showCreateUser
+export const selectEditUserDialog = state => state.UI.showEditUser
+export const selectDeleteUserConfirmDialog = state => state.UI.showDeleteUserConfirm
+export const selectHandleUserID = state => state.ui.handleUserID
 
 export default UISlice.reducer

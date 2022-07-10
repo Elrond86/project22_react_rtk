@@ -10,7 +10,7 @@ export default function HomeButton() {
 	let dispatch = useDispatch()
 
 	function hideManagement() {
-		log('clicked showLoginDialog')
+		log('clicked hideManagement')
 		dispatch(hideUserManagement()) //sendet die Action, die wir definiert haben an den Store (und der dann an den Reducer oder so)
 	}
 

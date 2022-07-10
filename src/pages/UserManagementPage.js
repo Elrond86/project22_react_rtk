@@ -1,68 +1,50 @@
 import Table from 'react-bootstrap/Table'
-import { useRef } from 'react'
+import Container from 'react-bootstrap/Container'
+import Button from 'react-bootstrap/Button'
+import { PencilFill, TrashFill } from 'react-bootstrap-icons'
+import Alert from 'react-bootstrap/Alert'
+import Spinner from 'react-bootstrap/Spinner'
+import Stack from 'react-bootstrap/Stack'
 import { useDispatch, useSelector } from 'react-redux'
+
+import { Navigate } from 'react-router'
+
+//import my reducers
 import {
 	showCreateUserDialog,
 	showEditUserDialog,
 	showDeleteUserConfirmDialog,
-	selectShowUsers
+	selectShowUsers,
+	selectEditUserDialog
 } from '../redux/slices/ui/UISlice'
-import { selectAdminstatus, selectAuthStatus } from '../redux/slices/users/UsersSlices'
+import { selectAdminstatus } from '../redux/slices/users/UsersSlices'
 import { useGetAllUsersQuery } from '../redux/slices/users/userManagement'
-export default function UserManagementPage() {
-	const inputRef = useRef().current
-	let show = useSelector(selectShowUsers)
-	console.log(show)
-	if (show == false) {
-		return null
-	}
-	return (
-		<Table striped bordered hover>
-			<thead>
-				<tr>
-					<th>#</th>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Username</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>1</td>
-					<td>Mark</td>
-					<td>Otto</td>
-					<td>@mdo</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>Jacob</td>
-					<td>Thornton</td>
-					<td>@fat</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td colSpan={2}>Larry the Bird</td>
-					<td>@twitter</td>
-				</tr>
-			</tbody>
-		</Table>
-	)
-}
 
-/* import { PencilFill, TrashFill } from 'react-bootstrap-icons'
-import Alert from 'react-bootstrap/Alert'
-import Button from 'react-bootstrap/Button'
-import Container from 'react-bootstrap/Container'
-import Spinner from 'react-bootstrap/Spinner'
-import Stack from 'react-bootstrap/Stack'
-import { Navigate } from 'react-router'
+//import my components
+import UserEdit from './UserEdit'
+import { ListGroup } from 'react-bootstrap'
 
 export default function UserManagement() {
 	const dispatch = useDispatch()
+	const isAdmin = useSelector(selectAdminstatus)
+	const showManagement = useSelector(selectShowUsers)
+	const showEditDialog = useSelector(selectEditUserDialog)
+	console.log('isAdmin')
+	console.log(isAdmin)
+	console.log('showManagement')
+	console.log(showManagement)
+	console.log('showEditDialog')
+	console.log(showEditDialog)
 
-	if (!useSelector(selectAdminstatus)) {
+	console.log('bouncer asking for adminstatus..')
+	if (!isAdmin) {
 		return <Navigate to='/' />
 	}
+	console.log('passed the bouncer... returning some UserManagmentView..')
+
+	if (showEditDialog) return UserEdit
+
+	if (!showManagement) return
 
 	return (
 		<Container>
@@ -145,4 +127,42 @@ function UserRow({ user }) {
 		</tr>
 	)
 }
- */
+/* export default function UserManagementPage() {
+	const inputRef = useRef().current
+	let show = useSelector(selectShowUsers)
+	console.log(show)
+	if (show == false) {
+		return null
+	}
+	return (
+		<Table striped bordered hover>
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Username</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>Mark</td>
+					<td>Otto</td>
+					<td>@mdo</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Jacob</td>
+					<td>Thornton</td>
+					<td>@fat</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td colSpan={2}>Larry the Bird</td>
+					<td>@twitter</td>
+				</tr>
+			</tbody>
+		</Table>
+	)
+} */
