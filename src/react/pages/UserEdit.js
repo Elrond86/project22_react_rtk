@@ -10,8 +10,8 @@ import Stack from 'react-bootstrap/Stack'
 
 // redux
 import { useDispatch, useSelector } from 'react-redux'
-import { useEditUserMutation, useGetAllUsersQuery } from '../redux/slices/users/userManagement'
-import { hideEditUserDialog, selectEditUserDialog, selectHandleUserID } from '../redux/slices/ui/UISlice'
+import { useEditUserMutation, useGetAllUsersQuery } from '../../redux/slices/users/userManagement'
+import { hideEditUserDialog, selectEditUserDialog, selectHandleUserID } from '../../redux/slices/ui/UISlice'
 
 export default function UserEdit() {
 	console.log('bin in UserEdit.js')

@@ -14,17 +14,15 @@ import {
 	showCreateUserDialog,
 	showEditUserDialog,
 	showDeleteUserConfirmDialog,
-	selectShowUsers,
-	selectEditUserDialog
-} from '../redux/slices/ui/UISlice'
-import { selectAdminstatus } from '../redux/slices/users/UsersSlices'
-import { useGetAllUsersQuery } from '../redux/slices/users/userManagement'
+	selectShowUsers
+} from '../../redux/slices/ui/UISlice'
+import { selectAdminstatus } from '../../redux/slices/users/UsersSlices'
+import { useGetAllUsersQuery } from '../../redux/slices/users/userManagement'
 
 //import my components
 import UserEdit from './UserEdit'
 import DeleteUserConfirmDialog from './DeleteUserConfirmDialog'
 import CreateUserDialog from './CreateUserDialog'
-import { ListGroup } from 'react-bootstrap'
 
 export default function UserManagement() {
 	const dispatch = useDispatch()

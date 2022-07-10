@@ -8,8 +8,8 @@ import {
 	hideDeleteUserConfirmDialog,
 	selectDeleteUserConfirmDialog,
 	selectHandleUserID
-} from '../redux/slices/ui/UISlice'
-import { useDeleteUserMutation } from '../redux/slices/users/userManagement'
+} from '../../redux/slices/ui/UISlice'
+import { useDeleteUserMutation } from '../../redux/slices/users/userManagement'
 
 export default function DeleteUserConfirmDialog() {
 	console.log('bin in DeleteUserConfirmDialog.js')

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useFormik } from 'formik'
 import { useDispatch, useSelector } from 'react-redux'
 import * as Yup from 'yup'
-import { loginUserAction } from '../redux/slices/users/UsersSlices'
+import { loginUserAction } from '../../redux/slices/users/UsersSlices'
 
 import DisabledButton from './DisabledButton'
 

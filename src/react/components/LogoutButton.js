@@ -1,10 +1,10 @@
 import React from 'react'
 
 import Button from 'react-bootstrap/Button'
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 import { useDispatch } from 'react-redux'
-import { logoutUserAction } from '../redux/slices/users/UsersSlices'
+import { logoutUserAction } from '../../redux/slices/users/UsersSlices'
 
 const { log } = console
 

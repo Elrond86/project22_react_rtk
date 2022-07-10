@@ -1,7 +1,7 @@
 import PrivatePage from './PrivatPage'
 import PublicPage from './PublicPage'
 import { useSelector, useDispatch } from 'react-redux'
-import { hideLoginModal } from '../redux/slices/ui/UISlice'
+import { hideLoginModal } from '../../redux/slices/ui/UISlice'
 
 export default function MainPage() {
 	/** get State-Data from Redux Store */

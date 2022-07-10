@@ -1,17 +1,18 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+
 //dank useDispatch brauchen wir kein mapToProps - stuff mehr!
+
+//bootstrap
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
-import Nav from 'react-bootstrap/Nav'
 import Spinner from 'react-bootstrap/Spinner'
-
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
-import { showLoginModal, hideLoginModal } from '../redux/slices/ui/UISlice'
-
-import { loginUserAction, logoutUserAction } from '../redux/slices/users/UsersSlices'
+//redux
+import { useDispatch, useSelector } from 'react-redux'
+import { showLoginModal, hideLoginModal } from '../../redux/slices/ui/UISlice'
+import { loginUserAction, logoutUserAction } from '../../redux/slices/users/UsersSlices'
 
 function UserSessionWidget(props) {
 	/** to excecute actions */
@@ -39,14 +40,14 @@ function UserSessionWidget(props) {
 
 	const [credentials, setCredentials] = useState({
 		userID: '',
-		password: '',
+		password: ''
 	})
 
 	const handleChange = event => {
 		const { name, value } = event.target
 		setCredentials({
 			...credentials,
-			[name]: value,
+			[name]: value
 		})
 		console.log('credentials: ')
 		console.log(JSON.stringify(credentials))

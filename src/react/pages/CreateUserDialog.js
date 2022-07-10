@@ -10,8 +10,8 @@ import Stack from 'react-bootstrap/Stack'
 
 //redux
 import { useDispatch, useSelector } from 'react-redux'
-import { useCreateUserMutation } from '../redux/slices/users/userManagement'
-import { hideCreateUserDialog, selectCreateUserDialog } from '../redux/slices/ui/UISlice'
+import { useCreateUserMutation } from '../../redux/slices/users/userManagement'
+import { hideCreateUserDialog, selectCreateUserDialog } from '../../redux/slices/ui/UISlice'
 
 export default function CreateUserDialog() {
 	const [createUser] = useCreateUserMutation()

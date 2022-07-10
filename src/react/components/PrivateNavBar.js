@@ -3,10 +3,9 @@ import React from 'react'
 import Container from 'react-bootstrap/Container'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 import LogoutButton from './LogoutButton'
-import UISlice from '../redux/slices/ui/UISlice'
 
 export default function PrivateNavBar() {
 	return (

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { showUserManagement } from '../redux/slices/ui/UISlice'
+import { showUserManagement } from '../../redux/slices/ui/UISlice'
 
 import { Button } from 'react-bootstrap'
 

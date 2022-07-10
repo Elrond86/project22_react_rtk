@@ -1,15 +1,14 @@
 import React from 'react'
-import { showUserManagement } from '../redux/slices/ui/UISlice'
-import { useDispatch } from 'react-redux'
+
+//bootstrap
 import Container from 'react-bootstrap/Container'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-import NavDropdown from 'react-bootstrap/NavDropdown'
-import { Button } from 'react-bootstrap'
+import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
+
+// components
 import UserManagementButton from './UserManagmentButton'
 import HomeButton from './HomeButton'
-
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 import LogoutButton from './LogoutButton'
 
