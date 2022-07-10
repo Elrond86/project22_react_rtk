@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
-import { showUserManagement } from '../ui/UISlice'
+import { showUserManagement } from '../ui/UISlices'
 
 const initialState = {
 	user: null, //das wird später der user, wenn ich mich eingelogt habe
@@ -62,8 +62,8 @@ export const loginUserAction = createAsyncThunk(
 	}
 )
 
-const usersSlices = createSlice({
-	name: 'users',
+const AuthenticationSlices = createSlice({
+	name: 'auth',
 	initialState: {},
 
 	reducers: {
@@ -120,12 +120,12 @@ const usersSlices = createSlice({
  * 1. System Error
  * 2. System interruption
  */
-export const { logoutUserAction } = usersSlices.actions
+export const { logoutUserAction } = AuthenticationSlices.actions
 
-export const selectUserID = state => state?.users?.user?.userID
-export const selectUserName = state => state?.users?.user?.userName
-export const selectAdminstatus = state => state?.users?.user?.isAdministrator
-export const selectAccessToken = state => state?.users?.accessToken
-export const selectAuthStatus = state => state?.users?.isLoggedIn
+export const selectUserID = state => state?.auth?.user?.userID
+export const selectUserName = state => state?.auth?.user?.userName
+export const selectAdminstatus = state => state?.auth?.user?.isAdministrator
+export const selectAccessToken = state => state?.auth?.accessToken
+export const selectAuthStatus = state => state?.auth?.isLoggedIn
 
-export default usersSlices.reducer
+export default AuthenticationSlices.reducer

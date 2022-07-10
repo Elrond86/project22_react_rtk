@@ -15,9 +15,9 @@ import {
 	showEditUserDialog,
 	showDeleteUserConfirmDialog,
 	selectShowUsers
-} from '../../redux/slices/ui/UISlice'
-import { selectAdminstatus } from '../../redux/slices/users/UsersSlices'
-import { useGetAllUsersQuery } from '../../redux/slices/users/userManagement'
+} from '../../redux/ui/UISlices'
+import { selectAdminstatus } from '../../redux/authentication/AuthenticationSlices'
+import { useGetAllUsersQuery } from '../../redux/users/userManagement'
 
 //import my components
 import UserEdit from './UserEdit'

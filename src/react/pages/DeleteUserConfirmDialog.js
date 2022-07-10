@@ -4,12 +4,8 @@ import Modal from 'react-bootstrap/Modal'
 
 //redux
 import { useSelector, useDispatch } from 'react-redux'
-import {
-	hideDeleteUserConfirmDialog,
-	selectDeleteUserConfirmDialog,
-	selectHandleUserID
-} from '../../redux/slices/ui/UISlice'
-import { useDeleteUserMutation } from '../../redux/slices/users/userManagement'
+import { hideDeleteUserConfirmDialog, selectDeleteUserConfirmDialog, selectHandleUserID } from '../../redux/ui/UISlices'
+import { useDeleteUserMutation } from '../../redux/users/userManagement'
 
 export default function DeleteUserConfirmDialog() {
 	console.log('bin in DeleteUserConfirmDialog.js')

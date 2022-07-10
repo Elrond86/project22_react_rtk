@@ -11,19 +11,19 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 //redux
 import { useDispatch, useSelector } from 'react-redux'
-import { showLoginModal, hideLoginModal } from '../../redux/slices/ui/UISlice'
-import { loginUserAction, logoutUserAction } from '../../redux/slices/users/UsersSlices'
+import { showLoginModal, hideLoginModal } from '../../redux/ui/UISlices'
+import { loginUserAction, logoutUserAction } from '../../redux/authentication/AuthenticationSlices'
 
 function UserSessionWidget(props) {
 	/** to excecute actions */
 	const dispatch = useDispatch()
 
 	/** get State-Data from Redux Store */
-	let UIState = useSelector(state => {
-		return state['UI'] // returns the UI-Segment of the state
+	let uiState = useSelector(state => {
+		return state['ui'] // returns the ui-Segment of the state
 	})
 	let UsersState = useSelector(state => {
-		return state['users'] // returns the users-Segment of the state
+		return state['auth'] // returns the auth-Segment of the state
 	})
 
 	//get userLoading-Value from UsersState-Segment
@@ -32,8 +32,8 @@ function UserSessionWidget(props) {
 		handleClose()
 	}
 
-	//get ShowLoginDialog-Value from UI-Segment
-	let { showLoginDialog } = UIState
+	//get ShowLoginDialog-Value from ui-Segment
+	let { showLoginDialog } = uiState
 	if (showLoginDialog === undefined) {
 		showLoginDialog = false
 	}

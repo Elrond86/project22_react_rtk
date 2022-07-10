@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useFormik } from 'formik'
 import { useDispatch, useSelector } from 'react-redux'
 import * as Yup from 'yup'
-import { loginUserAction } from '../../redux/slices/users/UsersSlices'
+import { loginUserAction } from '../../redux/authentication/AuthenticationSlices'
 
 import DisabledButton from './DisabledButton'
 
@@ -17,7 +17,7 @@ const Login = () => {
 	const dispatch = useDispatch()
 
 	//get data from store
-	const user = useSelector(state => state?.users)
+	const user = useSelector(state => state?.auth)
 	const { userAppErr, userServerErr, userLoading, userAuth } = user
 
 	//formik form

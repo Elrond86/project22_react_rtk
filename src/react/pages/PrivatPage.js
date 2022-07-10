@@ -6,7 +6,7 @@ import {
 	selectUserName,
 	selectAccessToken,
 	selectAdminstatus
-} from '../../redux/slices/users/UsersSlices'
+} from '../../redux/authentication/AuthenticationSlices'
 
 export default function PrivatPage() {
 	/** get State-Data from Redux Store */

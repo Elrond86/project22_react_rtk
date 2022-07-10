@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { loginUserAction, logoutUserAction } from '../users/UsersSlices'
+import { loginUserAction, logoutUserAction } from '../authentication/AuthenticationSlices'
 
 const initialState = {
 	loginPending: false, //Ladeanzeige, während etwas passiert, damit Benutzer sieht, dass er gerade lädt
@@ -11,8 +11,8 @@ const initialState = {
 	showCreateUser: false
 }
 
-let UISlice = createSlice({
-	name: 'UI',
+let uiSlice = createSlice({
+	name: 'ui',
 	initialState,
 
 	/** reducer sind zum manipulieren vom State OHNE API-Zugriff */
@@ -84,12 +84,12 @@ export const {
 	hideEditUserDialog,
 	showDeleteUserConfirmDialog,
 	hideDeleteUserConfirmDialog
-} = UISlice.actions
+} = uiSlice.actions
 
-export const selectShowUsers = state => state.UI.showUserManagement
-export const selectCreateUserDialog = state => state.UI.showCreateUser
-export const selectEditUserDialog = state => state.UI.showEditUser
-export const selectDeleteUserConfirmDialog = state => state.UI.showDeleteUserConfirm
-export const selectHandleUserID = state => state.UI.handleUserID
+export const selectShowUsers = state => state.ui.showUserManagement
+export const selectCreateUserDialog = state => state.ui.showCreateUser
+export const selectEditUserDialog = state => state.ui.showEditUser
+export const selectDeleteUserConfirmDialog = state => state.ui.showDeleteUserConfirm
+export const selectHandleUserID = state => state.ui.handleUserID
 
-export default UISlice.reducer
+export default uiSlice.reducer

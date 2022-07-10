@@ -1,12 +1,12 @@
 import React from 'react'
 
+//bootstrap
 import Container from 'react-bootstrap/Container'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-import NavDropdown from 'react-bootstrap/NavDropdown'
-
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
+//components
 import BestLogin from '../pages/UserSessionWidget'
 
 export default function PublicNavBar() {
