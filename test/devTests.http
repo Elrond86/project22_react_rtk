@@ -9,3 +9,9 @@ Authorization: Basic YWRtaW46MTIz
 ### Auflisten aller Nutzer mit Token(Admin)
 GET https://localhost/users
 Authorization: {{adminToken}}
+
+//
+// Forum Tests
+//
+### Auflisten aller Foren ohne Token
+GET https://localhost/forumThreads

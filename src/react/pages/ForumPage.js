@@ -19,6 +19,8 @@ import {
 import { selectAdminstatus } from '../../redux/authentication/AuthenticationSlices'
 import { useGetAllUsersQuery } from '../../redux/users/userManagement'
 
+import { usegetAllThreadsQuery } from '../../redux/forum/ForumSlice'
+
 //import my components
 import UserEdit from './UserEdit'
 import DeleteUserConfirmDialog from './DeleteUserConfirmDialog'
@@ -47,7 +49,11 @@ export default function ForumOverview() {
 			<UserEdit />
 			<DeleteUserConfirmDialog />
 			<CreateUserDialog />
-			<h2 className='mb-3'>FORENÜBERSICHT</h2>
+			<div class='pagename'>
+				<h2 class='pagename' className='mb-3'>
+					FORENÜBERSICHT
+				</h2>
+			</div>
 			<p>
 				<Button
 					variant='secondary'
@@ -57,12 +63,12 @@ export default function ForumOverview() {
 					Create New User
 				</Button>
 			</p>
-			<UserList />
+			<ThreadList />
 		</>
 	)
 }
 
-function UserList() {
+function ThreadList() {
 	const { data: users, isLoading, isSuccess, isError, error } = useGetAllUsersQuery()
 
 	if (isLoading) {

@@ -8,9 +8,11 @@
 }
 
 .pagename {
-	height: 100px;
+	height: 24px;
 	width: 100%;
 	background: hsl(200, 100%, 50%);
-	line-height: 100px;
+	display: flex;
+	flex-direction: column;
+	justify-content: end;
 	text-align: center;
 }

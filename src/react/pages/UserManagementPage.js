@@ -47,9 +47,11 @@ export default function UserManagement() {
 			<UserEdit />
 			<DeleteUserConfirmDialog />
 			<CreateUserDialog />
-			<h2 class='pagename' className='mb-3'>
-				NUTZERVERWALTUNG
-			</h2>
+			<div class='pagename'>
+				<h2 class='pagename' className='mb-3'>
+					NUTZERÜBERSICHT
+				</h2>
+			</div>
 			<p>
 				<Button
 					variant='secondary'

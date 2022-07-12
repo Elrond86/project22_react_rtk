@@ -1,10 +1,10 @@
 import api from '../utils/api'
 
-export const useradminSlice = api.injectEndpoints({
+export const ForumSlice = api.injectEndpoints({
 	addTagTypes: ['Forum'],
 	endpoints: builder => ({
-		getAllUsers: builder.query({
-			query: () => '/users',
+		getAllThreads: builder.query({
+			query: () => '/forumThreads',
 			providesTags: ['Forum']
 		}),
 		createUser: builder.mutation({
@@ -37,9 +37,9 @@ export const useradminSlice = api.injectEndpoints({
 })
 
 export const {
-	useGetAllUsersQuery,
+	usegetAllThreadsQuery,
 	useCreateUserMutation,
 	useDeleteUserMutation,
 	useEditUserMutation,
 	useGetUserQuery
-} = useradminSlice
+} = ForumSlice
