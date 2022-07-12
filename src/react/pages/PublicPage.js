@@ -5,7 +5,8 @@ export default function PublicPage() {
 	return (
 		<>
 			<div className='main' id='LandingPage'>
-				<h1>Landing Page</h1>
+				Landing Page
+				<h1>Dies ist ein privates Forum. Bitte einloggen!</h1>
 				<section className='card'>{<LoginButton />}</section>
 			</div>
 		</>

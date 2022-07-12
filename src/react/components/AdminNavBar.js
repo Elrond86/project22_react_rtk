@@ -8,6 +8,7 @@ import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 // components
 import UserManagementButton from './UserManagmentButton'
+import OpenForumThreadOverviewButton from './ForumButton'
 import HomeButton from './HomeButton'
 
 import LogoutButton from './LogoutButton'
@@ -17,11 +18,12 @@ export default function AdminNavBar() {
 		<div id='AdminNavBar'>
 			<Navbar bg='dark' variant='dark' expand='lg'>
 				<Container>
-					<Navbar.Brand href='#home'>Web2 - Menu</Navbar.Brand>
+					<Navbar.Brand href='#home'>Web2 - Administrative Navigation</Navbar.Brand>
 					<Navbar.Toggle aria-controls='basic-navbar-nav' />
 					<Navbar.Collapse id='basic-navbar-nav'>
 						<Nav className='me-auto'>
 							<HomeButton />
+							<OpenForumThreadOverviewButton />
 							<UserManagementButton />
 						</Nav>
 						<Nav>

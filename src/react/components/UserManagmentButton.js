@@ -4,9 +4,7 @@ import { showUserManagement } from '../../redux/ui/UISlices'
 
 import { Button } from 'react-bootstrap'
 
-const { log } = console
-
-export default function UserManagementButton(props) {
+export default function UserManagementButton() {
 	let dispatch = useDispatch()
 
 	function showManagement() {

@@ -11,10 +11,10 @@ import { Navigate } from 'react-router'
 
 //import my reducers
 import {
+	selectshowForumOverview,
 	showCreateUserDialog,
 	showEditUserDialog,
-	showDeleteUserConfirmDialog,
-	selectShowUsers
+	showDeleteUserConfirmDialog
 } from '../../redux/ui/UISlices'
 import { selectAdminstatus } from '../../redux/authentication/AuthenticationSlices'
 import { useGetAllUsersQuery } from '../../redux/users/userManagement'
@@ -24,32 +24,30 @@ import UserEdit from './UserEdit'
 import DeleteUserConfirmDialog from './DeleteUserConfirmDialog'
 import CreateUserDialog from './CreateUserDialog'
 
-export default function UserManagement() {
+export default function ForumOverview() {
 	const dispatch = useDispatch()
 	const isAdmin = useSelector(selectAdminstatus)
-	const showManagement = useSelector(selectShowUsers)
+	const showOverview = useSelector(selectshowForumOverview)
 
 	console.log('UserManagement-bouncer asking for adminstatus..')
 	if (!isAdmin) {
 		return <Navigate to='/' />
 	}
-	console.log('passed the bouncer... returning some UserManagmentView..')
+	console.log('passed the bouncer... returning some ForumView..')
 
 	//	if (showEditDialog) return <UserEdit />
 	/* if (showDeleteDialog) return <DeleteUserConfirmDialog /> */
 
-	console.log('passed the showEditDialog... returning some UserManagmentTable..')
+	console.log('passed the showEditDialog... returning some ForumTable..')
 
-	if (!showManagement) return
+	if (!showOverview) return
 
 	return (
 		<>
 			<UserEdit />
 			<DeleteUserConfirmDialog />
 			<CreateUserDialog />
-			<h2 class='pagename' className='mb-3'>
-				NUTZERVERWALTUNG
-			</h2>
+			<h2 className='mb-3'>FORENÜBERSICHT</h2>
 			<p>
 				<Button
 					variant='secondary'

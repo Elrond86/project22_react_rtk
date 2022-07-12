@@ -12,7 +12,7 @@ export default function PrivateNavBar() {
 		<div id='PrivateNavbar'>
 			<Navbar bg='dark' variant='dark' expand='lg'>
 				<Container>
-					<Navbar.Brand href='#home'>Web2 - Menu</Navbar.Brand>
+					<Navbar.Brand href='#home'>Web2 - Private Navigation</Navbar.Brand>
 					<Navbar.Toggle aria-controls='basic-navbar-nav' />
 					<Navbar.Collapse id='basic-navbar-nav'>
 						<Nav className='me-auto'>

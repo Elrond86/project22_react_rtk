@@ -6,6 +6,7 @@ const initialState = {
 	showLoginDialog: false, //das is des, was vorher im Widged war. Kommt jetzt in den Zentralen store
 	error: null,
 	showUserManagement: false,
+	showForumOverview: false,
 	showEditUser: false,
 	showDeleteUserConfirm: false,
 	showCreateUser: false
@@ -29,11 +30,21 @@ let uiSlice = createSlice({
 		},
 		showUserManagement: (state, action) => {
 			state.showUserManagement = true
+			state.showForumOverview = false
 		},
 		hideUserManagement: (state, action) => {
 			state.showUserManagement = false
 			state.showEditUser = false
 		},
+
+		showForumOverview: (state, action) => {
+			state.showForumOverview = true
+			state.showUserManagement = false
+		},
+		hideForumOverview: (state, action) => {
+			state.showForumOverview = false
+		},
+
 		showCreateUserDialog: state => {
 			state.showCreateUser = true
 		},
@@ -78,6 +89,8 @@ export const {
 	hideLoginModal,
 	showUserManagement,
 	hideUserManagement,
+	showForumOverview,
+	hideForumOverview,
 	showCreateUserDialog,
 	hideCreateUserDialog,
 	showEditUserDialog,
@@ -91,5 +104,6 @@ export const selectCreateUserDialog = state => state.ui.showCreateUser
 export const selectEditUserDialog = state => state.ui.showEditUser
 export const selectDeleteUserConfirmDialog = state => state.ui.showDeleteUserConfirm
 export const selectHandleUserID = state => state.ui.handleUserID
+export const selectshowForumOverview = state => state.ui.showForumOverview
 
 export default uiSlice.reducer

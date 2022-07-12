@@ -1,5 +1,6 @@
 import LogoutButton from '../components/LogoutButton'
 import UserManagement from './UserManagementPage'
+import ForumPage from './ForumPage'
 import { useSelector } from 'react-redux'
 import {
 	selectUserID,
@@ -13,8 +14,10 @@ export default function PrivatPage() {
 
 	return (
 		<>
-			<UserManagement />
 			<Welcome />
+			<UserManagement />
+			<ForumPage />
+			<LogoutButton />
 		</>
 	)
 }
@@ -23,14 +26,11 @@ function Welcome() {
 	return (
 		<>
 			<div className='main' id='PrivatePage'>
-				<h1>Private Page</h1>
+				Dies ist deine private Seite
 				<section className='card'>
 					<div className='watchBox'>
-						<h1>Hallo {useSelector(selectUserID)}!</h1>
+						<h1>Willkommen, {useSelector(selectUserID).toUpperCase()}!</h1>
 					</div>
-				</section>
-				<section className='card'>
-					<LogoutButton />
 				</section>
 			</div>
 		</>

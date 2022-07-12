@@ -10,5 +10,5 @@ body {
 }
 
 .Container {
-	background-color: gray;
+	background-color: hwb(200 25% 0% / 0.5);
 }
