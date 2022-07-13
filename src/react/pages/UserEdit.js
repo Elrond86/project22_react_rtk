@@ -58,7 +58,6 @@ export default function UserEdit() {
 }
 
 function CreateUserBody({ editUserID }) {
-	debugger
 	const { user: editUser } = useGetAllUsersQuery(undefined, {
 		selectFromResult: ({ data }) => ({
 			user: data.find(user => user.userID === editUserID)

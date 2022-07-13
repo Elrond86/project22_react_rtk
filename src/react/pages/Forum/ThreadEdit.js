@@ -22,8 +22,9 @@ export default function ThreadEdit() {
 	const handleSubmit = function (event) {
 		event.preventDefault()
 		const changedThread = {
-			name: event.target.elements.name.value,
-			description: event.target.elements.description.value
+			name: event.target.elements.threadName.value,
+			description: event.target.elements.threadDescription.value,
+			isLocked: event.target.elements.isLocked.checked
 		}
 
 		editThread(changedThread)
@@ -84,7 +85,7 @@ function CreateThreadBody({ editThreadID }) {
 				<FloatingLabel controlId='ForumThreadNameInput' label='Threadname' className='mb-3'>
 					<Form.Control
 						type='text'
-						name='ThreadName'
+						name='threadName'
 						placeholder='ThreadName'
 						defaultValue={editThread.name}
 					/>
@@ -92,18 +93,18 @@ function CreateThreadBody({ editThreadID }) {
 				<FloatingLabel controlId='ForumThreadDescriptionInput' label='Beschreibung' className='mb-3'>
 					<Form.Control
 						type='text'
-						name='ThreadDescription'
+						name='threadDescription'
 						placeholder='Beschreibung'
 						defaultValue={editThread.description}
 					/>
 				</FloatingLabel>
 				<Form.Check
-					id='SperrenInput'
+					id='LockInput'
 					type='switch'
 					label='sperren'
-					name='sperren'
+					name='isLocked'
 					className='mb-3'
-					/* defaultChecked={} */
+					defaultChecked={editThread.isLocked}
 				/>
 			</Stack>
 		</Modal.Body>
