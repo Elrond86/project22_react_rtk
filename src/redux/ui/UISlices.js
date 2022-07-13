@@ -134,12 +134,16 @@ let uiSlice = createSlice({
 	extraReducers: builder => {
 		builder.addCase(loginUserAction.fulfilled, (state, action) => {
 			state.showLoginDialog = false
+			state.showUserManagement = false
+			state.showEditUser = false
+			state.showForumOverview = false
 			console.log('state.showLoginDialog: ')
 			console.log(state.showLoginDialog)
 		})
 		builder.addCase(logoutUserAction, (state, action) => {
 			state.showUserManagement = false
 			state.showEditUser = false
+			state.showForumOverview = false
 			console.log('state.showLoginDialog: ')
 			console.log(state.showLoginDialog)
 		})
