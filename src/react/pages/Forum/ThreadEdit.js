@@ -22,12 +22,9 @@ export default function ThreadEdit() {
 	const handleSubmit = function (event) {
 		event.preventDefault()
 		const changedThread = {
-			userID: event.target.elements.userID.value,
-			userName: event.target.elements.userName.value,
-			isAdministrator: event.target.elements.isAdministrator.checked
+			name: event.target.elements.name.value,
+			description: event.target.elements.description.value
 		}
-		const password = event.target.elements.password.value
-		if (password) changedThread.password = password
 
 		editThread(changedThread)
 		dispatch(hideEditThreadDialog())
@@ -60,9 +57,9 @@ export default function ThreadEdit() {
 }
 
 function CreateThreadBody({ editThreadID }) {
-	const { user: editThread } = useGetAllThreadsQuery(undefined, {
+	const { thread: editThread } = useGetAllThreadsQuery(undefined, {
 		selectFromResult: ({ data }) => ({
-			user: data.find(user => user.userID === editThreadID)
+			thread: data.find(thread => thread._id === editThreadID)
 		})
 	})
 
@@ -84,33 +81,29 @@ function CreateThreadBody({ editThreadID }) {
 		<Modal.Body>
 			<Stack>
 				<CreateThreadAlert />
-				<FloatingLabel controlId='ThreadIDInput' label='Thread ID' className='mb-3'>
+				<FloatingLabel controlId='ForumThreadNameInput' label='Threadname' className='mb-3'>
 					<Form.Control
 						type='text'
-						name='userID'
-						placeholder='Thread ID'
-						disabled
-						defaultValue={editThread.userID}
+						name='ThreadName'
+						placeholder='ThreadName'
+						defaultValue={editThread.name}
 					/>
 				</FloatingLabel>
-				<FloatingLabel controlId='ThreadNameInput' label='Threadname' className='mb-3'>
+				<FloatingLabel controlId='ForumThreadDescriptionInput' label='Beschreibung' className='mb-3'>
 					<Form.Control
 						type='text'
-						name='userName'
-						placeholder='Threadname'
-						defaultValue={editThread.userName}
+						name='ThreadDescription'
+						placeholder='Beschreibung'
+						defaultValue={editThread.description}
 					/>
-				</FloatingLabel>
-				<FloatingLabel controlId='PasswordInput' label='Password' className='mb-3'>
-					<Form.Control name='password' type='password' placeholder='Password' />
 				</FloatingLabel>
 				<Form.Check
-					id='IsAdministratorInput'
+					id='SperrenInput'
 					type='switch'
-					label='Administrator'
-					name='isAdministrator'
+					label='sperren'
+					name='sperren'
 					className='mb-3'
-					defaultChecked={editThread.isAdministrator}
+					/* defaultChecked={} */
 				/>
 			</Stack>
 		</Modal.Body>

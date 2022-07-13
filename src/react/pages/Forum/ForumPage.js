@@ -24,7 +24,7 @@ import { selectAdminstatus } from '../../../redux/authentication/AuthenticationS
 import { useGetAllThreadsQuery } from '../../../redux/forum/ForumSlice'
 
 //import my components
-import ThreadEdit from '../UserEdit'
+import ThreadEdit from '../Forum/ThreadEdit'
 import DeleteUserConfirmDialog from '../DeleteUserConfirmDialog'
 import CreateUserDialog from '../CreateUserDialog'
 

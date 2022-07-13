@@ -11,44 +11,44 @@ import Stack from 'react-bootstrap/Stack'
 //redux
 import { useDispatch, useSelector } from 'react-redux'
 import { useCreateThreadMutation } from '../../../redux/users/userManagement'
-import { hideCreateUserDialog, selectCreateUserDialog } from '../../../redux/ui/UISlices'
+import { hideCreateThreadDialog, selectCreateThreadDialog } from '../../../redux/ui/UISlices'
 
-export default function CreateUserDialog() {
-	const [createUser] = useCreateThreadMutation()
+export default function CreateThreadDialog() {
+	const [createThread] = useCreateThreadMutation()
 	const dispatch = useDispatch()
 	const handleSubmit = function (event) {
 		event.preventDefault()
-		const newUser = {
+		const newThread = {
 			userID: event.target.elements.userID.value,
 			userName: event.target.elements.userName.value,
 			password: event.target.elements.password.value,
 			isAdministrator: event.target.elements.isAdministrator.checked
 		}
-		createUser(newUser)
-		dispatch(hideCreateUserDialog())
+		createThread(newThread)
+		dispatch(hideCreateThreadDialog())
 	}
 
-	const showCreateModal = useSelector(selectCreateUserDialog)
+	const showCreateModal = useSelector(selectCreateThreadDialog)
 	console.log('showCreateModal')
 	console.log(showCreateModal)
 
 	return (
-		<Modal show={useSelector(selectCreateUserDialog)} onHide={() => dispatch(hideCreateUserDialog())}>
+		<Modal show={useSelector(selectCreateThreadDialog)} onHide={() => dispatch(hideCreateThreadDialog())}>
 			<Modal.Header closeButton>
-				<Modal.Title>Create New User</Modal.Title>
+				<Modal.Title>Create New Thread</Modal.Title>
 			</Modal.Header>
 			<Form onSubmit={handleSubmit}>
-				<CreateUserBody />
+				<CreateThreadBody />
 				<Modal.Footer>
 					<Button
 						variant='secondary'
-						id='CancelEditUserButton'
-						onClick={() => dispatch(hideCreateUserDialog())}
+						id='CancelCreateForumThreadButton'
+						onClick={() => dispatch(hideCreateThreadDialog())}
 					>
 						Cancel
 					</Button>
-					<Button type='submit' variant='primary' id='CreateUserButton'>
-						Create User
+					<Button type='submit' variant='primary' id='CreateForumThreadButton'>
+						Create Thread
 					</Button>
 				</Modal.Footer>
 			</Form>
@@ -56,11 +56,11 @@ export default function CreateUserDialog() {
 	)
 }
 
-function CreateUserAlert() {
+function CreateThreadAlert() {
 	return null
 }
 
-function CreateUserBody() {
+function CreateThreadBody() {
 	if (false) {
 		return (
 			<Modal.Body>
@@ -73,15 +73,12 @@ function CreateUserBody() {
 	return (
 		<Modal.Body>
 			<Stack>
-				<CreateUserAlert />
-				<FloatingLabel controlId='UserIDInput' label='User ID' className='mb-3'>
-					<Form.Control type='text' name='userID' placeholder='User ID' />
+				<CreateThreadAlert />
+				<FloatingLabel controlId='ForumThreadNameInput' label='Thread Name' className='mb-3'>
+					<Form.Control type='text' name='ForumThreadNameInput' placeholder='Thread Name' />
 				</FloatingLabel>
-				<FloatingLabel controlId='UserNameInput' label='Username' className='mb-3'>
-					<Form.Control type='text' name='userName' placeholder='Username' />
-				</FloatingLabel>
-				<FloatingLabel controlId='PasswordInput' label='Password'>
-					<Form.Control name='password' type='password' placeholder='Password' />
+				<FloatingLabel controlId='ForumThreadDescriptionInput' label='Thread Beschreibung' className='mb-3'>
+					<Form.Control type='text' name='ForumThreadDescriptionInput' placeholder='Thread Beschreibung' />
 				</FloatingLabel>
 				<Form.Check
 					id='IsAdministratorInput'
