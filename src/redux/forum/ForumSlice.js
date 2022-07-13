@@ -8,7 +8,11 @@ export const ForumSlice = api.injectEndpoints({
 			providesTags: ['Forum']
 		}),
 		createThread: builder.mutation({
-			query: newThread => ({ url: '/forumThreads', method: 'POST', body: newThread }),
+			query: newThread => ({
+				url: '/forumThreads',
+				method: 'POST',
+				body: newThread
+			}),
 			invalidatesTags: ['Forum']
 		}),
 		deleteThread: builder.mutation({
@@ -19,8 +23,8 @@ export const ForumSlice = api.injectEndpoints({
 			invalidatesTags: ['Forum']
 		}),
 		editThread: builder.mutation({
-			query: changedThread => ({
-				url: `/forumThreads/${changedThread._id}`,
+			query: ({ forumThreadID, changedThread }) => ({
+				url: `/forumThreads/${forumThreadID}`,
 				method: 'PUT',
 				body: changedThread
 			}),

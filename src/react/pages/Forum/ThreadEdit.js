@@ -22,8 +22,8 @@ export default function ThreadEdit() {
 	const handleSubmit = function (event) {
 		event.preventDefault()
 		const changedThread = {
-			name: event.target.elements.threadName.value,
-			description: event.target.elements.threadDescription.value,
+			name: event.target.elements.ForumThreadNameInput.value,
+			description: event.target.elements.ForumThreadDescriptionInput.value,
 			isLocked: event.target.elements.isLocked.checked
 		}
 
@@ -82,19 +82,19 @@ function CreateThreadBody({ editThreadID }) {
 		<Modal.Body>
 			<Stack>
 				<CreateThreadAlert />
-				<FloatingLabel controlId='ForumThreadNameInput' label='Threadname' className='mb-3'>
+				<FloatingLabel controlId='ForumThreadNameInput' label='Thread Name' className='mb-3'>
 					<Form.Control
 						type='text'
-						name='threadName'
-						placeholder='ThreadName'
+						name='ForumThreadNameInput'
+						placeholder='Thread Name'
 						defaultValue={editThread.name}
 					/>
 				</FloatingLabel>
-				<FloatingLabel controlId='ForumThreadDescriptionInput' label='Beschreibung' className='mb-3'>
+				<FloatingLabel controlId='ForumThreadDescriptionInput' label='Thread Beschreibung' className='mb-3'>
 					<Form.Control
 						type='text'
-						name='threadDescription'
-						placeholder='Beschreibung'
+						name='ForumThreadDescriptionInput'
+						placeholder='Thread Beschreibung'
 						defaultValue={editThread.description}
 					/>
 				</FloatingLabel>

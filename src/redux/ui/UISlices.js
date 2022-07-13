@@ -141,12 +141,14 @@ export const {
 } = uiSlice.actions
 
 export const selectShowUsers = state => state.ui.showUserManagement
+
 export const selectCreateUserDialog = state => state.ui.showCreateUser
 export const selectEditUserDialog = state => state.ui.showEditUser
 export const selectDeleteUserConfirmDialog = state => state.ui.showDeleteUserConfirm
 export const selectHandleUserID = state => state.ui.handleUserID
 
-export const selectshowForumOverview = state => state.ui.showForumOverview
+export const selectShowForumOverview = state => state.ui.showForumOverview
+
 export const selectCreateThreadDialog = state => state.ui.showCreateThread
 export const selectEditThreadDialog = state => state.ui.showEditThread
 export const selectDeleteThreadConfirmDialog = state => state.ui.showDeleteThreadConfirm

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 //bootstrap
 import Button from 'react-bootstrap/Button'
@@ -10,11 +10,13 @@ import Stack from 'react-bootstrap/Stack'
 
 //redux
 import { useDispatch, useSelector } from 'react-redux'
-import { useCreateThreadMutation } from '../../../redux/users/userManagement'
+
+//import my reducers
+import { useCreateThreadMutation } from '../../../redux/forum/ForumSlice'
 import { hideCreateThreadDialog, selectCreateThreadDialog } from '../../../redux/ui/UISlices'
 
 export default function CreateThreadDialog() {
-	const [createThread] = useCreateThreadMutation()
+	const [createThread, createResult] = useCreateThreadMutation()
 	const dispatch = useDispatch()
 	const handleSubmit = function (event) {
 		event.preventDefault()
@@ -25,8 +27,14 @@ export default function CreateThreadDialog() {
 			isAdministrator: event.target.elements.isAdministrator.checked
 		}
 		createThread(newThread)
-		dispatch(hideCreateThreadDialog())
 	}
+
+	useEffect(() => {
+		if (createResult.isSuccess) {
+			createResult.reset()
+			dispatch(hideCreateThreadDialog())
+		}
+	})
 
 	const showCreateModal = useSelector(selectCreateThreadDialog)
 	console.log('showCreateModal')
@@ -80,13 +88,6 @@ function CreateThreadBody() {
 				<FloatingLabel controlId='ForumThreadDescriptionInput' label='Thread Beschreibung' className='mb-3'>
 					<Form.Control type='text' name='ForumThreadDescriptionInput' placeholder='Thread Beschreibung' />
 				</FloatingLabel>
-				<Form.Check
-					id='IsAdministratorInput'
-					type='switch'
-					label='Administrator'
-					name='isAdministrator'
-					className='mb-3'
-				/>
 			</Stack>
 		</Modal.Body>
 	)
