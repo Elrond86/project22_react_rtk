@@ -1,6 +1,6 @@
 import LogoutButton from '../components/LogoutButton'
 import UserManagement from './UserManagementPage'
-import ForumPage from './ForumPage'
+import ForumPage from './Forum/ForumPage'
 import { useSelector } from 'react-redux'
 import {
 	selectUserID,

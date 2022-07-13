@@ -45,12 +45,6 @@ let uiSlice = createSlice({
 			state.showForumOverview = false
 		},
 
-		hideAll: (state, action) => {
-			state.showUserManagement = false
-			state.showEditUser = false
-			state.showForumOverview = false
-		},
-
 		showCreateUserDialog: state => {
 			state.showCreateUser = true
 		},
@@ -72,6 +66,35 @@ let uiSlice = createSlice({
 		hideDeleteUserConfirmDialog: state => {
 			state.showDeleteUserConfirm = false
 			state.handleUserID = null
+		},
+
+		showCreateThreadDialog: state => {
+			state.showCreateThread = true
+		},
+		hideCreateThreadDialog: state => {
+			state.showCreateThread = false
+		},
+		showEditThreadDialog: (state, { payload: threadID }) => {
+			state.handleThreadID = threadID
+			state.showEditThread = true
+		},
+		hideEditThreadDialog: state => {
+			state.showEditThread = false
+			state.handleThreadID = null
+		},
+		showDeleteThreadConfirmDialog: (state, { payload: threadID }) => {
+			state.handleThreadID = threadID
+			state.showDeleteThreadConfirm = true
+		},
+		hideDeleteThreadConfirmDialog: state => {
+			state.showDeleteThreadConfirm = false
+			state.handleThreadID = null
+		},
+
+		hideAll: (state, action) => {
+			state.showUserManagement = false
+			state.showEditUser = false
+			state.showForumOverview = false
 		}
 	},
 
@@ -92,18 +115,29 @@ let uiSlice = createSlice({
 
 export const {
 	hideAll,
+
 	showLoginModal,
 	hideLoginModal,
+
 	showUserManagement,
 	hideUserManagement,
+
 	showForumOverview,
 	hideForumOverview,
+
 	showCreateUserDialog,
 	hideCreateUserDialog,
 	showEditUserDialog,
 	hideEditUserDialog,
 	showDeleteUserConfirmDialog,
-	hideDeleteUserConfirmDialog
+	hideDeleteUserConfirmDialog,
+
+	showCreateThreadDialog,
+	hideCreateThreadDialog,
+	showEditThreadDialog,
+	hideEditThreadDialog,
+	showDeleteThreadConfirmDialog,
+	hideDeleteThreadConfirmDialog
 } = uiSlice.actions
 
 export const selectShowUsers = state => state.ui.showUserManagement
@@ -111,6 +145,11 @@ export const selectCreateUserDialog = state => state.ui.showCreateUser
 export const selectEditUserDialog = state => state.ui.showEditUser
 export const selectDeleteUserConfirmDialog = state => state.ui.showDeleteUserConfirm
 export const selectHandleUserID = state => state.ui.handleUserID
+
 export const selectshowForumOverview = state => state.ui.showForumOverview
+export const selectCreateThreadDialog = state => state.ui.showCreateThread
+export const selectEditThreadDialog = state => state.ui.showEditThread
+export const selectDeleteThreadConfirmDialog = state => state.ui.showDeleteThreadConfirm
+export const selectHandleThreadID = state => state.ui.handleThreadID
 
 export default uiSlice.reducer

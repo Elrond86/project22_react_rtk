@@ -38,7 +38,7 @@ export const ForumSlice = api.injectEndpoints({
 
 export const {
 	useGetAllThreadsQuery,
-	useCreateUserMutation,
+	useCreateThreadMutation,
 	useDeleteUserMutation,
 	useEditUserMutation,
 	useGetUserQuery
