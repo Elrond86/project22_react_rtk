@@ -29,16 +29,9 @@ export default function UserManagement() {
 	const isAdmin = useSelector(selectAdminstatus)
 	const showManagement = useSelector(selectShowUsers)
 
-	console.log('UserManagement-bouncer asking for adminstatus..')
 	if (!isAdmin) {
 		return <Navigate to='/' />
 	}
-	console.log('passed the bouncer... returning some UserManagmentView..')
-
-	//	if (showEditDialog) return <UserEdit />
-	/* if (showDeleteDialog) return <DeleteUserConfirmDialog /> */
-
-	console.log('passed the showEditDialog... returning some UserManagmentTable..')
 
 	if (!showManagement) return
 
@@ -102,8 +95,6 @@ function UserList() {
 }
 
 function UserRows({ users }) {
-	console.log(users)
-
 	return users.map(user => <UserRow key={'UserItem' + user.userID} user={user} />)
 }
 

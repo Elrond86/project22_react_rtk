@@ -35,7 +35,7 @@ export default function CreateThreadDialog() {
 	})
 
 	const showCreateModal = useSelector(selectCreateThreadDialog)
-	console.log('showCreateModal')
+	console.log('showCreateModal = useSelector(selectCreateThreadDialog)')
 	console.log(showCreateModal)
 
 	return (

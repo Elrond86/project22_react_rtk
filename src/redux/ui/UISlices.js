@@ -9,7 +9,8 @@ const initialState = {
 	showForumOverview: false,
 	showEditUser: false,
 	showDeleteUserConfirm: false,
-	showCreateUser: false
+	showCreateUser: false,
+	selectShowMessages: false
 }
 
 let uiSlice = createSlice({
@@ -38,11 +39,20 @@ let uiSlice = createSlice({
 		},
 
 		showForumOverview: (state, action) => {
-			state.showForumOverview = true
 			state.showUserManagement = false
+			state.showForumOverview = true
 		},
 		hideForumOverview: (state, action) => {
 			state.showForumOverview = false
+		},
+
+		showMessages: (state, action) => {
+			state.showForumOverview = false
+			state.showMessages = true
+		},
+		hideMessages: (state, action) => {
+			state.showMessages = false
+			state.showForumOverview = true
 		},
 
 		showCreateUserDialog: state => {
@@ -91,6 +101,29 @@ let uiSlice = createSlice({
 			state.handleThreadID = null
 		},
 
+		showCreateMessageDialog: state => {
+			state.showCreateMessage = true
+		},
+		hideCreateMessageDialog: state => {
+			state.showCreateMessage = false
+		},
+		showEditMessageDialog: (state, { payload: MessageID }) => {
+			state.handleMessageID = MessageID
+			state.showEditMessage = true
+		},
+		hideEditMessageDialog: state => {
+			state.showEditMessage = false
+			state.handleMessageID = null
+		},
+		showDeleteMessageConfirmDialog: (state, { payload: MessageID }) => {
+			state.handleMessageID = MessageID
+			state.showDeleteMessageConfirm = true
+		},
+		hideDeleteMessageConfirmDialog: state => {
+			state.showDeleteMessageConfirm = false
+			state.handleMessageID = null
+		},
+
 		hideAll: (state, action) => {
 			state.showUserManagement = false
 			state.showEditUser = false
@@ -125,6 +158,9 @@ export const {
 	showForumOverview,
 	hideForumOverview,
 
+	showMessages,
+	hideMessages,
+
 	showCreateUserDialog,
 	hideCreateUserDialog,
 	showEditUserDialog,
@@ -153,5 +189,7 @@ export const selectCreateThreadDialog = state => state.ui.showCreateThread
 export const selectEditThreadDialog = state => state.ui.showEditThread
 export const selectDeleteThreadConfirmDialog = state => state.ui.showDeleteThreadConfirm
 export const selectHandleThreadID = state => state.ui.handleThreadID
+
+export const selectShowMessages = state => state.ui.showMessages
 
 export default uiSlice.reducer
