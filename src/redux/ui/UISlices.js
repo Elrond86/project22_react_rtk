@@ -10,7 +10,7 @@ const initialState = {
 	showEditUser: false,
 	showDeleteUserConfirm: false,
 	showCreateUser: false,
-	selectShowMessages: false
+	showMessages: false
 }
 
 let uiSlice = createSlice({
@@ -49,10 +49,12 @@ let uiSlice = createSlice({
 		showMessages: (state, action) => {
 			state.showForumOverview = false
 			state.showMessages = true
+			state.handleThreadID = action.payload
 		},
-		hideMessages: (state, action) => {
+		hideMessages: state => {
 			state.showMessages = false
 			state.showForumOverview = true
+			state.handleThreadID = null
 		},
 
 		showCreateUserDialog: state => {

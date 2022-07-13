@@ -14,7 +14,8 @@ import {
 	showCreateThreadDialog,
 	showEditThreadDialog,
 	showDeleteThreadConfirmDialog,
-	showMessages
+	showMessages,
+	hideMessages
 } from '../../../redux/ui/UISlices'
 import { selectAdminstatus } from '../../../redux/authentication/AuthenticationSlices'
 import { useGetAllThreadsQuery } from '../../../redux/forum/ForumSlice'
@@ -97,14 +98,12 @@ function ThreadRows({ forumThreads }) {
 
 function ThreadRow({ thread }) {
 	const dispatch = useDispatch()
-	function handleShow() {
-		dispatch(showMessages())
-	}
+
 	return (
 		<tr id={'ForumThread' + thread._id}>
 			<td>{thread.ownerID}</td>
-			<td onClick={handleShow}>{thread.name}</td>
-			<td onClick={handleShow}>{thread.description}</td>
+			<td onClick={() => dispatch(showMessages(thread.id))}>{thread.name}</td>
+			<td onClick={() => dispatch(showMessages(thread.id))}>{thread.description}</td>
 			<td>
 				{
 					<Stack direction='horizontal' gap={1}>
