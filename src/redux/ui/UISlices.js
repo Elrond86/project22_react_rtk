@@ -45,6 +45,12 @@ let uiSlice = createSlice({
 			state.showForumOverview = false
 		},
 
+		hideAll: (state, action) => {
+			state.showUserManagement = false
+			state.showEditUser = false
+			state.showForumOverview = false
+		},
+
 		showCreateUserDialog: state => {
 			state.showCreateUser = true
 		},
@@ -85,6 +91,7 @@ let uiSlice = createSlice({
 })
 
 export const {
+	hideAll,
 	showLoginModal,
 	hideLoginModal,
 	showUserManagement,

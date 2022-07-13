@@ -101,12 +101,13 @@ function UserList() {
 }
 
 function UserRows({ users }) {
+	console.log(users)
+
 	return users.map(user => <UserRow key={'UserItem' + user.userID} user={user} />)
 }
 
 function UserRow({ user }) {
 	const dispatch = useDispatch()
-
 	return (
 		<tr id={'UserItem' + user.userID}>
 			<td>{user.userID}</td>

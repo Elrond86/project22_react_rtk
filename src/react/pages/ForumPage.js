@@ -19,7 +19,7 @@ import {
 import { selectAdminstatus } from '../../redux/authentication/AuthenticationSlices'
 import { useGetAllUsersQuery } from '../../redux/users/userManagement'
 
-import { usegetAllThreadsQuery } from '../../redux/forum/ForumSlice'
+import { useGetAllThreadsQuery } from '../../redux/forum/ForumSlice'
 
 //import my components
 import UserEdit from './UserEdit'
@@ -31,7 +31,7 @@ export default function ForumOverview() {
 	const isAdmin = useSelector(selectAdminstatus)
 	const showOverview = useSelector(selectshowForumOverview)
 
-	console.log('UserManagement-bouncer asking for adminstatus..')
+	console.log('Forum-bouncer asking for adminstatus..')
 	if (!isAdmin) {
 		return <Navigate to='/' />
 	}
@@ -69,7 +69,7 @@ export default function ForumOverview() {
 }
 
 function ThreadList() {
-	const { data: users, isLoading, isSuccess, isError, error } = useGetAllUsersQuery()
+	const { data: forumThreads, isLoading, isSuccess, isError, error } = useGetAllThreadsQuery()
 
 	if (isLoading) {
 		return (
@@ -80,17 +80,15 @@ function ThreadList() {
 	} else if (isSuccess) {
 		return (
 			<Table striped bordered hover>
-				<thead id='usertable'>
+				<thead id='threadTable'>
 					<tr>
-						<th>userID</th>
-						<th>userName</th>
-						<th>isAdministrator</th>
+						<th>ownerID</th>
+						<th>name</th>
+						<th>description</th>
 						<th>Actions</th>
 					</tr>
 				</thead>
-				<tbody>
-					<UserRows users={users} />
-				</tbody>
+				<tbody>{<ThreadRows forumThreads={forumThreads} />}</tbody>
 			</Table>
 		)
 	} else if (isError) {
@@ -102,37 +100,38 @@ function ThreadList() {
 	}
 }
 
-function UserRows({ users }) {
-	return users.map(user => <UserRow key={'UserItem' + user.userID} user={user} />)
+function ThreadRows({ forumThreads }) {
+	console.log(forumThreads)
+
+	return forumThreads.map(thread => <ThreadRow key={'ThreadItem' + thread._id} thread={thread} />)
 }
 
-function UserRow({ user }) {
+function ThreadRow({ thread }) {
 	const dispatch = useDispatch()
-
 	return (
-		<tr id={'UserItem' + user.userID}>
-			<td>{user.userID}</td>
-			<td>{user.userName}</td>
-			<td>{user.isAdministrator.toString()}</td>
+		<tr id={'ForumThread' + thread._id}>
+			<td>{thread.ownerID}</td>
+			<td>{thread.name}</td>
+			<td>{thread.description}</td>
 			<td>
-				<Stack direction='horizontal' gap={1}>
+				{/* 				<Stack direction='horizontal' gap={1}>
 					<Button
 						variant='secondary'
-						id={'EditButton' + user.userID}
+						id={'EditButton' + thread._id}
 						size='sm'
-						onClick={() => dispatch(showEditUserDialog(user.userID))}
+						onClick={() => dispatch(showEditUserDialog(thread._id))}
 					>
 						<PencilFill /> Edit
 					</Button>
 					<Button
 						variant='dark'
 						size='sm'
-						id={'DeleteButton' + user.userID}
-						onClick={() => dispatch(showDeleteUserConfirmDialog(user.userID))}
+						id={'DeleteButton' + thread._id}
+						onClick={() => dispatch(showDeleteUserConfirmDialog(thread._id))}
 					>
 						<TrashFill /> Delete
 					</Button>
-				</Stack>
+				</Stack> */}
 			</td>
 		</tr>
 	)
