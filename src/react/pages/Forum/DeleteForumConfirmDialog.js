@@ -6,21 +6,21 @@ import Modal from 'react-bootstrap/Modal'
 import { useSelector, useDispatch } from 'react-redux'
 import {
 	hideDeleteThreadConfirmDialog,
-	selectDeleteUserConfirmDialog,
-	selectHandleUserID
+	selectDeleteThreadConfirmDialog,
+	selectHandleThreadID
 } from '../../../redux/ui/UISlices'
 import { useDeleteUserMutation } from '../../../redux/users/userManagement'
-
+import { useDeleteThreadMutation } from '../../../redux/forum/ForumSlice'
 export default function DeleteUserConfirmDialog() {
 	console.log('bin in DeleteUserConfirmDialog.js')
-	const [deleteUser] = useDeleteUserMutation()
+	const [deleteThread] = useDeleteThreadMutation()
 	const dispatch = useDispatch()
-	const userID = useSelector(selectHandleUserID)
+	const threadID = useSelector(selectHandleThreadID)
 	const handleDelete = function () {
-		deleteUser(userID)
+		deleteUser(threadID)
 		dispatch(hideDeleteThreadConfirmDialog())
 	}
-	const showDeleteModal = useSelector(selectDeleteUserConfirmDialog)
+	const showDeleteModal = useSelector(selectDeleteThreadConfirmDialog)
 	console.log('showDeleteModal')
 	console.log(showDeleteModal)
 
@@ -28,11 +28,11 @@ export default function DeleteUserConfirmDialog() {
 		<Modal show={showDeleteModal} onHide={() => dispatch(hideDeleteThreadConfirmDialog())}>
 			<Modal.Header>
 				<Modal.Title>
-					Delete User <em>{userID}</em>
+					Delete Thread <em>{threadID}</em>
 				</Modal.Title>
 			</Modal.Header>
 			<Modal.Body>
-				Do you really want to delete the user <em>{userID}</em>?
+				Do you really want to delete the user <em>{threadID}</em>?
 			</Modal.Body>
 			<Modal.Footer>
 				<Button

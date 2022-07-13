@@ -21,10 +21,8 @@ export default function CreateThreadDialog() {
 	const handleSubmit = function (event) {
 		event.preventDefault()
 		const newThread = {
-			userID: event.target.elements.userID.value,
-			userName: event.target.elements.userName.value,
-			password: event.target.elements.password.value,
-			isAdministrator: event.target.elements.isAdministrator.checked
+			name: event.target.elements.ForumThreadNameInput.value,
+			description: event.target.elements.ForumThreadDescriptionInput.value
 		}
 		createThread(newThread)
 	}
