@@ -92,8 +92,6 @@ function ThreadList() {
 }
 
 function ThreadRows({ forumThreads }) {
-	console.log(forumThreads)
-
 	return forumThreads.map(thread => <ThreadRow key={'ThreadItem' + thread._id} thread={thread} />)
 }
 

@@ -50,3 +50,6 @@ export const {
 	useEditForumMessageMutation,
 	useDeleteForumMessageMutation
 } = forumMessagesSlice
+
+export const selectAllForumMessages = state => state.forumThreads
+export const selectAll = state => state
