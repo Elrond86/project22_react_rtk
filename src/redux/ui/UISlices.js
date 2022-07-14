@@ -48,11 +48,18 @@ let uiSlice = createSlice({
 			state.showForumOverview = false
 		},
 
-		showMessages: (state, { payload: _id }) => {
+		showMessages: (state, action) => {
+			state.showForumOverview = false
+			state.showMessages = true
+			state.handleThreadID = action.payload[0]
+			state.handleThreadName = action.payload[1]
+			state.daten = action
+		},
+		/* 		showMessages: (state, { payload: _id }) => {
 			state.showForumOverview = false
 			state.showMessages = true
 			state.handleThreadID = _id
-		},
+		}, */
 		hideMessages: state => {
 			state.showMessages = false
 			state.showForumOverview = true
@@ -197,8 +204,10 @@ export const selectShowForumOverview = state => state.ui.showForumOverview
 export const selectCreateThreadDialog = state => state.ui.showCreateThread
 export const selectEditThreadDialog = state => state.ui.showEditThread
 export const selectDeleteThreadConfirmDialog = state => state.ui.showDeleteThreadConfirm
-export const selectHandleThreadID = state => state.ui.handleThreadID
 
+export const selectHandleThreadID = state => state.ui.handleThreadID
+export const selectHandleThreadName = state => state.ui.handleThreadName
 export const selectShowMessages = state => state.ui.showMessages
+export const selectDaten = state => state.ui.daten
 
 export default uiSlice.reducer

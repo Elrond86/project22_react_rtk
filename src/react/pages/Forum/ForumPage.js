@@ -102,10 +102,10 @@ function ThreadRow({ thread }) {
 	return (
 		<tr id={'ForumThread' + thread._id}>
 			<td>{thread.ownerID}</td>
-			<td id={'ForumThread' + thread._id} onClick={() => dispatch(showMessages(thread._id))}>
+			<td id={'ForumThread' + thread._id} onClick={() => dispatch(showMessages([thread._id, thread.name]))}>
 				{thread.name}
 			</td>
-			<td id={'ForumThread' + thread._id} onClick={() => dispatch(showMessages(thread._id))}>
+			<td id={'ForumThread' + thread._id} onClick={() => dispatch(showMessages([thread._id, thread.name]))}>
 				{thread.description}
 			</td>
 			<td>

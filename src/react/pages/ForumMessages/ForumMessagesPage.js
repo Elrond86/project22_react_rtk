@@ -5,7 +5,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import Spinner from 'react-bootstrap/Spinner'
 import Alert from 'react-bootstrap/Alert'
 
-import { selectShowMessages, selectHandleThreadID } from '../../../redux/ui/UISlices'
+import {
+	selectShowMessages,
+	selectHandleThreadID,
+	selectHandleThreadName,
+	selectDaten
+} from '../../../redux/ui/UISlices'
 import { useGetAllForumMessagesQuery } from '../../../redux/forum/ForumMessageSlice'
 import { selectAllForumMessages } from '../../../redux/forum/ForumMessageSlice'
 import { selectAdminstatus } from '../../../redux/authentication/AuthenticationSlices'
@@ -53,12 +58,29 @@ function Messages({ messages }) {
 	console.log('forumMessages')
 	console.log(messages)
 	const parentThreadID = useSelector(selectHandleThreadID)
-	console.log('parentThreadID')
-	console.log(parentThreadID)
+	console.log('------->parentThreadID')
+	console.log(JSON.stringify(parentThreadID, null, 4))
+	const daten = useSelector(selectDaten)
+	console.log('------->daten: ')
+	console.log(JSON.stringify(daten, null, 4))
+	const parentThreadName = useSelector(selectHandleThreadName)
+	console.log('------->parentThreadName')
+	console.log(JSON.stringify(parentThreadName, null, 4))
+
+	/* 	const parentThreadName = useSelector(selectHandleThreadName)
+	 */
+	/* 	console.log('parentThreadID')
+	console.log(parentThreadID) */
 	return messages.map(
 		message => {
 			if (message.forumThread == parentThreadID) {
-				return <div>{message.text}</div>
+				return (
+					<>
+						<div>{parentThreadName}</div>
+						<div>{message.title}</div>
+						<div>{message.text}</div>
+					</>
+				)
 			}
 		}
 		//{
