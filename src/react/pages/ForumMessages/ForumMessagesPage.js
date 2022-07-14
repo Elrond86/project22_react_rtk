@@ -5,19 +5,27 @@ import { useDispatch, useSelector } from 'react-redux'
 import Spinner from 'react-bootstrap/Spinner'
 import Alert from 'react-bootstrap/Alert'
 
-import { selectShowMessages } from '../../../redux/ui/UISlices'
+import { selectShowMessages, selectHandleThreadID } from '../../../redux/ui/UISlices'
 import { useGetAllForumMessagesQuery } from '../../../redux/forum/ForumMessageSlice'
 import { selectAllForumMessages } from '../../../redux/forum/ForumMessageSlice'
+import { selectAdminstatus } from '../../../redux/authentication/AuthenticationSlices'
 
 export default function ForumMessagePage() {
 	if (!useSelector(selectShowMessages)) return console.log('ForumMessagePage wird versteckt')
 	console.log('rendering ForumMessagePage now...')
-	return <ForumMessageCard />
+	return <ForumMessageBoard />
 }
 
-function ForumMessageCard() {
-	const { data: forumThreads, isLoading, isSuccess, isError, error } = useGetAllForumMessagesQuery()
-	const jsondata = JSON.stringify(forumThreads, null, 4)
+function GetParentThreadID() {
+	return useSelector(selectHandleThreadID)
+}
+
+function ForumMessageBoard() {
+	const { data: forumMessages, isLoading, isSuccess, isError, error } = useGetAllForumMessagesQuery()
+	const jsondata = JSON.stringify(forumMessages, null, 4)
+	/* 	const messages = forumMessages.map(message => message.text)
+	 */
+
 	if (isLoading) {
 		return (
 			<Spinner animation='border' role='status'>
@@ -25,21 +33,35 @@ function ForumMessageCard() {
 			</Spinner>
 		)
 	} else if (isSuccess) {
+		console.log('jsondata')
+		console.log(jsondata)
+		console.log('forumMessages')
+		console.log(forumMessages)
 		return (
 			<>
-				<AlertMessage />
+				<div>Ich printe jetzt jsondata</div>
 				<pre>{jsondata} </pre>
 			</>
 		)
-
-		return console.log(forumThreads)
+		return console.log(forumMessages)
 	}
 }
 
-function AlertMessage() {
+/* function Messages(forumMessages) {
+	return forumMessages.map(thread => <AlertMessage key={'CardItem' + thread.title} thread={' + thread.text + '} />)
+} */
+
+function Messages({ forumMessages }) {
+	return forumMessages.map(message => <div>{message.text}</div>)
+	/* if (message.forumThread == GetParentThreadID()) */
+	/* ;<AlertMessage key={'CardItem' + message.title} message={' + message.text + '} />
+	}) */
+}
+
+function AlertMessage(message) {
 	return (
 		<Alert variant='info'>
-			<Alert.Heading>Hey, nice to see you</Alert.Heading>
+			<Alert.Heading>{message.title}</Alert.Heading>
 			<p>
 				Aww yeah, you successfully read this important alert message. This example text is going to run a bit
 				longer so that you can see how spacing within an alert works with this kind of content.

@@ -32,6 +32,7 @@ let uiSlice = createSlice({
 		showUserManagement: (state, action) => {
 			state.showUserManagement = true
 			state.showForumOverview = false
+			state.showMessages = false
 		},
 		hideUserManagement: (state, action) => {
 			state.showUserManagement = false
@@ -41,6 +42,7 @@ let uiSlice = createSlice({
 		showForumOverview: (state, action) => {
 			state.showUserManagement = false
 			state.showForumOverview = true
+			state.showMessages = false
 		},
 		hideForumOverview: (state, action) => {
 			state.showForumOverview = false
@@ -130,6 +132,7 @@ let uiSlice = createSlice({
 			state.showUserManagement = false
 			state.showEditUser = false
 			state.showForumOverview = false
+			state.showMessages = false
 		}
 	},
 
