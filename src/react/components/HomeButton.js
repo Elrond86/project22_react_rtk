@@ -16,7 +16,7 @@ export default function HomeButton() {
 
 	return (
 		<div>
-			<Button id='OpenPrivatePageButton">' variant='outline-info' onClick={goHome}>
+			<Button id='OpenPrivatePageButton' variant='outline-info' onClick={goHome}>
 				Home
 			</Button>
 		</div>

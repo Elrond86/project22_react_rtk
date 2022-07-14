@@ -113,7 +113,7 @@ function ThreadRow({ thread }) {
 					<Stack direction='horizontal' gap={1}>
 						<Button
 							variant='secondary'
-							id={'EditFormThreadButton“' + thread._id}
+							id={'EditFormThreadButton' + thread._id}
 							size='sm'
 							onClick={() => dispatch(showEditThreadDialog(thread._id))}
 						>

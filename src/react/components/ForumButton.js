@@ -13,7 +13,7 @@ export default function OpenForumThreadOverviewButton() {
 
 	return (
 		<div>
-			<Button id='OpenForumThreadOverviewButton">' variant='outline-info' onClick={showOverview}>
+			<Button id='OpenForumThreadOverviewButton' variant='outline-info' onClick={showOverview}>
 				Forum
 			</Button>
 		</div>
