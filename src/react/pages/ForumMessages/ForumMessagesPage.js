@@ -26,8 +26,9 @@ function ForumMessageBoard() {
 	const { data: forumMessages, isLoading, isSuccess, isError, error } = useGetAllForumMessagesQuery()
 	const jsondata = JSON.stringify(forumMessages, null, 4)
 	console.log('-----------> forumMessages', forumMessages)
-	/* 	const messages = forumMessages.map(message => message.text)
-	 */
+	const parentThreadName = useSelector(selectHandleThreadName)
+	console.log('------->parentThreadName')
+	console.log(JSON.stringify(parentThreadName, null, 4))
 
 	if (isLoading) {
 		return (
@@ -41,8 +42,7 @@ function ForumMessageBoard() {
 
 		return (
 			<>
-				{/* <div>Ich printe jetzt jsondata</div>
-				<pre>{jsondata} </pre> */}
+				<h1>{parentThreadName}</h1>
 				<Messages messages={forumMessages} />
 			</>
 		)
@@ -63,32 +63,22 @@ function Messages({ messages }) {
 	const daten = useSelector(selectDaten)
 	console.log('------->daten: ')
 	console.log(JSON.stringify(daten, null, 4))
-	const parentThreadName = useSelector(selectHandleThreadName)
-	console.log('------->parentThreadName')
-	console.log(JSON.stringify(parentThreadName, null, 4))
 
 	/* 	const parentThreadName = useSelector(selectHandleThreadName)
 	 */
 	/* 	console.log('parentThreadID')
 	console.log(parentThreadID) */
-	return messages.map(
-		message => {
-			if (message.forumThread == parentThreadID) {
-				return (
-					<>
-						<div>{parentThreadName}</div>
-						<div>{message.title}</div>
-						<div>{message.text}</div>
-					</>
-				)
-			}
+	return messages.map(message => {
+		if (message.forumThread == parentThreadID) {
+			return (
+				<>
+					<AlertMessage key={'CardItem' + message._id} message={message} />
+					<div>{message.title}</div>
+					<div>{message.text}</div>
+				</>
+			)
 		}
-		//{
-
-		/* if (message.forumThread == parentThreadID)  */
-		//;<div>{message.text}</div>
-		//}
-	)
+	})
 }
 
 //	return
