@@ -102,8 +102,12 @@ function ThreadRow({ thread }) {
 	return (
 		<tr id={'ForumThread' + thread._id}>
 			<td>{thread.ownerID}</td>
-			<td onClick={() => dispatch(showMessages(thread.id))}>{thread.name}</td>
-			<td onClick={() => dispatch(showMessages(thread.id))}>{thread.description}</td>
+			<td id={'ForumThread' + thread._id} onClick={() => dispatch(showMessages(thread.id))}>
+				{thread.name}
+			</td>
+			<td id={'ForumThread' + thread._id} onClick={() => dispatch(showMessages(thread.id))}>
+				{thread.description}
+			</td>
 			<td>
 				{
 					<Stack direction='horizontal' gap={1}>

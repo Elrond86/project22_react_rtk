@@ -11,6 +11,7 @@ import { selectAllForumMessages } from '../../../redux/forum/ForumMessageSlice'
 import { selectAdminstatus } from '../../../redux/authentication/AuthenticationSlices'
 
 export default function ForumMessagePage() {
+	console.log('---------------> ForumMessagePage')
 	if (!useSelector(selectShowMessages)) return console.log('ForumMessagePage wird versteckt')
 	console.log('rendering ForumMessagePage now...')
 	return <ForumMessageBoard />
@@ -23,6 +24,7 @@ function GetParentThreadID() {
 function ForumMessageBoard() {
 	const { data: forumMessages, isLoading, isSuccess, isError, error } = useGetAllForumMessagesQuery()
 	const jsondata = JSON.stringify(forumMessages, null, 4)
+	console.log('-----------> forumMessages', forumMessages)
 	/* 	const messages = forumMessages.map(message => message.text)
 	 */
 
@@ -35,12 +37,12 @@ function ForumMessageBoard() {
 	} else if (isSuccess) {
 		console.log('jsondata')
 		console.log(jsondata)
-		console.log('forumMessages')
-		console.log(forumMessages)
+
 		return (
 			<>
-				<div>Ich printe jetzt jsondata</div>
-				<pre>{jsondata} </pre>
+				{/* <div>Ich printe jetzt jsondata</div>
+				<pre>{jsondata} </pre> */}
+				<Messages messages={forumMessages} />
 			</>
 		)
 		return console.log(forumMessages)
@@ -51,8 +53,12 @@ function ForumMessageBoard() {
 	return forumMessages.map(thread => <AlertMessage key={'CardItem' + thread.title} thread={' + thread.text + '} />)
 } */
 
-function Messages({ forumMessages }) {
-	return forumMessages.map(message => <div>{message.text}</div>)
+function Messages(props) {
+	console.log('forumMessages')
+	debugger
+	console.log(props)
+	return <></>
+	//return forumMessages.map(message => <div>{message.text}</div>)
 	/* if (message.forumThread == GetParentThreadID()) */
 	/* ;<AlertMessage key={'CardItem' + message.title} message={' + message.text + '} />
 	}) */
