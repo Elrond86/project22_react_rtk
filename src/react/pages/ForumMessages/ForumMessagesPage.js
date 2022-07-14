@@ -17,10 +17,6 @@ export default function ForumMessagePage() {
 	return <ForumMessageBoard />
 }
 
-function GetParentThreadID() {
-	return useSelector(selectHandleThreadID)
-}
-
 function ForumMessageBoard() {
 	const { data: forumMessages, isLoading, isSuccess, isError, error } = useGetAllForumMessagesQuery()
 	const jsondata = JSON.stringify(forumMessages, null, 4)
@@ -53,16 +49,31 @@ function ForumMessageBoard() {
 	return forumMessages.map(thread => <AlertMessage key={'CardItem' + thread.title} thread={' + thread.text + '} />)
 } */
 
-function Messages(props) {
+function Messages({ messages }) {
 	console.log('forumMessages')
-	debugger
-	console.log(props)
-	return <></>
-	//return forumMessages.map(message => <div>{message.text}</div>)
-	/* if (message.forumThread == GetParentThreadID()) */
-	/* ;<AlertMessage key={'CardItem' + message.title} message={' + message.text + '} />
-	}) */
+	console.log(messages)
+	const parentThreadID = useSelector(selectHandleThreadID)
+	console.log('parentThreadID')
+	console.log(parentThreadID)
+	return messages.map(
+		message => {
+			if (message.forumThread == parentThreadID) {
+				return <div>{message.text}</div>
+			}
+		}
+		//{
+
+		/* if (message.forumThread == parentThreadID)  */
+		//;<div>{message.text}</div>
+		//}
+	)
 }
+
+//	return
+
+//	 if (message.forumThread == GetParentThreadID())
+/* ;<AlertMessage key={'CardItem' + message.title} message={' + message.text + '} />
+	}) */
 
 function AlertMessage(message) {
 	return (

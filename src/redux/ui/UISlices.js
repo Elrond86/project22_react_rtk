@@ -48,10 +48,10 @@ let uiSlice = createSlice({
 			state.showForumOverview = false
 		},
 
-		showMessages: (state, action) => {
+		showMessages: (state, { payload: _id }) => {
 			state.showForumOverview = false
 			state.showMessages = true
-			state.handleThreadID = action.payload
+			state.handleThreadID = _id
 		},
 		hideMessages: state => {
 			state.showMessages = false
