@@ -13,7 +13,7 @@ export default function UserManagementButton() {
 
 	return (
 		<div>
-			<Button id='OpenUserManagementButton">' variant='outline-info' onClick={showManagement}>
+			<Button id='OpenUserManagementButton' variant='outline-info' onClick={showManagement}>
 				UserManagement
 			</Button>
 		</div>
