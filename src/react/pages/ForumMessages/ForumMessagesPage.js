@@ -4,18 +4,25 @@ import { useDispatch, useSelector } from 'react-redux'
 // bootstrap
 import Spinner from 'react-bootstrap/Spinner'
 import Alert from 'react-bootstrap/Alert'
+import Button from 'react-bootstrap/Button'
 
 //utils
 import parseDate from '../../../redux/utils/parseDate'
 
-// reducer
+// reducers
+import { showCreateMessageDialog } from '../../../redux/ui/UISlices'
+
+//components
+import CreateMessageDialog from './CreateMessageDialog'
+
+// state-selectors
 import {
 	selectShowMessages,
 	selectHandleThreadID,
 	selectHandleThreadName,
 	selectDaten
 } from '../../../redux/ui/UISlices'
-import { useGetAllForumMessagesQuery } from '../../../redux/forum/ForumMessageSlice'
+import { useGetAllMessagesQuery } from '../../../redux/forum/ForumMessageSlice'
 import { selectAllForumMessages } from '../../../redux/forum/ForumMessageSlice'
 import { selectAdminstatus } from '../../../redux/authentication/AuthenticationSlices'
 
@@ -28,7 +35,7 @@ export default function ForumMessagePage() {
 }
 
 function ForumMessageBoard() {
-	const { data: forumMessages, isLoading, isSuccess, isError, error } = useGetAllForumMessagesQuery()
+	const { data: forumMessages, isLoading, isSuccess, isError, error } = useGetAllMessagesQuery()
 	const jsondata = JSON.stringify(forumMessages, null, 4)
 	console.log('-----------> forumMessages', forumMessages)
 	const parentThreadName = useSelector(selectHandleThreadName)
@@ -47,7 +54,19 @@ function ForumMessageBoard() {
 
 		return (
 			<>
+				{' '}
+				{/* <CreateMessageDialog /> */}
 				<h1>{parentThreadName}</h1>
+				<Button
+					id='OpenCreateForumMessageDialogButton'
+					variant='success'
+					type='submit'
+					onClick={() => {
+						dispatchEvent(showCreateMessageDialog)
+					}}
+				>
+					Anlegen
+				</Button>
 				<Messages key={'unique'} messages={forumMessages} />
 			</>
 		)

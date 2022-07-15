@@ -3,7 +3,7 @@ import api from '../utils/api'
 export const forumMessagesSlice = api.injectEndpoints({
 	addTagTypes: ['ForumMessages'],
 	endpoints: builder => ({
-		getAllForumMessages: builder.query({
+		getAllMessages: builder.query({
 			query: () => '/forumMessages',
 			providesTags: ['ForumMessages']
 		}),
@@ -43,12 +43,12 @@ export const forumMessagesSlice = api.injectEndpoints({
 })
 
 export const {
-	useGetAllForumMessagesQuery,
-	useGetForumThreadMessagesQuery,
-	// useGetForumMessageQuery,
-	useCreateForumMessageMutation,
-	useEditForumMessageMutation,
-	useDeleteForumMessageMutation
+	useGetAllMessagesQuery,
+	useGetThreadMessagesQuery,
+	// useGetMessageQuery,
+	useCreateMessageMutation,
+	useEditMessageMutation,
+	useDeleteMessageMutation
 } = forumMessagesSlice
 
 export const selectAllForumMessages = state => state.forumThreads

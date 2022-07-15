@@ -11,7 +11,8 @@ const initialState = {
 	showDeleteUserConfirm: false,
 	showCreateUser: false,
 	showMessages: false,
-	showWelcome: true
+	showWelcome: true,
+	showCreateMessage: true
 }
 
 let uiSlice = createSlice({
@@ -58,6 +59,14 @@ let uiSlice = createSlice({
 		},
 		hideForumOverview: (state, action) => {
 			state.showForumOverview = false
+		},
+
+		showCreateMessageDialog: state => {
+			state.showCreateMessage = true
+		},
+
+		hideCreateMessageDialog: state => {
+			state.showCreateMessage = false
 		},
 
 		showMessages: (state, action) => {
@@ -203,7 +212,14 @@ export const {
 	showEditThreadDialog,
 	hideEditThreadDialog,
 	showDeleteThreadConfirmDialog,
-	hideDeleteThreadConfirmDialog
+	hideDeleteThreadConfirmDialog,
+
+	showCreateMessageDialog,
+	hideCreateMessageDialog,
+	showEditMessageDialog,
+	hideEditMessageDialog,
+	showDeleteMessageConfirmDialog,
+	hideDeleteMessageConfirmDialog
 } = uiSlice.actions
 
 export const selectShowUsers = state => state.ui.showUserManagement
@@ -222,6 +238,7 @@ export const selectDeleteThreadConfirmDialog = state => state.ui.showDeleteThrea
 export const selectHandleThreadID = state => state.ui.handleThreadID
 export const selectHandleThreadName = state => state.ui.handleThreadName
 export const selectShowMessages = state => state.ui.showMessages
+export const selectCreateMessageDialog = state => state.ui.showCreateMessage
 export const selectDaten = state => state.ui.daten
 
 export const selectShowWelcome = state => state.ui.showWelcome

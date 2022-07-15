@@ -1,16 +1,16 @@
 .AppContainer .main .card {
-	background-color: hwb(200 25% 0% / 0.5);
+	/*background-color: hwb(200 25% 0% / 0.5);*/
 }
 
 #mainpage #privatePage,
 #publicpage #usertable {
-	background-color: hwb(200 25% 0% / 0.5);
+	/*background-color: hwb(200 25% 0% / 0.5);*/
 }
 
 .pagename {
 	height: 24px;
 	width: 100%;
-	background: hsl(200, 100%, 50%);
+	/*background: hsl(200, 100%, 50%);*/
 	display: flex;
 	flex-direction: column;
 	justify-content: end;
