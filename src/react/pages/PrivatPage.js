@@ -2,6 +2,7 @@ import LogoutButton from '../components/LogoutButton'
 import UserManagement from './UserManagementPage'
 import ForumPage from './Forum/ForumPage'
 import ForumMessagePage from './ForumMessages/ForumMessagesPage'
+import Footer from '../components/Footer/Footer'
 import { useSelector } from 'react-redux'
 import {
 	selectUserID,
@@ -21,7 +22,9 @@ export default function PrivatPage() {
 			<UserManagement />
 			<ForumPage />
 			<ForumMessagePage />
-			<LogoutButton />
+			<footer>
+				<Footer />
+			</footer>
 		</>
 	)
 }

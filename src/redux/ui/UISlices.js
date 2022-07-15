@@ -64,14 +64,6 @@ let uiSlice = createSlice({
 			state.showForumOverview = false
 		},
 
-		showCreateMessageDialog: state => {
-			state.showCreateMessage = true
-		},
-
-		hideCreateMessageDialog: state => {
-			state.showCreateMessage = false
-		},
-
 		showMessages: (state, action) => {
 			state.showForumOverview = false
 			state.showMessages = true

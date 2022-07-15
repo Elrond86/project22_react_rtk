@@ -7,7 +7,7 @@ import Alert from 'react-bootstrap/Alert'
 import Button from 'react-bootstrap/Button'
 
 //utils
-import parseDate from '../../../redux/utils/parseDate'
+import parseDate from '../../../utils/parseDate'
 
 // reducers
 import { showCreateMessageDialog } from '../../../redux/ui/UISlices'
@@ -68,11 +68,11 @@ function ForumMessageBoard() {
 					variant='success'
 					type='submit'
 					onClick={() => {
-						console.log('clicked "Anlegen"')
+						console.log('clicked "Answer"')
 						dispatch(showCreateMessageDialog())
 					}}
 				>
-					antworten
+					Answer
 				</Button>
 			</>
 		)
@@ -123,8 +123,18 @@ function AlertMessage({ message }) {
 			<p>{message.text}</p>
 			<hr />
 			<p className='mb-0'>
-				{parseDate(message.createdAt)} von {message.authorID}
+				posted: {parseDate(message.createdAt)} von {message.authorID}
+				<UpdatedInfo message={message} />
 			</p>
 		</Alert>
 	)
+}
+
+function UpdatedInfo({ message }) {
+	if (message.updatedAt != message.createdAt)
+		return (
+			<>
+				<br /> lastchange: {parseDate(message.updatedAt)}
+			</>
+		)
 }

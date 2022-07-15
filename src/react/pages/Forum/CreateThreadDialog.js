@@ -11,9 +11,12 @@ import Stack from 'react-bootstrap/Stack'
 //redux
 import { useDispatch, useSelector } from 'react-redux'
 
+// import selectors
+import { selectCreateThreadDialog } from '../../../redux/ui/UISlices'
+
 //import my reducers
 import { useCreateThreadMutation } from '../../../redux/forum/ForumSlice'
-import { hideCreateThreadDialog, selectCreateThreadDialog } from '../../../redux/ui/UISlices'
+import { hideCreateThreadDialog } from '../../../redux/ui/UISlices'
 
 export default function CreateThreadDialog() {
 	const [createThread, createResult] = useCreateThreadMutation()

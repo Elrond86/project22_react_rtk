@@ -16,11 +16,11 @@ import { selectCreateMessageDialog } from '../../../redux/ui/UISlices'
 
 //import my reducers
 import { useCreateMessageMutation } from '../../../redux/forum/ForumMessageSlice'
-import { hideCreateThreadDialog, selectCreateThreadDialog } from '../../../redux/ui/UISlices'
+import { hideCreateMessageDialog } from '../../../redux/ui/UISlices'
 
 export default function CreateMessageDialog() {
 	console.log('bin in CreateMessageDialog')
-	const [createThread, createResult] = useCreateMessageMutation()
+	const [createMessage, createResult] = useCreateMessageMutation()
 	const dispatch = useDispatch()
 	const handleSubmit = function (event) {
 		event.preventDefault()
@@ -28,13 +28,13 @@ export default function CreateMessageDialog() {
 			name: event.target.elements.ForumThreadNameInput.value,
 			description: event.target.elements.ForumThreadDescriptionInput.value
 		}
-		createThread(newThread)
+		createMessage(newThread)
 	}
 
 	useEffect(() => {
 		if (createResult.isSuccess) {
 			createResult.reset()
-			dispatch(hideCreateThreadDialog())
+			dispatch(hideCreateMessageDialog())
 		}
 	})
 
@@ -43,22 +43,22 @@ export default function CreateMessageDialog() {
 	console.log(showCreateModal)
 
 	return (
-		<Modal show={useSelector(selectCreateMessageDialog)} onHide={() => dispatch(hideCreateThreadDialog())}>
+		<Modal show={useSelector(selectCreateMessageDialog)} onHide={() => dispatch(hideCreateMessageDialog())}>
 			<Modal.Header closeButton>
-				<Modal.Title>Create New Thread</Modal.Title>
+				<Modal.Title>Create New Message</Modal.Title>
 			</Modal.Header>
 			<Form onSubmit={handleSubmit}>
-				<CreateThreadBody />
+				<CreateMessageBody />
 				<Modal.Footer>
 					<Button
 						variant='secondary'
-						id='CancelCreateForumThreadButton'
-						onClick={() => dispatch(hideCreateThreadDialog())}
+						id='CancelCreateForumMessageButton'
+						onClick={() => dispatch(hideCreateMessageDialog())}
 					>
 						Cancel
 					</Button>
-					<Button type='submit' variant='primary' id='CreateForumThreadButton'>
-						Create Thread
+					<Button type='submit' variant='primary' id='CreateForumMessageButton'>
+						Create Message
 					</Button>
 				</Modal.Footer>
 			</Form>
@@ -70,7 +70,7 @@ function CreateThreadAlert() {
 	return null
 }
 
-function CreateThreadBody() {
+function CreateMessageBody() {
 	if (false) {
 		return (
 			<Modal.Body>
@@ -84,11 +84,11 @@ function CreateThreadBody() {
 		<Modal.Body>
 			<Stack>
 				<CreateThreadAlert />
-				<FloatingLabel controlId='ForumThreadNameInput' label='Thread Name' className='mb-3'>
-					<Form.Control type='text' name='ForumThreadNameInput' placeholder='Thread Name' />
+				<FloatingLabel controlId='ForumMessageTitleInput' label='Message Title' className='mb-3'>
+					<Form.Control type='text' name='ForumMessageTitleInput' placeholder='Message Title' />
 				</FloatingLabel>
-				<FloatingLabel controlId='ForumThreadDescriptionInput' label='Thread Beschreibung' className='mb-3'>
-					<Form.Control type='text' name='ForumThreadDescriptionInput' placeholder='Thread Beschreibung' />
+				<FloatingLabel controlId='ForumMessageTextInput' label='Message' className='mb-3'>
+					<Form.Control type='text' name='ForumMessageTextInput' placeholder='Message' />
 				</FloatingLabel>
 			</Stack>
 		</Modal.Body>
