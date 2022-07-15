@@ -89,17 +89,27 @@ function CreateMessageBody() {
 			<Stack>
 				<CreateThreadAlert />
 				<FloatingLabel controlId='ForumMessageTitleInput' label='Message Title' className='mb-3'>
-					<Form.Control type='text' name='ForumMessageTitleInput' placeholder='Message Title' />
+					<Form.Control type='text' name='ForumMessageTitleInput' placeholder='Eigener Title' />
 				</FloatingLabel>
+
 				<FloatingLabel controlId='ForumMessageTextInput' label='Message' className='mb-3'>
-					<Form.Control type='text' name='ForumMessageTextInput' placeholder='Message' />
+					<Form.Control
+						as='textarea'
+						type='text'
+						name='ForumMessageTextInput'
+						placeholder='Message'
+						style={{ height: '150px' }}
+					/>
 				</FloatingLabel>
 			</Stack>
-
-			<InputGroup>
-				<InputGroup.Text>With textarea</InputGroup.Text>
-				<Form.Control as='textarea' aria-label='With textarea' />
-			</InputGroup>
 		</Modal.Body>
 	)
+}
+
+{
+	/* <InputGroup class='w-100'>
+<FloatingLabel controlId='ForumMessageTextInput' label='Message' className='mb-3'>
+	<Form.Control as='textarea' type='text' name='ForumMessageTextInput' placeholder='Message' />
+</FloatingLabel>
+</InputGroup> */
 }

@@ -7,9 +7,17 @@
 	/*background-color: hwb(200 25% 0% / 0.5);*/
 }
 
+.w-100 {
+	height: 10;
+}
+
 #mainpage #privatePage,
 #publicpage #usertable {
 	/*background-color: hwb(200 25% 0% / 0.5);*/
+}
+
+#MessageInput {
+	height: 100px;
 }
 
 footer {
