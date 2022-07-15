@@ -7,7 +7,8 @@ import Form from 'react-bootstrap/Form'
 import Modal from 'react-bootstrap/Modal'
 import Spinner from 'react-bootstrap/Spinner'
 import Stack from 'react-bootstrap/Stack'
-import InputGroup from 'react-bootstrap/InputGroup'
+import { ModalButtons } from '../layout/ModalCommon'
+import { ForumMessageForm } from './ForumMessageForm'
 
 //redux
 import { useDispatch, useSelector } from 'react-redux'
@@ -26,13 +27,14 @@ export default function CreateMessageDialog() {
 	const threadID = useSelector(selectHandleThreadID)
 	const handleSubmit = function (event) {
 		event.preventDefault()
-		const newMessage = {
-			title: event.target.elements.ForumMessageTitleInput.value,
-			text: event.target.elements.ForumMessageTextInput.value
+		const newForumMessage = {
+			threadID,
 			/* title: event.target.elements.title.value,
 			text: event.target.elements.text.value */
+			title: event.target.elements.ForumMessageTitleInput.value,
+			text: event.target.elements.ForumMessageTextInput.value
 		}
-		createMessage(newMessage)
+		createMessage(newForumMessage)
 	}
 
 	useEffect(() => {
@@ -49,57 +51,21 @@ export default function CreateMessageDialog() {
 	return (
 		<Modal show={useSelector(selectCreateMessageDialog)} onHide={() => dispatch(hideCreateMessageDialog())}>
 			<Modal.Header closeButton>
-				<Modal.Title>Create New Message</Modal.Title>
+				<Modal.Title>Create Forum Thread</Modal.Title>
 			</Modal.Header>
 			<Form onSubmit={handleSubmit}>
-				<CreateMessageBody />
-				<Modal.Footer>
-					<Button
-						variant='secondary'
-						id='CancelCreateForumMessageButton'
-						onClick={() => dispatch(hideCreateMessageDialog())}
-					>
-						Cancel
-					</Button>
-					<Button type='submit' variant='primary' id='CreateForumMessageButton'>
-						Create Message
-					</Button>
-				</Modal.Footer>
+				<ForumMessageForm
+					error={createResult.error}
+					titleID='ForumMessageTitleInput'
+					textID='ForumMessageTextInput'
+				/>
+				<ModalButtons
+					submitID='CreateForumMessageButton'
+					cancelID='CancelCreateForumMessageButton'
+					hideModalDispatch={() => dispatch(hideCreateMessageDialog())}
+					isLoading={createResult.isLoading}
+				/>
 			</Form>
 		</Modal>
-	)
-}
-
-function CreateThreadAlert() {
-	return null
-}
-
-function CreateMessageBody() {
-	if (false) {
-		return (
-			<Modal.Body>
-				<Spinner animation='border' role='status'>
-					<span className='visually-hidden'>Loading...</span>
-				</Spinner>
-			</Modal.Body>
-		)
-	}
-	return (
-		<Modal.Body>
-			<Stack>
-				<CreateThreadAlert />
-				<FloatingLabel controlId='ForumMessageTitleInput' label='Message Title' className='mb-3'>
-					<Form.Control type='text' name='ForumMessageTitleInput' placeholder='Message Title' />
-				</FloatingLabel>
-				<FloatingLabel controlId='ForumMessageTextInput' label='Message' className='mb-3'>
-					<Form.Control type='text' name='ForumMessageTextInput' placeholder='Message' />
-				</FloatingLabel>
-			</Stack>
-
-			<InputGroup>
-				<InputGroup.Text>With textarea</InputGroup.Text>
-				<Form.Control as='textarea' aria-label='With textarea' />
-			</InputGroup>
-		</Modal.Body>
 	)
 }
