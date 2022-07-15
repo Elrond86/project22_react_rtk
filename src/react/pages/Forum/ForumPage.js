@@ -100,7 +100,7 @@ function ThreadRow({ thread }) {
 	const dispatch = useDispatch()
 
 	return (
-		<tr id={'ForumThread' + thread._id}>
+		<tr key={thread._id} id={'ForumThread' + thread._id}>
 			<td>{thread.ownerID}</td>
 			<td id={'ForumThread' + thread._id} onClick={() => dispatch(showMessages([thread._id, thread.name]))}>
 				{thread.name}

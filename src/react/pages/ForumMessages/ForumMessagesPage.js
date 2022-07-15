@@ -5,6 +5,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import Spinner from 'react-bootstrap/Spinner'
 import Alert from 'react-bootstrap/Alert'
 
+//utils
+import parseDate from '../../../redux/utils/parseDate'
+
+// reducer
 import {
 	selectShowMessages,
 	selectHandleThreadID,
@@ -19,6 +23,7 @@ export default function ForumMessagePage() {
 	console.log('---------------> ForumMessagePage')
 	if (!useSelector(selectShowMessages)) return console.log('ForumMessagePage wird versteckt')
 	console.log('rendering ForumMessagePage now...')
+
 	return <ForumMessageBoard />
 }
 
@@ -43,10 +48,9 @@ function ForumMessageBoard() {
 		return (
 			<>
 				<h1>{parentThreadName}</h1>
-				<Messages messages={forumMessages} />
+				<Messages key={'unique'} messages={forumMessages} />
 			</>
 		)
-		return console.log(forumMessages)
 	}
 }
 
@@ -73,8 +77,8 @@ function Messages({ messages }) {
 			return (
 				<>
 					<AlertMessage key={'CardItem' + message._id} message={message} />
-					<div>{message.title}</div>
-					<div>{message.text}</div>
+					{/* <div>{message.title}</div>
+					<div>{message.text}</div> */}
 				</>
 			)
 		}
@@ -87,16 +91,15 @@ function Messages({ messages }) {
 /* ;<AlertMessage key={'CardItem' + message.title} message={' + message.text + '} />
 	}) */
 
-function AlertMessage(message) {
+function AlertMessage({ message }) {
 	return (
 		<Alert variant='info'>
 			<Alert.Heading>{message.title}</Alert.Heading>
-			<p>
-				Aww yeah, you successfully read this important alert message. This example text is going to run a bit
-				longer so that you can see how spacing within an alert works with this kind of content.
-			</p>
+			<p>{message.text}</p>
 			<hr />
-			<p className='mb-0'>Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+			<p className='mb-0'>
+				{parseDate(message.createdAt)} von {message.authorID}
+			</p>
 		</Alert>
 	)
 }

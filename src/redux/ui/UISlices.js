@@ -10,7 +10,8 @@ const initialState = {
 	showEditUser: false,
 	showDeleteUserConfirm: false,
 	showCreateUser: false,
-	showMessages: false
+	showMessages: false,
+	showWelcome: true
 }
 
 let uiSlice = createSlice({
@@ -19,6 +20,14 @@ let uiSlice = createSlice({
 
 	/** reducer sind zum manipulieren vom State OHNE API-Zugriff */
 	reducers: {
+		showWelcome: state => {
+			state.showWelcome = true
+		},
+
+		hideWelcome: state => {
+			state.showWelcome = false
+		},
+
 		showLoginModal: (state, action) => {
 			state.showLoginDialog = true /** ...state not requiered... Denn es benutzt intern IMMER-Library!! :D */
 			console.log('state.showLoginDialog: ')
@@ -33,6 +42,7 @@ let uiSlice = createSlice({
 			state.showUserManagement = true
 			state.showForumOverview = false
 			state.showMessages = false
+			state.showWelcome = true
 		},
 		hideUserManagement: (state, action) => {
 			state.showUserManagement = false
@@ -43,6 +53,8 @@ let uiSlice = createSlice({
 			state.showUserManagement = false
 			state.showForumOverview = true
 			state.showMessages = false
+			state.handleThreadName = null
+			state.handleThreadID = null
 		},
 		hideForumOverview: (state, action) => {
 			state.showForumOverview = false
@@ -54,6 +66,7 @@ let uiSlice = createSlice({
 			state.handleThreadID = action.payload[0]
 			state.handleThreadName = action.payload[1]
 			state.daten = action
+			state.showWelcome = false
 		},
 		/* 		showMessages: (state, { payload: _id }) => {
 			state.showForumOverview = false
@@ -140,6 +153,7 @@ let uiSlice = createSlice({
 			state.showEditUser = false
 			state.showForumOverview = false
 			state.showMessages = false
+			state.showWelcome = true
 		}
 	},
 
@@ -209,5 +223,7 @@ export const selectHandleThreadID = state => state.ui.handleThreadID
 export const selectHandleThreadName = state => state.ui.handleThreadName
 export const selectShowMessages = state => state.ui.showMessages
 export const selectDaten = state => state.ui.daten
+
+export const selectShowWelcome = state => state.ui.showWelcome
 
 export default uiSlice.reducer
