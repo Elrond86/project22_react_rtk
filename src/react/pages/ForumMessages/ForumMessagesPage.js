@@ -23,18 +23,23 @@ import {
 	selectDaten
 } from '../../../redux/ui/UISlices'
 import { useGetAllMessagesQuery } from '../../../redux/forum/ForumMessageSlice'
-import { selectAllForumMessages } from '../../../redux/forum/ForumMessageSlice'
-import { selectAdminstatus } from '../../../redux/authentication/AuthenticationSlices'
 
 export default function ForumMessagePage() {
 	console.log('---------------> ForumMessagePage')
+
 	if (!useSelector(selectShowMessages)) return console.log('ForumMessagePage wird versteckt')
 	console.log('rendering ForumMessagePage now...')
 
-	return <ForumMessageBoard />
+	return (
+		<>
+			<ForumMessageBoard />
+			<CreateMessageDialog />
+		</>
+	)
 }
 
 function ForumMessageBoard() {
+	const dispatch = useDispatch()
 	const { data: forumMessages, isLoading, isSuccess, isError, error } = useGetAllMessagesQuery()
 	const jsondata = JSON.stringify(forumMessages, null, 4)
 	console.log('-----------> forumMessages', forumMessages)
@@ -57,17 +62,18 @@ function ForumMessageBoard() {
 				{' '}
 				{/* <CreateMessageDialog /> */}
 				<h1>{parentThreadName}</h1>
+				<Messages key={'unique'} messages={forumMessages} />
 				<Button
 					id='OpenCreateForumMessageDialogButton'
 					variant='success'
 					type='submit'
 					onClick={() => {
-						dispatchEvent(showCreateMessageDialog)
+						console.log('clicked "Anlegen"')
+						dispatch(showCreateMessageDialog())
 					}}
 				>
-					Anlegen
+					antworten
 				</Button>
-				<Messages key={'unique'} messages={forumMessages} />
 			</>
 		)
 	}

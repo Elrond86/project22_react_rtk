@@ -16,7 +16,7 @@ export const forumMessagesSlice = api.injectEndpoints({
 		//   query: (forumMessageId) => `/forumMessages/${forumMessageId}`,
 		//   providesTags: ['ForumMessages']
 		// }),
-		createForumMessage: builder.mutation({
+		createMessage: builder.mutation({
 			query: newForumMessage => ({
 				url: '/forumMessages',
 				method: 'POST',
@@ -24,7 +24,7 @@ export const forumMessagesSlice = api.injectEndpoints({
 			}),
 			invalidatesTags: ['ForumMessages']
 		}),
-		editForumMessage: builder.mutation({
+		editMessage: builder.mutation({
 			query: ({ forumMessageID, editedForumMessage }) => ({
 				url: `/forumMessages/${forumMessageID}`,
 				method: 'PUT',
@@ -32,7 +32,7 @@ export const forumMessagesSlice = api.injectEndpoints({
 			}),
 			invalidatesTags: ['ForumMessages']
 		}),
-		deleteForumMessage: builder.mutation({
+		deleteMessage: builder.mutation({
 			query: forumMessageID => ({
 				url: `/forumMessages/${forumMessageID}`,
 				method: 'DELETE'

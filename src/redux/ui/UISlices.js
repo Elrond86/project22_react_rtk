@@ -12,7 +12,7 @@ const initialState = {
 	showCreateUser: false,
 	showMessages: false,
 	showWelcome: true,
-	showCreateMessage: true
+	showCreateMessage: false
 }
 
 let uiSlice = createSlice({
@@ -23,6 +23,7 @@ let uiSlice = createSlice({
 	reducers: {
 		showWelcome: state => {
 			state.showWelcome = true
+			state.showCreateMessage = false
 		},
 
 		hideWelcome: state => {
@@ -44,6 +45,7 @@ let uiSlice = createSlice({
 			state.showForumOverview = false
 			state.showMessages = false
 			state.showWelcome = true
+			state.showCreateMessage = false
 		},
 		hideUserManagement: (state, action) => {
 			state.showUserManagement = false
@@ -56,6 +58,7 @@ let uiSlice = createSlice({
 			state.showMessages = false
 			state.handleThreadName = null
 			state.handleThreadID = null
+			state.showCreateMessage = false
 		},
 		hideForumOverview: (state, action) => {
 			state.showForumOverview = false
@@ -163,6 +166,7 @@ let uiSlice = createSlice({
 			state.showForumOverview = false
 			state.showMessages = false
 			state.showWelcome = true
+			state.showCreateMessage = false
 		}
 	},
 
