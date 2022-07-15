@@ -16,7 +16,6 @@ import { useEditThreadMutation, useGetAllThreadsQuery } from '../../../redux/for
 import { hideEditThreadDialog, selectEditThreadDialog, selectHandleThreadID } from '../../../redux/ui/UISlices'
 
 export default function ThreadEdit() {
-	console.log('bin in ThreadEdit.js')
 	const [editThread] = useEditThreadMutation()
 	const dispatch = useDispatch()
 	const handleSubmit = function (event) {
@@ -31,9 +30,6 @@ export default function ThreadEdit() {
 		dispatch(hideEditThreadDialog())
 	}
 	const showEditModal = useSelector(selectEditThreadDialog)
-	console.log('showEditModal')
-	console.log(showEditModal)
-
 	return (
 		<Modal show={showEditModal} onHide={() => dispatch(hideEditThreadDialog())}>
 			<Modal.Header closeButton>

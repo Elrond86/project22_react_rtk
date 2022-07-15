@@ -29,8 +29,6 @@ export default function CreateUserDialog() {
 	}
 
 	const showCreateModal = useSelector(selectCreateUserDialog)
-	console.log('showCreateModal')
-	console.log(showCreateModal)
 
 	return (
 		<Modal show={useSelector(selectCreateUserDialog)} onHide={() => dispatch(hideCreateUserDialog())}>

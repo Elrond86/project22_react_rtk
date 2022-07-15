@@ -12,7 +12,7 @@ import Stack from 'react-bootstrap/Stack'
 import { useDispatch, useSelector } from 'react-redux'
 
 // import selectors
-import { selectCreateThreadDialog } from '../../../redux/ui/UISlices'
+import { selectCreateThreadDialog, selectHandleThreadID } from '../../../redux/ui/UISlices'
 
 //import my reducers
 import { useCreateThreadMutation } from '../../../redux/forum/ForumSlice'
@@ -21,9 +21,12 @@ import { hideCreateThreadDialog } from '../../../redux/ui/UISlices'
 export default function CreateThreadDialog() {
 	const [createThread, createResult] = useCreateThreadMutation()
 	const dispatch = useDispatch()
+	const threadID = useSelector(selectHandleThreadID)
+	console.log('>>>>>>>>>>>>>>>>threadID für MessageCreate:' + threadID)
 	const handleSubmit = function (event) {
 		event.preventDefault()
 		const newThread = {
+			threadID,
 			name: event.target.elements.ForumThreadNameInput.value,
 			description: event.target.elements.ForumThreadDescriptionInput.value
 		}
@@ -36,10 +39,6 @@ export default function CreateThreadDialog() {
 			dispatch(hideCreateThreadDialog())
 		}
 	})
-
-	const showCreateModal = useSelector(selectCreateThreadDialog)
-	console.log('showCreateModal = useSelector(selectCreateThreadDialog)')
-	console.log(showCreateModal)
 
 	return (
 		<Modal show={useSelector(selectCreateThreadDialog)} onHide={() => dispatch(hideCreateThreadDialog())}>

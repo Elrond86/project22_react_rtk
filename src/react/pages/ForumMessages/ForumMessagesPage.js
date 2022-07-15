@@ -13,7 +13,7 @@ import parseDate from '../../../utils/parseDate'
 import { showCreateMessageDialog } from '../../../redux/ui/UISlices'
 
 //components
-import CreateMessageDialog from './CreateMessageDialog'
+import CreateMessageDialog from './CreateMessageDialogV2'
 
 // state-selectors
 import {
@@ -25,10 +25,7 @@ import {
 import { useGetAllMessagesQuery } from '../../../redux/forum/ForumMessageSlice'
 
 export default function ForumMessagePage() {
-	console.log('---------------> ForumMessagePage')
-
-	if (!useSelector(selectShowMessages)) return console.log('ForumMessagePage wird versteckt')
-	console.log('rendering ForumMessagePage now...')
+	if (!useSelector(selectShowMessages)) return
 
 	return (
 		<>
@@ -46,7 +43,9 @@ function ForumMessageBoard() {
 	const parentThreadName = useSelector(selectHandleThreadName)
 	console.log('------->parentThreadName')
 	console.log(JSON.stringify(parentThreadName, null, 4))
-
+	const parentThreadID = useSelector(selectHandleThreadID)
+	console.log('----->parentThreadID für CREATE MESSAGE')
+	console.log(JSON.stringify(parentThreadID, null, 4))
 	if (isLoading) {
 		return (
 			<Spinner animation='border' role='status'>
@@ -59,10 +58,8 @@ function ForumMessageBoard() {
 
 		return (
 			<>
-				{' '}
-				{/* <CreateMessageDialog /> */}
 				<h1>{parentThreadName}</h1>
-				<Messages key={'unique'} messages={forumMessages} />
+				<Messages key={'MessagesListInBoard'} messages={forumMessages} />
 				<Button
 					id='OpenCreateForumMessageDialogButton'
 					variant='success'

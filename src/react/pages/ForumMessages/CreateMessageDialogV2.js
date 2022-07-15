@@ -25,6 +25,7 @@ export default function CreateMessageDialog() {
 	const [createMessage, createResult] = useCreateMessageMutation()
 	const dispatch = useDispatch()
 	const threadID = useSelector(selectHandleThreadID)
+	console.log('>>>>>>>>>>>>>>>>threadID für MessageCreate:' + threadID)
 	const handleSubmit = function (event) {
 		event.preventDefault()
 		const newForumMessage = {
@@ -43,10 +44,6 @@ export default function CreateMessageDialog() {
 			dispatch(hideCreateMessageDialog())
 		}
 	})
-
-	const showCreateModal = useSelector(selectCreateMessageDialog)
-	console.log('showCreateModal = useSelector(selectCreateMessageDialog)')
-	console.log(showCreateModal)
 
 	return (
 		<Modal show={useSelector(selectCreateMessageDialog)} onHide={() => dispatch(hideCreateMessageDialog())}>

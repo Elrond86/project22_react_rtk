@@ -28,7 +28,8 @@ export default function CreateMessageDialog() {
 		event.preventDefault()
 		const newMessage = {
 			title: event.target.elements.ForumMessageTitleInput.value,
-			text: event.target.elements.ForumMessageTextInput.value
+			text: event.target.elements.ForumMessageTextInput.value,
+			threadID
 			/* title: event.target.elements.title.value,
 			text: event.target.elements.text.value */
 		}
@@ -43,8 +44,6 @@ export default function CreateMessageDialog() {
 	})
 
 	const showCreateModal = useSelector(selectCreateMessageDialog)
-	console.log('showCreateModal = useSelector(selectCreateMessageDialog)')
-	console.log(showCreateModal)
 
 	return (
 		<Modal show={useSelector(selectCreateMessageDialog)} onHide={() => dispatch(hideCreateMessageDialog())}>
@@ -98,7 +97,7 @@ function CreateMessageBody() {
 						type='text'
 						name='ForumMessageTextInput'
 						placeholder='Message'
-						style={{ height: '150px' }}
+						style={{ height: '125px' }}
 					/>
 				</FloatingLabel>
 			</Stack>
