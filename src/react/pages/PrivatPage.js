@@ -40,8 +40,11 @@ function Welcome() {
 				Dies ist deine private Seite
 				<section className='card'>
 					<div className='watchBox'>
-						<h1>Willkommen, {loggedUser.toUpperCase()}!</h1>
-						<hr />
+						<h2>Willkommen, {loggedUser.toUpperCase()}!</h2>
+						<div className='inv'>
+							<hr />
+							<hr />
+						</div>
 					</div>
 				</section>
 			</div>

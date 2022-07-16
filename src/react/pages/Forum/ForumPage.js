@@ -23,6 +23,7 @@ import { useGetAllThreadsQuery } from '../../../redux/forum/ForumSlice'
 //import my components
 import ThreadEdit from '../Forum/ThreadEdit'
 import DeleteUserConfirmDialog from '../DeleteUserConfirmDialog'
+import DeleteThreadConfirmDialog from './DeleteThreadConfirmDialog'
 import CreateThreadDialog from './CreateThreadDialog'
 
 export default function ForumOverview() {
