@@ -12,15 +12,18 @@ import Stack from 'react-bootstrap/Stack'
 import { useDispatch, useSelector } from 'react-redux'
 
 //import my reducers
-import { useEditThreadMutation, useGetAllThreadsQuery } from '../../../redux/forum/ForumSlice'
+import { useUpdateThreadMutation, useGetAllThreadsQuery } from '../../../redux/forum/ForumSlice'
 import { hideEditThreadDialog, selectEditThreadDialog, selectHandleThreadID } from '../../../redux/ui/UISlices'
 
 export default function ThreadEdit() {
-	const [editThread] = useEditThreadMutation()
+	const [editThread] = useUpdateThreadMutation()
 	const dispatch = useDispatch()
+	const select = useSelector
+	const threadID = select(selectHandleThreadID)
 	const handleSubmit = function (event) {
 		event.preventDefault()
 		const changedThread = {
+			_id: threadID,
 			name: event.target.elements.ForumThreadNameInput.value,
 			description: event.target.elements.ForumThreadDescriptionInput.value,
 			isLocked: event.target.elements.isLocked.checked
@@ -29,14 +32,14 @@ export default function ThreadEdit() {
 		editThread(changedThread)
 		dispatch(hideEditThreadDialog())
 	}
-	const showEditModal = useSelector(selectEditThreadDialog)
+	const showEditModal = select(selectEditThreadDialog)
 	return (
 		<Modal show={showEditModal} onHide={() => dispatch(hideEditThreadDialog())}>
 			<Modal.Header closeButton>
 				<Modal.Title>Edit Thread</Modal.Title>
 			</Modal.Header>
 			<Form onSubmit={handleSubmit}>
-				<CreateThreadBody editThreadID={useSelector(selectHandleThreadID)} />
+				<CreateThreadBody editThreadID={threadID} />
 				<Modal.Footer>
 					<Button
 						variant='secondary'

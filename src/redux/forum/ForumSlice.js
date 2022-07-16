@@ -25,11 +25,11 @@ export const ForumSlice = api.injectEndpoints({
 			invalidatesTags: ['Forum']
 		}),
 
-		editThread: builder.mutation({
-			query: ({ threadID, changedThread }) => ({
-				url: `/forumThreads/${threadID}`,
+		updateThread: builder.mutation({
+			query: ({ _id, ...rest }) => ({
+				url: `/forumThreads/${_id}`,
 				method: 'PUT',
-				body: changedThread
+				body: rest
 			}),
 			invalidatesTags: ['ForumThreads']
 		}),
@@ -48,6 +48,6 @@ export const {
 	useGetAllThreadsQuery,
 	useCreateThreadMutation,
 	useDeleteThreadMutation,
-	useEditThreadMutation,
+	useUpdateThreadMutation,
 	useGetThreadQuery
 } = ForumSlice
