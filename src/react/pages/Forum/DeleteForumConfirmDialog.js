@@ -12,7 +12,6 @@ import {
 import { useDeleteUserMutation } from '../../../redux/users/userManagement'
 import { useDeleteThreadMutation } from '../../../redux/forum/ForumSlice'
 export default function DeleteUserConfirmDialog() {
-	console.log('bin in DeleteUserConfirmDialog.js')
 	const [deleteThread] = useDeleteThreadMutation()
 	const dispatch = useDispatch()
 	const threadID = useSelector(selectHandleThreadID)

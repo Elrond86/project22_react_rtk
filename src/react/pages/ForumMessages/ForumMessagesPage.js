@@ -13,7 +13,7 @@ import parseDate from '../../../utils/parseDate'
 import { showCreateMessageDialog } from '../../../redux/ui/UISlices'
 
 //components
-import CreateMessageDialog from './CreateMessageDialogV2'
+import CreateMessageDialog from './CreateMessageDialog'
 
 // state-selectors
 import {
@@ -38,14 +38,15 @@ export default function ForumMessagePage() {
 function ForumMessageBoard() {
 	const dispatch = useDispatch()
 	const { data: forumMessages, isLoading, isSuccess, isError, error } = useGetAllMessagesQuery()
+	const parentThreadName = useSelector(selectHandleThreadName)
+	const parentThreadID = useSelector(selectHandleThreadID)
+	/* 
 	const jsondata = JSON.stringify(forumMessages, null, 4)
 	console.log('-----------> forumMessages', forumMessages)
-	const parentThreadName = useSelector(selectHandleThreadName)
 	console.log('------->parentThreadName')
 	console.log(JSON.stringify(parentThreadName, null, 4))
-	const parentThreadID = useSelector(selectHandleThreadID)
 	console.log('----->parentThreadID für CREATE MESSAGE')
-	console.log(JSON.stringify(parentThreadID, null, 4))
+	console.log(JSON.stringify(parentThreadID, null, 4)) */
 	if (isLoading) {
 		return (
 			<Spinner animation='border' role='status'>
@@ -53,9 +54,9 @@ function ForumMessageBoard() {
 			</Spinner>
 		)
 	} else if (isSuccess) {
-		console.log('jsondata')
+		/* console.log('jsondata')
 		console.log(jsondata)
-
+ */
 		return (
 			<>
 				<h1>{parentThreadName}</h1>
@@ -81,14 +82,12 @@ function ForumMessageBoard() {
 } */
 
 function Messages({ messages }) {
-	console.log('forumMessages')
+	console.log('forumMessages von Messages:')
 	console.log(messages)
 	const parentThreadID = useSelector(selectHandleThreadID)
-	console.log('------->parentThreadID')
-	console.log(JSON.stringify(parentThreadID, null, 4))
-	const daten = useSelector(selectDaten)
-	console.log('------->daten: ')
-	console.log(JSON.stringify(daten, null, 4))
+	console.log('------->parentThreadID: in Messages: ' + JSON.stringify(parentThreadID, null, 4))
+	const daten = JSON.stringify(useSelector(selectDaten), null, 4)
+	console.log('------->daten in Messages: ' + daten)
 
 	/* 	const parentThreadName = useSelector(selectHandleThreadName)
 	 */

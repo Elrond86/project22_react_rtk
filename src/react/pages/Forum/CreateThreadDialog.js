@@ -22,7 +22,7 @@ export default function CreateThreadDialog() {
 	const [createThread, createResult] = useCreateThreadMutation()
 	const dispatch = useDispatch()
 	const threadID = useSelector(selectHandleThreadID)
-	console.log('>>>>>>>>>>>>>>>>threadID für MessageCreate:' + threadID)
+
 	const handleSubmit = function (event) {
 		event.preventDefault()
 		const newThread = {

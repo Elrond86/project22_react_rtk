@@ -14,7 +14,6 @@ import { useEditUserMutation, useGetAllUsersQuery } from '../../redux/users/user
 import { hideEditUserDialog, selectEditUserDialog, selectHandleUserID } from '../../redux/ui/UISlices'
 
 export default function UserEdit() {
-	console.log('bin in UserEdit.js')
 	const [editUser] = useEditUserMutation()
 	const dispatch = useDispatch()
 	const handleSubmit = function (event) {
@@ -31,8 +30,6 @@ export default function UserEdit() {
 		dispatch(hideEditUserDialog())
 	}
 	const showEditModal = useSelector(selectEditUserDialog)
-	console.log('showEditModal')
-	console.log(showEditModal)
 
 	return (
 		<Modal show={showEditModal} onHide={() => dispatch(hideEditUserDialog())}>

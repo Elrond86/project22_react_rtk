@@ -21,7 +21,6 @@ import { useCreateMessageMutation } from '../../../redux/forum/ForumMessageSlice
 import { hideCreateMessageDialog } from '../../../redux/ui/UISlices'
 
 export default function CreateMessageDialog() {
-	console.log('bin in CreateMessageDialog')
 	const [createMessage, createResult] = useCreateMessageMutation()
 	const dispatch = useDispatch()
 	const threadID = useSelector(selectHandleThreadID)
@@ -29,7 +28,7 @@ export default function CreateMessageDialog() {
 	const handleSubmit = function (event) {
 		event.preventDefault()
 		const newForumMessage = {
-			threadID,
+			threadID: threadID,
 			/* title: event.target.elements.title.value,
 			text: event.target.elements.text.value */
 			title: event.target.elements.ForumMessageTitleInput.value,

@@ -1,3 +1,4 @@
+// prettier-ignore
 import React, { useEffect } from 'react'
 
 // utils
@@ -33,12 +34,8 @@ export default function CreateMessageDialog() {
 		const newMessage = {
 			title: event.target.elements.ForumMessageTitleInput.value,
 			text: event.target.elements.ForumMessageTextInput.value,
-			forumThreadID: parentThreadID
-			/* title: event.target.elements.title.value,
-			text: event.target.elements.text.value */
+			threadID: parentThreadID
 		}
-		console.log('createMessage for submit:')
-		console.log(jsn(newMessage))
 		createMessage(newMessage)
 	}
 
@@ -46,8 +43,6 @@ export default function CreateMessageDialog() {
 		console.log('useEffect(): ')
 		console.log(createResult)
 		if (createResult.isSuccess) {
-			error = null
-			console.log(createResult.isSuccess)
 			createResult.reset()
 			dispatch(hideCreateMessageDialog())
 		}
@@ -55,7 +50,7 @@ export default function CreateMessageDialog() {
 			error = createResult.error
 			console.log('error in createResult: ')
 			console.log(jsn(error))
-			console.log(jsn(error.data))
+			console.log(jsn(error.data.message))
 			console.log(jsn(error.status))
 		}
 	})
@@ -64,11 +59,10 @@ export default function CreateMessageDialog() {
 		<>
 			<Modal show={useSelector(selectCreateMessageDialog)} onHide={() => dispatch(hideCreateMessageDialog())}>
 				<Modal.Header closeButton>
-					<Modal.Title>Create New Message, Error: {JSON.stringify(error)}</Modal.Title>
+					<Modal.Title>{JSON.stringify(error)}</Modal.Title>
 				</Modal.Header>
 				<Form onSubmit={handleSubmit}>
 					<CreateMessageBody error={error} threadID={parentThreadID} threadName={parentThreadName} />
-
 					<Modal.Footer>
 						<Button
 							variant='secondary'
@@ -104,8 +98,6 @@ function CreateMessageBody(props) {
 			</Modal.Body>
 		)
 	}
-
-	const text = JSON.stringify(props, null, 4)
 
 	return (
 		<Modal.Body>
