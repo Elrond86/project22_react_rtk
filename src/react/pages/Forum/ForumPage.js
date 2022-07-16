@@ -133,7 +133,7 @@ function ThreadRow({ thread }) {
 						<Button
 							variant='dark'
 							size='sm'
-							id={'DeleteButton' + thread._id}
+							id={'DeleteForumThreadButton' + thread._id}
 							onClick={() => dispatch(showDeleteThreadConfirmDialog([thread._id, thread.name]))}
 						>
 							<TrashFill /> Delete
