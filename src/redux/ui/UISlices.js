@@ -30,29 +30,27 @@ let uiSlice = createSlice({
 			state.showWelcome = false
 		},
 
-		showLoginModal: (state, action) => {
+		showLoginModal: state => {
 			state.showLoginDialog = true /** ...state not requiered... Denn es benutzt intern IMMER-Library!! :D */
-			console.log('state.showLoginDialog: ')
-			console.log(state.showLoginDialog)
 		},
-		hideLoginModal: (state, action) => {
+		hideLoginModal: state => {
 			state.showLoginDialog = false
 			console.log('state.showLoginDialog: ')
 			console.log(state.showLoginDialog)
 		},
-		showUserManagement: (state, action) => {
+		showUserManagement: state => {
 			state.showUserManagement = true
 			state.showForumOverview = false
 			state.showMessages = false
 			state.showWelcome = true
 			state.showCreateMessage = false
 		},
-		hideUserManagement: (state, action) => {
+		hideUserManagement: state => {
 			state.showUserManagement = false
 			state.showEditUser = false
 		},
 
-		showForumOverview: (state, action) => {
+		showForumOverview: state => {
 			state.showUserManagement = false
 			state.showForumOverview = true
 			state.showMessages = false
@@ -60,7 +58,7 @@ let uiSlice = createSlice({
 			state.handleThreadID = null
 			state.showCreateMessage = false
 		},
-		hideForumOverview: (state, action) => {
+		hideForumOverview: state => {
 			state.showForumOverview = false
 		},
 
@@ -72,11 +70,7 @@ let uiSlice = createSlice({
 			state.daten = action
 			state.showWelcome = false
 		},
-		/* 		showMessages: (state, { payload: _id }) => {
-			state.showForumOverview = false
-			state.showMessages = true
-			state.handleThreadID = _id
-		}, */
+
 		hideMessages: state => {
 			state.showMessages = false
 			state.showForumOverview = true
@@ -157,7 +151,7 @@ let uiSlice = createSlice({
 			state.handleMessageID = null
 		},
 
-		hideAll: (state, action) => {
+		hideAll: state => {
 			state.showUserManagement = false
 			state.showEditUser = false
 			state.showForumOverview = false
@@ -168,20 +162,17 @@ let uiSlice = createSlice({
 	},
 
 	extraReducers: builder => {
-		builder.addCase(loginUserAction.fulfilled, (state, action) => {
+		builder.addCase(loginUserAction.fulfilled, state => {
 			state.showLoginDialog = false
 			state.showUserManagement = false
 			state.showEditUser = false
 			state.showForumOverview = false
-			console.log('state.showLoginDialog: ')
-			console.log(state.showLoginDialog)
 		})
-		builder.addCase(logoutUserAction, (state, action) => {
+
+		builder.addCase(logoutUserAction, state => {
 			state.showUserManagement = false
 			state.showEditUser = false
 			state.showForumOverview = false
-			console.log('state.showLoginDialog: ')
-			console.log(state.showLoginDialog)
 		})
 	}
 })

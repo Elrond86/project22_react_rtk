@@ -1,6 +1,5 @@
-import React from 'react'
-import LoginButton from '../components/LoginButton'
-import { PublicFooter } from '../components/Footer/Footer'
+import LoginButton from '../Nav/Buttons/LoginButton'
+import { PublicFooter } from '../Footer/Footer'
 
 export default function PublicPage() {
 	return (

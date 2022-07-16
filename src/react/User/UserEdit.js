@@ -1,11 +1,8 @@
-import React from 'react'
-
 // bootstrap
 import Button from 'react-bootstrap/Button'
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
 import Form from 'react-bootstrap/Form'
 import Modal from 'react-bootstrap/Modal'
-import Spinner from 'react-bootstrap/Spinner'
 import Stack from 'react-bootstrap/Stack'
 
 // redux
@@ -60,16 +57,6 @@ function CreateUserBody({ editUserID }) {
 			user: data.find(user => user.userID === editUserID)
 		})
 	})
-
-	if (false) {
-		return (
-			<Modal.Body>
-				<Spinner animation='border' role='status'>
-					<span className='visually-hidden'>Loading...</span>
-				</Spinner>
-			</Modal.Body>
-		)
-	}
 
 	if (!editUser) {
 		return null

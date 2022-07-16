@@ -7,7 +7,7 @@ import Modal from 'react-bootstrap/Modal'
 import { showLoginModal, hideLoginModal } from '../../redux/ui/UISlices'
 
 //import my components
-import Login from '../components/Login'
+import Login from './Login'
 
 export default function BestLogin() {
 	/** to excecute actions */

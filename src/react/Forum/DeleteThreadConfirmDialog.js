@@ -6,16 +6,11 @@ import Modal from 'react-bootstrap/Modal'
 import { useSelector, useDispatch } from 'react-redux'
 
 //reducers
-import { useDeleteUserMutation } from '../../../redux/users/userManagement'
-import { useDeleteThreadMutation } from '../../../redux/forum/ForumSlice'
-import { hideDeleteThreadConfirmDialog } from '../../../redux/ui/UISlices'
+import { useDeleteThreadMutation } from '../../redux/forum/ForumSlice'
+import { hideDeleteThreadConfirmDialog } from '../../redux/ui/UISlices'
 
 //selectors
-import {
-	selectDeleteThreadConfirmDialog,
-	selectHandleThreadID,
-	selectHandleThreadName
-} from '../../../redux/ui/UISlices'
+import { selectDeleteThreadConfirmDialog, selectHandleThreadID, selectHandleThreadName } from '../../redux/ui/UISlices'
 
 export default function DeleteThreadConfirmDialog() {
 	const showDeleteModal = useSelector(selectDeleteThreadConfirmDialog)

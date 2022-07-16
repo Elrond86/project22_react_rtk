@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import * as Yup from 'yup'
 import { loginUserAction } from '../../redux/authentication/AuthenticationSlices'
 
-import DisabledButton from './DisabledButton'
+import DisabledButton from '../Nav/Buttons/DisabledButton'
 
 //form validations
 const formSchema = Yup.object({
@@ -18,7 +18,7 @@ const Login = () => {
 
 	//get data from store
 	const user = useSelector(state => state?.auth)
-	const { userAppErr, userServerErr, userLoading, userAuth } = user
+	const { userAppErr, userServerErr, userLoading } = user
 
 	//formik form
 	const formik = useFormik({

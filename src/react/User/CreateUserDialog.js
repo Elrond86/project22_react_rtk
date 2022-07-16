@@ -1,11 +1,8 @@
-import React from 'react'
-
 //bootstrap
 import Button from 'react-bootstrap/Button'
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
 import Form from 'react-bootstrap/Form'
 import Modal from 'react-bootstrap/Modal'
-import Spinner from 'react-bootstrap/Spinner'
 import Stack from 'react-bootstrap/Stack'
 
 //redux
@@ -27,8 +24,6 @@ export default function CreateUserDialog() {
 		createUser(newUser)
 		dispatch(hideCreateUserDialog())
 	}
-
-	const showCreateModal = useSelector(selectCreateUserDialog)
 
 	return (
 		<Modal show={useSelector(selectCreateUserDialog)} onHide={() => dispatch(hideCreateUserDialog())}>
@@ -59,15 +54,6 @@ function CreateUserAlert() {
 }
 
 function CreateUserBody() {
-	if (false) {
-		return (
-			<Modal.Body>
-				<Spinner animation='border' role='status'>
-					<span className='visually-hidden'>Loading...</span>
-				</Spinner>
-			</Modal.Body>
-		)
-	}
 	return (
 		<Modal.Body>
 			<Stack>

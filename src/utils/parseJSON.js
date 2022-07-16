@@ -1,5 +1,3 @@
-import React from 'react'
-
 export function jsn(data) {
 	return JSON.stringify(data, null, 4)
 }

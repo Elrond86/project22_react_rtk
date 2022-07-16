@@ -14,15 +14,13 @@ import {
 	showCreateThreadDialog,
 	showEditThreadDialog,
 	showDeleteThreadConfirmDialog,
-	showMessages,
-	hideMessages
-} from '../../../redux/ui/UISlices'
-import { selectAdminstatus } from '../../../redux/authentication/AuthenticationSlices'
-import { useGetAllThreadsQuery } from '../../../redux/forum/ForumSlice'
+	showMessages
+} from '../../redux/ui/UISlices'
+import { selectAdminstatus } from '../../redux/authentication/AuthenticationSlices'
+import { useGetAllThreadsQuery } from '../../redux/forum/ForumSlice'
 
 //import my components
 import ThreadEdit from '../Forum/ThreadEdit'
-import DeleteUserConfirmDialog from '../DeleteUserConfirmDialog'
 import DeleteThreadConfirmDialog from './DeleteThreadConfirmDialog'
 import CreateThreadDialog from './CreateThreadDialog'
 
@@ -42,10 +40,8 @@ export default function ForumOverview() {
 			<ThreadEdit />
 			<DeleteThreadConfirmDialog />
 			<CreateThreadDialog />
-			<div class='pagename'>
-				<h2 class='pagename' className='mb-3'>
-					FORENÜBERSICHT
-				</h2>
+			<div className='pagename'>
+				<h2 className='pagename mb-3'>FORENÜBERSICHT</h2>
 			</div>
 			<p>
 				<Button

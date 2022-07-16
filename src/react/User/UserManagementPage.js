@@ -1,5 +1,4 @@
 import Table from 'react-bootstrap/Table'
-import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import { PencilFill, TrashFill } from 'react-bootstrap-icons'
 import Alert from 'react-bootstrap/Alert'
@@ -41,8 +40,8 @@ export default function UserManagement() {
 
 			<DeleteUserConfirmDialog />
 			<CreateUserDialog />
-			<div class='pagename'>
-				<h2 class='pagename' className='mb-3'>
+			<div className='pagename'>
+				<h2 className='pagename mb-3'>
 					NUTZERÜBERSICHT
 				</h2>
 			</div>

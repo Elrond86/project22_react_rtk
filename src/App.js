@@ -1,9 +1,7 @@
-import React from 'react'
 import './App.css'
-import { Route, Routes } from 'react-router-dom'
 
-import NavBar from './react/pages/NavBar'
-import MainPage from './react/pages/MainPage'
+import NavBar from './react/Nav/NavBar'
+import MainPage from './react/Base/MainPage'
 
 /** <></> entspricht <React.Fragment></React.Fragment> */
 

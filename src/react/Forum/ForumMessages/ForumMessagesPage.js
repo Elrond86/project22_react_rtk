@@ -39,14 +39,7 @@ function ForumMessageBoard() {
 	const dispatch = useDispatch()
 	const { data: forumMessages, isLoading, isSuccess, isError, error } = useGetAllMessagesQuery()
 	const parentThreadName = useSelector(selectHandleThreadName)
-	const parentThreadID = useSelector(selectHandleThreadID)
-	/* 
-	const jsondata = JSON.stringify(forumMessages, null, 4)
-	console.log('-----------> forumMessages', forumMessages)
-	console.log('------->parentThreadName')
-	console.log(JSON.stringify(parentThreadName, null, 4))
-	console.log('----->parentThreadID für CREATE MESSAGE')
-	console.log(JSON.stringify(parentThreadID, null, 4)) */
+
 	if (isLoading) {
 		return (
 			<Spinner animation='border' role='status'>
@@ -54,9 +47,6 @@ function ForumMessageBoard() {
 			</Spinner>
 		)
 	} else if (isSuccess) {
-		/* console.log('jsondata')
-		console.log(jsondata)
- */
 		return (
 			<>
 				<h1>{parentThreadName}</h1>
@@ -77,9 +67,6 @@ function ForumMessageBoard() {
 	}
 }
 
-/* function Messages(forumMessages) {
-	return forumMessages.map(thread => <AlertMessage key={'CardItem' + thread.title} thread={' + thread.text + '} />)
-} */
 
 function Messages({ messages }) {
 	console.log('forumMessages von Messages:')
@@ -89,28 +76,16 @@ function Messages({ messages }) {
 	const daten = JSON.stringify(useSelector(selectDaten), null, 4)
 	console.log('------->daten in Messages: ' + daten)
 
-	/* 	const parentThreadName = useSelector(selectHandleThreadName)
-	 */
-	/* 	console.log('parentThreadID')
-	console.log(parentThreadID) */
 	return messages.map(message => {
 		if (message.forumThread == parentThreadID) {
 			return (
 				<>
 					<AlertMessage key={'CardItem' + message._id} message={message} />
-					{/* <div>{message.title}</div>
-					<div>{message.text}</div> */}
 				</>
 			)
 		}
 	})
 }
-
-//	return
-
-//	 if (message.forumThread == GetParentThreadID())
-/* ;<AlertMessage key={'CardItem' + message.title} message={' + message.text + '} />
-	}) */
 
 function AlertMessage({ message }) {
 	return (

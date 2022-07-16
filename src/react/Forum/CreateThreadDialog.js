@@ -1,22 +1,21 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 
 //bootstrap
 import Button from 'react-bootstrap/Button'
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
 import Form from 'react-bootstrap/Form'
 import Modal from 'react-bootstrap/Modal'
-import Spinner from 'react-bootstrap/Spinner'
 import Stack from 'react-bootstrap/Stack'
 
 //redux
 import { useDispatch, useSelector } from 'react-redux'
 
-// import selectors
-import { selectCreateThreadDialog, selectHandleThreadID } from '../../../redux/ui/UISlices'
+//import selectors
+import { selectCreateThreadDialog, selectHandleThreadID } from '../../redux/ui/UISlices'
 
-//import my reducers
-import { useCreateThreadMutation } from '../../../redux/forum/ForumSlice'
-import { hideCreateThreadDialog } from '../../../redux/ui/UISlices'
+//import reducers
+import { useCreateThreadMutation } from '../../redux/forum/ForumSlice'
+import { hideCreateThreadDialog } from '../../redux/ui/UISlices'
 
 export default function CreateThreadDialog() {
 	const [createThread, createResult] = useCreateThreadMutation()
@@ -69,15 +68,6 @@ function CreateThreadAlert() {
 }
 
 function CreateThreadBody() {
-	if (false) {
-		return (
-			<Modal.Body>
-				<Spinner animation='border' role='status'>
-					<span className='visually-hidden'>Loading...</span>
-				</Spinner>
-			</Modal.Body>
-		)
-	}
 	return (
 		<Modal.Body>
 			<Stack>

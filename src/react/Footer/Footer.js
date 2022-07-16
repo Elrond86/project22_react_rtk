@@ -1,4 +1,4 @@
-import LogoutButton from '../LogoutButton'
+import LogoutButton from '../Nav/Buttons/LogoutButton'
 
 export default function Footer() {
 	return (

@@ -1,21 +1,14 @@
-import LogoutButton from '../components/LogoutButton'
-import UserManagement from './UserManagementPage'
-import ForumPage from './Forum/ForumPage'
-import ForumMessagePage from './ForumMessages/ForumMessagesPage'
-import Footer from '../components/Footer/Footer'
+import UserManagement from '../User/UserManagementPage'
+import ForumPage from '../Forum/ForumPage'
+
+import ForumMessagePage from '../Forum/ForumMessages/ForumMessagesPage'
+import Footer from '../Footer/Footer'
 import { useSelector } from 'react-redux'
-import {
-	selectUserID,
-	selectUserName,
-	selectAccessToken,
-	selectAdminstatus
-} from '../../redux/authentication/AuthenticationSlices'
+import { selectUserID } from '../../redux/authentication/AuthenticationSlices'
 
 import { selectShowWelcome } from '../../redux/ui/UISlices'
 
 export default function PrivatPage() {
-	/** get State-Data from Redux Store */
-
 	return (
 		<>
 			<Welcome />
@@ -30,6 +23,7 @@ export default function PrivatPage() {
 }
 
 function Welcome() {
+	// get State-Data from Redux Store
 	const showWelcome = useSelector(selectShowWelcome)
 	const loggedUser = useSelector(selectUserID)
 

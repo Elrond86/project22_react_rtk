@@ -1,7 +1,8 @@
+/* eslint-disable */
+
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
-import { showUserManagement } from '../ui/UISlices'
 
 const initialState = {
 	user: null, //das wird später der user, wenn ich mich eingelogt habe
@@ -67,7 +68,7 @@ const AuthenticationSlices = createSlice({
 	initialState: {},
 
 	reducers: {
-		logoutUserAction: (state, action) => {
+		logoutUserAction: state => {
 			state.user = null
 			state.isLoggedIn = false
 			state.userLoading = false
@@ -83,7 +84,7 @@ const AuthenticationSlices = createSlice({
 	 */
 	extraReducers: builder => {
 		//   Login action
-		builder.addCase(loginUserAction.pending, (state, action) => {
+		builder.addCase(loginUserAction.pending, state => {
 			state.userLoading = 'pending'
 			state.userAppError = null
 			state.userServerErr = null

@@ -1,17 +1,15 @@
-import React from 'react'
-
 //bootstrap
 import Container from 'react-bootstrap/Container'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 // components
 import UserManagementButton from './UserManagmentButton'
-import OpenForumThreadOverviewButton from './ForumButton'
-import HomeButton from './HomeButton'
+import OpenForumThreadOverviewButton from './Buttons/ForumButton'
+import HomeButton from './Buttons/HomeButton'
 
-import LogoutButton from './LogoutButton'
+import LogoutButton from './Buttons/LogoutButton'
 
 export default function AdminNavBar() {
 	return (

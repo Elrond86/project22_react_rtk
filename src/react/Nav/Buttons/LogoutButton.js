@@ -1,14 +1,12 @@
-import React from 'react'
-
 import Button from 'react-bootstrap/Button'
-import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { useDispatch } from 'react-redux'
-import { logoutUserAction } from '../../redux/authentication/AuthenticationSlices'
+import { logoutUserAction } from '../../../redux/authentication/AuthenticationSlices'
 
 const { log } = console
 
-export default function LogoutButton(props) {
+export default function LogoutButton() {
 	const dispatch = useDispatch()
 	function handleLogout() {
 		log('clicked LogoutButton in Mainpage')

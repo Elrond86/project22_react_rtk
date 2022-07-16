@@ -1,19 +1,16 @@
-import React from 'react'
-
 // bootstrap
 import Button from 'react-bootstrap/Button'
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
 import Form from 'react-bootstrap/Form'
 import Modal from 'react-bootstrap/Modal'
-import Spinner from 'react-bootstrap/Spinner'
 import Stack from 'react-bootstrap/Stack'
 
 // redux
 import { useDispatch, useSelector } from 'react-redux'
 
 //import my reducers
-import { useUpdateThreadMutation, useGetAllThreadsQuery } from '../../../redux/forum/ForumSlice'
-import { hideEditThreadDialog, selectEditThreadDialog, selectHandleThreadID } from '../../../redux/ui/UISlices'
+import { useUpdateThreadMutation, useGetAllThreadsQuery } from '../../redux/forum/ForumSlice'
+import { hideEditThreadDialog, selectEditThreadDialog, selectHandleThreadID } from '../../redux/ui/UISlices'
 
 export default function ThreadEdit() {
 	const [editThread] = useUpdateThreadMutation()
@@ -62,16 +59,6 @@ function CreateThreadBody({ editThreadID }) {
 			thread: data.find(thread => thread._id === editThreadID)
 		})
 	})
-
-	if (false) {
-		return (
-			<Modal.Body>
-				<Spinner animation='border' role='status'>
-					<span className='visually-hidden'>Loading...</span>
-				</Spinner>
-			</Modal.Body>
-		)
-	}
 
 	if (!editThread) {
 		return null

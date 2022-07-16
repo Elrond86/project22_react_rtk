@@ -1,6 +1,6 @@
-import PublicNavBar from '../components/PublicNavBar'
-import PrivateNavBar from '../components/PrivateNavBar'
-import AdminNavBar from '../components/AdminNavBar'
+import PublicNavBar from './PublicNavBar'
+import PrivateNavBar from './PrivateNavBar'
+import AdminNavBar from './AdminNavBar'
 import { useSelector } from 'react-redux'
 import { selectAdminstatus, selectAuthStatus } from '../../redux/authentication/AuthenticationSlices'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { showForumOverview } from '../../redux/ui/UISlices'
+import { showForumOverview } from '../../../redux/ui/UISlices'
 
 import { Button } from 'react-bootstrap'
 
