@@ -11,30 +11,39 @@ import { useDeleteThreadMutation } from '../../../redux/forum/ForumSlice'
 import { hideDeleteThreadConfirmDialog } from '../../../redux/ui/UISlices'
 
 //selectors
-import { selectDeleteThreadConfirmDialog, selectHandleThreadID } from '../../../redux/ui/UISlices'
+import {
+	selectDeleteThreadConfirmDialog,
+	selectHandleThreadID,
+	selectHandleThreadName
+} from '../../../redux/ui/UISlices'
 
 export default function DeleteThreadConfirmDialog() {
+	const showDeleteModal = useSelector(selectDeleteThreadConfirmDialog)
+	console.log('showDeleteModal')
+	console.log(showDeleteModal)
+
 	const dispatch = useDispatch()
-	const threadID = useSelector(selectHandleThreadID)
+	const select = useSelector
+
+	const threadID = select(selectHandleThreadID)
 	const [deleteThread] = useDeleteThreadMutation()
 
 	const handleDelete = function () {
 		deleteThread(threadID)
 		dispatch(hideDeleteThreadConfirmDialog())
 	}
-	const showDeleteModal = useSelector(selectDeleteThreadConfirmDialog)
-	console.log('showDeleteModal')
-	console.log(showDeleteModal)
+
+	const threadName = select(selectHandleThreadName)
 
 	return (
 		<Modal show={showDeleteModal} onHide={() => dispatch(hideDeleteThreadConfirmDialog())}>
 			<Modal.Header>
 				<Modal.Title>
-					Delete Thread <em>{threadID}</em>
+					Delete Thread <em>{threadName}</em>
 				</Modal.Title>
 			</Modal.Header>
 			<Modal.Body>
-				Do you really want to delete the user <em>{threadID}</em>?
+				Do you really want to delete the thread <em>{threadName}</em>?
 			</Modal.Body>
 			<Modal.Footer>
 				<Button

@@ -40,7 +40,7 @@ export default function ForumOverview() {
 	return (
 		<>
 			<ThreadEdit />
-			<DeleteUserConfirmDialog />
+			<DeleteThreadConfirmDialog />
 			<CreateThreadDialog />
 			<div class='pagename'>
 				<h2 class='pagename' className='mb-3'>
@@ -126,7 +126,7 @@ function ThreadRow({ thread }) {
 							variant='secondary'
 							id={'EditForumThreadButton' + thread._id}
 							size='sm'
-							onClick={() => dispatch(showEditThreadDialog(thread._id))}
+							onClick={() => dispatch(showEditThreadDialog([thread._id, thread.name]))}
 						>
 							<PencilFill /> Edit
 						</Button>
@@ -134,7 +134,7 @@ function ThreadRow({ thread }) {
 							variant='dark'
 							size='sm'
 							id={'DeleteButton' + thread._id}
-							onClick={() => dispatch(showDeleteThreadConfirmDialog(thread._id))}
+							onClick={() => dispatch(showDeleteThreadConfirmDialog([thread._id, thread.name]))}
 						>
 							<TrashFill /> Delete
 						</Button>

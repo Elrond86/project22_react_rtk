@@ -89,6 +89,7 @@ let uiSlice = createSlice({
 		hideCreateUserDialog: state => {
 			state.showCreateUser = false
 		},
+
 		showEditUserDialog: (state, { payload: userID }) => {
 			state.handleUserID = userID
 			state.showEditUser = true
@@ -112,21 +113,25 @@ let uiSlice = createSlice({
 		hideCreateThreadDialog: state => {
 			state.showCreateThread = false
 		},
-		showEditThreadDialog: (state, { payload: threadID }) => {
-			state.handleThreadID = threadID
+		showEditThreadDialog: (state, action) => {
+			state.handleThreadID = action.payload[0]
+			state.handleThreadName = action.payload[1]
 			state.showEditThread = true
 		},
 		hideEditThreadDialog: state => {
 			state.showEditThread = false
 			state.handleThreadID = null
+			state.handleThreadName = null
 		},
-		showDeleteThreadConfirmDialog: (state, { payload: threadID }) => {
-			state.handleThreadID = threadID
+		showDeleteThreadConfirmDialog: (state, action) => {
+			state.handleThreadID = action.payload[0]
+			state.handleThreadName = action.payload[1]
 			state.showDeleteThreadConfirm = true
 		},
 		hideDeleteThreadConfirmDialog: state => {
 			state.showDeleteThreadConfirm = false
 			state.handleThreadID = null
+			state.handleThreadName = null
 		},
 
 		showCreateMessageDialog: state => {

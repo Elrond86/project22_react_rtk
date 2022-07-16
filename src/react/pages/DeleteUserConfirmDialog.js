@@ -13,14 +13,17 @@ import { useDeleteUserMutation } from '../../redux/users/userManagement'
 import { selectDeleteUserConfirmDialog, selectHandleUserID } from '../../redux/ui/UISlices'
 
 export default function DeleteUserConfirmDialog() {
+	const showDeleteModal = useSelector(selectDeleteUserConfirmDialog)
+
 	const dispatch = useDispatch()
+
 	const userID = useSelector(selectHandleUserID)
 	const [deleteUser] = useDeleteUserMutation()
+
 	const handleDelete = function () {
 		deleteUser(userID)
 		dispatch(hideDeleteUserConfirmDialog())
 	}
-	const showDeleteModal = useSelector(selectDeleteUserConfirmDialog)
 
 	return (
 		<Modal show={showDeleteModal} onHide={() => dispatch(hideDeleteUserConfirmDialog())}>
