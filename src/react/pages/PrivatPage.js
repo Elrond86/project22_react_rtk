@@ -41,6 +41,7 @@ function Welcome() {
 				<section className='card'>
 					<div className='watchBox'>
 						<h1>Willkommen, {loggedUser.toUpperCase()}!</h1>
+						<hr />
 					</div>
 				</section>
 			</div>

@@ -49,7 +49,7 @@ export default function ForumOverview() {
 			<p>
 				<Button
 					variant='secondary'
-					id='OpenCreateUserDialogButton'
+					id='OpenCreateForumThreadDialogButton'
 					onClick={() => dispatch(showCreateThreadDialog())}
 				>
 					Create New Thread
@@ -62,7 +62,11 @@ export default function ForumOverview() {
 
 function ThreadList() {
 	const { data: forumThreads, isLoading, isSuccess, isError, error } = useGetAllThreadsQuery()
-
+	let styles = {
+		marginRight: '20px',
+		width: '97%',
+		justifyContent: 'right'
+	}
 	if (isLoading) {
 		return (
 			<Spinner animation='border' role='status'>
@@ -71,8 +75,8 @@ function ThreadList() {
 		)
 	} else if (isSuccess) {
 		return (
-			<Table striped bordered hover>
-				<thead id='threadTable'>
+			<Table style={styles} striped bordered hover id='ForumThreadList'>
+				<thead id='ThreadTableHead'>
 					<tr>
 						<th>ownerID</th>
 						<th>name</th>
@@ -100,12 +104,18 @@ function ThreadRow({ thread }) {
 	const dispatch = useDispatch()
 
 	return (
-		<tr key={thread._id} id={'ForumThread' + thread._id}>
+		<tr key={thread._id} id={'ForumThread' + thread._id} className='forumThread'>
 			<td>{thread.ownerID}</td>
-			<td id={'ForumThread' + thread._id} onClick={() => dispatch(showMessages([thread._id, thread.name]))}>
+			<td
+				id={'ViewForumThreadButton' + thread._id}
+				onClick={() => dispatch(showMessages([thread._id, thread.name]))}
+			>
 				{thread.name}
 			</td>
-			<td id={'ForumThread' + thread._id} onClick={() => dispatch(showMessages([thread._id, thread.name]))}>
+			<td
+				id={'ViewForumThreadButton' + thread._id}
+				onClick={() => dispatch(showMessages([thread._id, thread.name]))}
+			>
 				{thread.description}
 			</td>
 			<td>
@@ -113,7 +123,7 @@ function ThreadRow({ thread }) {
 					<Stack direction='horizontal' gap={1}>
 						<Button
 							variant='secondary'
-							id={'EditFormThreadButton' + thread._id}
+							id={'EditForumThreadButton' + thread._id}
 							size='sm'
 							onClick={() => dispatch(showEditThreadDialog(thread._id))}
 						>
