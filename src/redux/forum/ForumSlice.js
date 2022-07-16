@@ -31,7 +31,7 @@ export const ForumSlice = api.injectEndpoints({
 				method: 'PUT',
 				body: rest
 			}),
-			invalidatesTags: ['ForumThreads']
+			invalidatesTags: ['Forum']
 		}),
 
 		getThread: builder.query({
