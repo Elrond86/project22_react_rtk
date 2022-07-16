@@ -1,6 +1,6 @@
 import api from '../utils/api'
 
-export const useradminSlice = api.injectEndpoints({
+export const userManagementSlice = api.injectEndpoints({
 	addTagTypes: ['User'],
 	endpoints: builder => ({
 		getAllUsers: builder.query({
@@ -42,4 +42,4 @@ export const {
 	useDeleteUserMutation,
 	useEditUserMutation,
 	useGetUserQuery
-} = useradminSlice
+} = userManagementSlice
