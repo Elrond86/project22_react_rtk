@@ -6,7 +6,13 @@ export default function parseDate(timestamp) {
 	const h = date.getHours()
 	const m = date.getUTCMinutes()
 	const s = date.getSeconds()
-	const parsedDate = `${h}:${m}:${s}, ${d}.${month}.${y}`
+
+	function addZero(x) {
+		if (x < 10) return `0${x}`
+		return x
+	}
+
+	const parsedDate = `${addZero(h)}:${addZero(m)}:${addZero(s)}, ${addZero(d)}.${addZero(month)}.${y}`
 
 	return parsedDate
 }

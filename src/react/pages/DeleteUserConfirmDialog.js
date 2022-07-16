@@ -38,7 +38,7 @@ export default function DeleteUserConfirmDialog() {
 			<Modal.Footer>
 				<Button
 					variant='secondary'
-					id='DeleteUserCancel'
+					id={'DeleteUserCancel' + userID}
 					onClick={() => dispatch(hideDeleteUserConfirmDialog())}
 					value='Cancel'
 				>

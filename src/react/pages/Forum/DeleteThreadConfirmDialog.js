@@ -48,14 +48,14 @@ export default function DeleteThreadConfirmDialog() {
 			<Modal.Footer>
 				<Button
 					variant='secondary'
-					id='DeleteUserCancel'
+					id='DeleteForumThreadCancel'
 					onClick={() => dispatch(hideDeleteThreadConfirmDialog())}
 					value='Cancel'
 				>
 					Cancel
 				</Button>
-				<Button variant='danger' id='DeleteUserConfirm' onClick={handleDelete}>
-					Delete User
+				<Button variant='danger' id='DeleteForumThreadConfirm' onClick={handleDelete}>
+					Delete Thread
 				</Button>
 			</Modal.Footer>
 		</Modal>
