@@ -7,6 +7,7 @@ export const forumMessagesSlice = api.injectEndpoints({
 			query: () => '/forumMessages',
 			providesTags: ['ForumMessages']
 		}),
+
 		getForumThreadMessages: builder.query({
 			query: forumThreadID => `/forumThreads/${forumThreadID}/forumMessages`,
 			providesTags: ['ForumMessages']
@@ -20,14 +21,16 @@ export const forumMessagesSlice = api.injectEndpoints({
 			}),
 			invalidatesTags: ['ForumMessages']
 		}),
+
 		editMessage: builder.mutation({
-			query: ({ forumMessageID, editedForumMessage }) => ({
-				url: `/forumMessages/${forumMessageID}`,
+			query: ({ _id, ...rest }) => ({
+				url: `/forumMessage/${_id}`,
 				method: 'PUT',
-				body: editedForumMessage
+				body: rest
 			}),
 			invalidatesTags: ['ForumMessages']
 		}),
+
 		deleteMessage: builder.mutation({
 			query: forumMessageID => ({
 				url: `/forumMessages/${forumMessageID}`,

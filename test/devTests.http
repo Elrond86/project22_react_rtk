@@ -17,5 +17,43 @@ Authorization: {{adminToken}}
 GET https://localhost/forumThreads
 
 
+
+
+### Auflisten aller Forumnachrichten ohne Token
+https://localhost/forumMessages
+
+
+
+// geht nicht
 ### Auflisten aller Forumnachrichten für Forum über nachgelagerte Suche
-GET https://localhost/forumThreads/{{forumThreadID}}/forumMessages
+GET https://localhost/forumThreads/62b5e0d5fc95608f64130b50/forumMessages
+
+
+// geht nicht
+### Auflisten aller Forumnachrichten für Forum über nachgelagerte Suche
+PUT https://localhost/forumThreads/62b5e0d5fc95608f64130b50/forumMessages
+
+
+### Löschen einer Forumnachrichten
+DELETE  https://localhost/forumMessages/{{forumMessageID}}
+Authorization: {{adminToken}}
+
+
+### Ändere die forumDescription in dem existierenden Forum
+PUT https://localhost/forumThreads/62b5e0b7fc95608f64130b4f
+Authorization: {{adminToken}}
+Content-Type: application/json
+
+{
+    "description": "Das ist der neue Text"
+}
+
+
+## Ändere Forumnachricht
+PUT https://localhost/forumThreads/{{forumThreadID}}
+Authorization: {{adminToken}}
+Content-Type: application/json
+
+{
+    "description": "Das ist der neue Text"
+}

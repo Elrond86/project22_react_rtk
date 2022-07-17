@@ -140,11 +140,11 @@ let uiSlice = createSlice({
 			state.showEditMessage = false
 			state.handleMessageID = null
 		},
-		showDeleteMessageConfirmDialog: (state, { payload: MessageID }) => {
+		showDeleteMessageDialog: (state, { payload: MessageID }) => {
 			state.handleMessageID = MessageID
 			state.showDeleteMessageConfirm = true
 		},
-		hideDeleteMessageConfirmDialog: state => {
+		hideDeleteMessageDialog: state => {
 			state.showDeleteMessageConfirm = false
 			state.handleMessageID = null
 		},
@@ -208,8 +208,8 @@ export const {
 	hideCreateMessageDialog,
 	showEditMessageDialog,
 	hideEditMessageDialog,
-	showDeleteMessageConfirmDialog,
-	hideDeleteMessageConfirmDialog
+	showDeleteMessageDialog,
+	hideDeleteMessageDialog
 } = uiSlice.actions
 
 export const selectShowUsers = state => state.ui.showUserManagement
@@ -228,7 +228,12 @@ export const selectDeleteThreadConfirmDialog = state => state.ui.showDeleteThrea
 export const selectHandleThreadID = state => state.ui.handleThreadID
 export const selectHandleThreadName = state => state.ui.handleThreadName
 export const selectShowMessages = state => state.ui.showMessages
+
 export const selectCreateMessageDialog = state => state.ui.showCreateMessage
+export const selectDeleteMessageDialog = state => state.ui.showDeleteMessageConfirm
+export const selectEditMessageDialog = state => state.ui.showEditMessage
+export const selectHandleMessageID = state => state.ui.handleMessageID
+
 export const selectDaten = state => state.ui.daten
 
 export const selectShowWelcome = state => state.ui.showWelcome
