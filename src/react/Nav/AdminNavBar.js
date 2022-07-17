@@ -5,7 +5,7 @@ import Nav from 'react-bootstrap/Nav'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 // components
-import UserManagementButton from './UserManagmentButton'
+import UserManagementButton from './Buttons/UserManagmentButton'
 import OpenForumThreadOverviewButton from './Buttons/ForumButton'
 import HomeButton from './Buttons/HomeButton'
 

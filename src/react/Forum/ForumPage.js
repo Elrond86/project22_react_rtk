@@ -16,7 +16,7 @@ import {
 	showDeleteThreadConfirmDialog,
 	showMessages
 } from '../../redux/ui/UISlices'
-import { selectAdminstatus } from '../../redux/authentication/AuthenticationSlices'
+import { selectAuthStatus } from '../../redux/authentication/AuthenticationSlices'
 import { useGetAllThreadsQuery } from '../../redux/forum/ForumSlice'
 
 //import my components
@@ -26,10 +26,10 @@ import CreateThreadDialog from './CreateThreadDialog'
 
 export default function ForumOverview() {
 	const dispatch = useDispatch()
-	const isAdmin = useSelector(selectAdminstatus)
+	let isAuth = useSelector(selectAuthStatus)
 	const showOverview = useSelector(selectShowForumOverview)
 
-	if (!isAdmin) {
+	if (!isAuth) {
 		return <Navigate to='/' />
 	}
 

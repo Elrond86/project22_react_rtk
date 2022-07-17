@@ -6,8 +6,6 @@ import Spinner from 'react-bootstrap/Spinner'
 import Stack from 'react-bootstrap/Stack'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { Navigate } from 'react-router'
-
 //import my reducers
 import {
 	showCreateUserDialog,
@@ -15,7 +13,7 @@ import {
 	showDeleteUserConfirmDialog,
 	selectShowUsers
 } from '../../redux/ui/UISlices'
-import { selectAdminstatus } from '../../redux/authentication/AuthenticationSlices'
+import { selectAdminstatus, selectAuthStatus } from '../../redux/authentication/AuthenticationSlices'
 import { useGetAllUsersQuery } from '../../redux/users/userManagement'
 
 //import my components
@@ -25,12 +23,12 @@ import CreateUserDialog from './CreateUserDialog'
 
 export default function UserManagement() {
 	const dispatch = useDispatch()
+	let isAuth = useSelector(selectAuthStatus)
 	const isAdmin = useSelector(selectAdminstatus)
 	const showManagement = useSelector(selectShowUsers)
 
-	if (!isAdmin) {
-		return <Navigate to='/' />
-	}
+	if (!isAdmin) return
+	if (!isAuth) return
 
 	if (!showManagement) return
 
@@ -58,6 +56,8 @@ export default function UserManagement() {
 }
 
 function UserList() {
+	const isAdmin = useSelector(selectAdminstatus)
+	if (!isAdmin) return
 	const { data: users, isLoading, isSuccess, isError, error } = useGetAllUsersQuery()
 
 	if (isLoading) {

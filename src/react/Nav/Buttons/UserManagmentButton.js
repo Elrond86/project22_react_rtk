@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { showUserManagement } from '../../redux/ui/UISlices'
+import { showUserManagement } from '../../../redux/ui/UISlices'
 
 import { Button } from 'react-bootstrap'
 
