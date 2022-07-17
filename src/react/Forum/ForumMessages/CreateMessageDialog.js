@@ -1,30 +1,25 @@
 //react
 import { useEffect } from 'react'
 
-// utils
-import { jsn } from '../../../utils/parseJSON'
-
 //bootstrap
 import Button from 'react-bootstrap/Button'
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
 import Form from 'react-bootstrap/Form'
 import Modal from 'react-bootstrap/Modal'
-import Spinner from 'react-bootstrap/Spinner'
 import Stack from 'react-bootstrap/Stack'
 
 //redux
 import { useDispatch, useSelector } from 'react-redux'
 
 //import my reducers
-import { useCreateMessageMutation } from '../../../redux/forum/ForumMessageSlice'
+import { useCreateMessageMutation, errorToState } from '../../../redux/forum/ForumMessageSlice'
 import { hideCreateMessageDialog } from '../../../redux/ui/UISlices'
-import { useGetAllUsersQuery } from '../../../redux/users/userManagement'
 
 // import selectors
 import { selectCreateMessageDialog, selectHandleThreadID, selectHandleThreadName } from '../../../redux/ui/UISlices'
+import { selectError } from '../../../redux/forum/ForumMessageSlice'
 
 export default function CreateMessageDialog() {
-	var error = undefined
 	const [createMessage, createResult] = useCreateMessageMutation()
 	const dispatch = useDispatch()
 	const parentThreadID = useSelector(selectHandleThreadID)
@@ -46,7 +41,8 @@ export default function CreateMessageDialog() {
 			dispatch(hideCreateMessageDialog())
 		}
 		if (createResult.error) {
-			error = createResult.error
+			const error = createResult.error
+			dispatch(errorToState(error))
 		}
 	})
 
@@ -54,10 +50,10 @@ export default function CreateMessageDialog() {
 		<>
 			<Modal show={useSelector(selectCreateMessageDialog)} onHide={() => dispatch(hideCreateMessageDialog())}>
 				<Modal.Header closeButton>
-					<Modal.Title>Create New Message {JSON.stringify(error)}</Modal.Title>
+					<Modal.Title>Create New Message {JSON.stringify(useSelector(selectError))}</Modal.Title>
 				</Modal.Header>
 				<Form onSubmit={handleSubmit}>
-					<CreateMessageBody error={error} threadID={parentThreadID} threadName={parentThreadName} />
+					<CreateMessageBody error={selectError} threadID={parentThreadID} threadName={parentThreadName} />
 
 					<Modal.Footer>
 						<Button
@@ -77,30 +73,10 @@ export default function CreateMessageDialog() {
 	)
 }
 
-function CreateMessageAlert() {
-	const result = useGetAllUsersQuery()
-	if (result.isError) {
-		return jsn(result.error)
-	}
-	return null
-}
-
 function CreateMessageBody() {
-	const result = useGetAllUsersQuery()
-	if (result.isLoading) {
-		return (
-			<Modal.Body>
-				<Spinner animation='border' role='status'>
-					<span className='visually-hidden'>Loading...</span>
-				</Spinner>
-			</Modal.Body>
-		)
-	}
-
 	return (
 		<Modal.Body>
 			<Stack>
-				<CreateMessageAlert />
 				<FloatingLabel controlId='ForumMessageTitleInput' label='Message Title' className='mb-3'>
 					<Form.Control type='text' name='ForumMessageTitleInput' placeholder='Eigener Title' />
 				</FloatingLabel>

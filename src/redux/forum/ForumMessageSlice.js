@@ -1,7 +1,7 @@
 import api from '../utils/api'
 import { logoutUserAction } from '../authentication/AuthenticationSlices'
 
-export const forumMessagesSlice = api.injectEndpoints({
+export const ForumMessagesSlice = api.injectEndpoints({
 	addTagTypes: ['ForumMessages'],
 	endpoints: builder => ({
 		getAllMessages: builder.query({
@@ -44,6 +44,12 @@ export const forumMessagesSlice = api.injectEndpoints({
 		builder.addCase(logoutUserAction, state => {
 			state.query = null
 		})
+	},
+
+	reducers: {
+		errorToState: (state, { error }) => {
+			state.error = error
+		}
 	}
 })
 
@@ -53,8 +59,10 @@ export const {
 	// useGetMessageQuery,
 	useCreateMessageMutation,
 	useEditMessageMutation,
-	useDeleteMessageMutation
-} = forumMessagesSlice
+	useDeleteMessageMutation,
+	errorToState
+} = ForumMessagesSlice
 
-export const selectAllForumMessages = state => state.forumThreads
-export const selectAll = state => state
+export const selectAllForumMessages = state => state.api.forumThreads
+export const selectAll = state => state.api
+export const selectError = state => state.api.error
