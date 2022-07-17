@@ -1,4 +1,3 @@
-import React from 'react'
 import { useFormik } from 'formik'
 import { useDispatch, useSelector } from 'react-redux'
 import * as Yup from 'yup'
@@ -39,7 +38,7 @@ const Login = () => {
 			{/* Display Err */}
 
 			{userAppErr || userServerErr ? (
-				<div class='alert alert-danger' role='alert'>
+				<div className='alert alert-danger' role='alert'>
 					{userServerErr} {userAppErr}
 				</div>
 			) : null}
