@@ -67,7 +67,7 @@ function Messages({ messages }) {
 		if (message.forumThread == parentThreadID) {
 			return (
 				<>
-					<AlertMessage key={'CardItem' + message._id} message={message} />
+					<AlertMessage message={message} />
 				</>
 			)
 		}
@@ -76,7 +76,7 @@ function Messages({ messages }) {
 
 function AlertMessage({ message }) {
 	return (
-		<Alert variant='dark  '>
+		<Alert variant='dark' key={message._id} id={'ForumMessage' + message._id} className='forumMessage'>
 			<Alert.Heading>{message.title}</Alert.Heading>
 			<p>{message.text}</p>
 			<hr />

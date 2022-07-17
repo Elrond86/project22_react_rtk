@@ -40,13 +40,13 @@ export default function ThreadEdit() {
 				<Modal.Footer>
 					<Button
 						variant='secondary'
-						id='CancelEditThreadButton'
+						id='CancelEditForumThreadButton'
 						onClick={() => dispatch(hideEditThreadDialog())}
 						value='Cancel'
 					>
 						Cancel
 					</Button>
-					<Button as='input' type='submit' variant='primary' id='SaveThreadButton' value='Save' />
+					<Button as='input' type='submit' variant='primary' id='SaveForumThreadButton' value='Save' />
 				</Modal.Footer>
 			</Form>
 		</Modal>
