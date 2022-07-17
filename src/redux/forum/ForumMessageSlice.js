@@ -1,4 +1,5 @@
 import api from '../utils/api'
+import { logoutUserAction } from '../authentication/AuthenticationSlices'
 
 export const forumMessagesSlice = api.injectEndpoints({
 	addTagTypes: ['ForumMessages'],
@@ -38,7 +39,12 @@ export const forumMessagesSlice = api.injectEndpoints({
 			}),
 			invalidatesTags: ['ForumMessages']
 		})
-	})
+	}),
+	extraReducers: builder => {
+		builder.addCase(logoutUserAction, state => {
+			state.query = null
+		})
+	}
 })
 
 export const {

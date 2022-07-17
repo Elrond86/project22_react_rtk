@@ -1,9 +1,12 @@
+/* eslint-disable */
+//prettier-ignore
+
 import { createSlice } from '@reduxjs/toolkit'
 import { loginUserAction, logoutUserAction } from '../authentication/AuthenticationSlices'
 
 const initialState = {
-	loginPending: false, //Ladeanzeige, während etwas passiert, damit Benutzer sieht, dass er gerade lädt
-	showLoginDialog: false, //das is des, was vorher im Widged war. Kommt jetzt in den Zentralen store
+	loginPending: false,
+	showLoginDialog: false,
 	error: null,
 	showUserManagement: false,
 	showForumOverview: false,
@@ -55,6 +58,7 @@ let uiSlice = createSlice({
 			state.handleThreadName = null
 			state.handleThreadID = null
 			state.showCreateMessage = false
+			state.daten = null
 		},
 		hideForumOverview: state => {
 			state.showForumOverview = false
@@ -156,6 +160,25 @@ let uiSlice = createSlice({
 			state.showMessages = false
 			state.showWelcome = true
 			state.showCreateMessage = false
+			state.daten = null
+			state.handleThreadID = null
+			state.handleThreadName = null
+		},
+
+		resetUI: state => {
+			state.loginPending = false
+			state.showLoginDialog = false
+			state.error = null
+			state.showUserManagement = false
+			state.showForumOverview = false
+			state.showEditUser = false
+			state.showDeleteUserConfirm = false
+			state.showCreateUser = false
+			state.showMessages = false
+			state.showWelcome = true
+			state.daten = null
+			state.handleThreadID = null
+			state.handleThreadName = null
 		}
 	},
 
@@ -177,6 +200,7 @@ let uiSlice = createSlice({
 
 export const {
 	hideAll,
+	resetUI,
 
 	showLoginModal,
 	hideLoginModal,
