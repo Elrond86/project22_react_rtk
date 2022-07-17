@@ -7,8 +7,14 @@ import Stack from 'react-bootstrap/Stack'
 
 //redux
 import { useDispatch, useSelector } from 'react-redux'
-import { useCreateUserMutation } from '../../redux/users/userManagement'
-import { hideCreateUserDialog, selectCreateUserDialog } from '../../redux/ui/UISlices'
+
+// reducers
+import { useCreateUserMutation, useGetAllUsersQuery } from '../../redux/users/userManagement'
+import { hideCreateUserDialog } from '../../redux/ui/UISlices'
+
+//selectors
+import { selectCreateUserDialog } from '../../redux/ui/UISlices'
+import { jsn } from '../../utils/parseJSON'
 
 export default function CreateUserDialog() {
 	const [createUser] = useCreateUserMutation()
@@ -50,6 +56,10 @@ export default function CreateUserDialog() {
 }
 
 function CreateUserAlert() {
+	const { data: isError, error } = useGetAllUsersQuery()
+	if (isError) {
+		return jsn(error)
+	}
 	return null
 }
 

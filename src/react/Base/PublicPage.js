@@ -9,9 +9,9 @@ export default function PublicPage() {
 				<h1>Dies ist ein privates Forum. Bitte einloggen!</h1>
 				<section className='card'>{<LoginButton />}</section>
 			</div>
-			<footer>
+			<div className='footer'>
 				<PublicFooter />
-			</footer>
+			</div>
 		</>
 	)
 }

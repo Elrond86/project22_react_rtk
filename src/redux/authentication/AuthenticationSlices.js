@@ -5,7 +5,7 @@ import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 
 const initialState = {
-	user: null, //das wird später der user, wenn ich mich eingelogt habe
+	user: null,
 	accessToken: null,
 	error: null,
 	isLoggedIn: false,
@@ -56,7 +56,7 @@ export const loginUserAction = createAsyncThunk(
 			return { token, decoded }
 		} catch (error) {
 			if (!error?.response) {
-				throw error //wir schmeißen costum error, wenn es keinen server-error-gibt
+				throw error //costum error, if other then server-error
 			}
 			return rejectWithValue(error?.response?.data)
 		}
@@ -65,7 +65,7 @@ export const loginUserAction = createAsyncThunk(
 
 const AuthenticationSlices = createSlice({
 	name: 'auth',
-	initialState: {},
+	initialState,
 
 	reducers: {
 		logoutUserAction: state => {
@@ -107,20 +107,9 @@ const AuthenticationSlices = createSlice({
 			state.userAppError = action?.payload.message
 			state.userServerErr = action?.error?.message
 		})
-
-		//Load all Users from Database on Sate change
-		/* 		builder.addCase((showUserManagement = true), (state, action) => {
-			state.showLoginDialog = false
-			console.log('state.showLoginDialog: ')
-			console.log(state.showLoginDialog)
-		}) */
 	}
 })
 
-/** Errors:
- * 1. System Error
- * 2. System interruption
- */
 export const { logoutUserAction } = AuthenticationSlices.actions
 
 export const selectUserID = state => state?.auth?.user?.userID

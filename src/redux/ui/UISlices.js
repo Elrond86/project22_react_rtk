@@ -35,8 +35,6 @@ let uiSlice = createSlice({
 		},
 		hideLoginModal: state => {
 			state.showLoginDialog = false
-			console.log('state.showLoginDialog: ')
-			console.log(state.showLoginDialog)
 		},
 		showUserManagement: state => {
 			state.showUserManagement = true

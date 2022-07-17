@@ -15,9 +15,9 @@ export default function PrivatPage() {
 			<UserManagement />
 			<ForumPage />
 			<ForumMessagePage />
-			<footer>
+			<div className='footer'>
 				<Footer />
-			</footer>
+			</div>
 		</>
 	)
 }

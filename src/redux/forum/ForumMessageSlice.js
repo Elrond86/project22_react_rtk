@@ -11,11 +11,7 @@ export const forumMessagesSlice = api.injectEndpoints({
 			query: forumThreadID => `/forumThreads/${forumThreadID}/forumMessages`,
 			providesTags: ['ForumMessages']
 		}),
-		// get by ID not supported by server
-		// getForumMessage: builder.query({
-		//   query: (forumMessageId) => `/forumMessages/${forumMessageId}`,
-		//   providesTags: ['ForumMessages']
-		// }),
+
 		createMessage: builder.mutation({
 			query: newForumMessage => ({
 				url: '/forumMessages',

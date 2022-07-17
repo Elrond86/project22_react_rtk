@@ -14,8 +14,6 @@ import { selectDeleteThreadConfirmDialog, selectHandleThreadID, selectHandleThre
 
 export default function DeleteThreadConfirmDialog() {
 	const showDeleteModal = useSelector(selectDeleteThreadConfirmDialog)
-	console.log('showDeleteModal')
-	console.log(showDeleteModal)
 
 	const dispatch = useDispatch()
 	const select = useSelector

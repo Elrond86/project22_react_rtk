@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export default createApi({
@@ -9,6 +11,7 @@ export default createApi({
 			if (token) {
 				headers.set('Authorization', token)
 			}
+			console.log('using api...')
 			return headers
 		}
 	}),

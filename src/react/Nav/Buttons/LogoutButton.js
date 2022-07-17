@@ -4,12 +4,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { useDispatch } from 'react-redux'
 import { logoutUserAction } from '../../../redux/authentication/AuthenticationSlices'
 
-const { log } = console
-
 export default function LogoutButton() {
 	const dispatch = useDispatch()
 	function handleLogout() {
-		log('clicked LogoutButton in Mainpage')
 		dispatch(logoutUserAction()) //sendet die Action, die wir definiert haben an den Store (und der dann an den Reducer oder so)
 	}
 

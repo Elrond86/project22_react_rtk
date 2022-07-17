@@ -41,9 +41,7 @@ export default function UserManagement() {
 			<DeleteUserConfirmDialog />
 			<CreateUserDialog />
 			<div className='pagename'>
-				<h2 className='pagename mb-3'>
-					NUTZERÜBERSICHT
-				</h2>
+				<h2 className='pagename mb-3'>NUTZERÜBERSICHT</h2>
 			</div>
 			<p>
 				<Button
@@ -70,7 +68,7 @@ function UserList() {
 		)
 	} else if (isSuccess) {
 		return (
-			<Table striped bordered hover>
+			<Table variant='secondary' striped bordered hover>
 				<thead id='usertable'>
 					<tr>
 						<th>userID</th>

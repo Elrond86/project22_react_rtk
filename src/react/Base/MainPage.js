@@ -13,15 +13,11 @@ export default function MainPage() {
 	const dispatch = useDispatch()
 
 	if (userID !== undefined) {
-		console.log('dispatch(hideLoginModal): ')
 		dispatch(hideLoginModal)
-		console.log(`Öffne persöhnliche Seite für ${userID}...`)
-		//get auth-Value from UsersState-Segment
 	}
 
 	let page
 
-	//console.log(auth.user)
 	if (userID === undefined) return (page = <PublicPage />)
 	if (userID === null) return (page = <PublicPage />)
 	page = <PrivatePage />

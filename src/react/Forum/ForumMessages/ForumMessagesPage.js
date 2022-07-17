@@ -1,4 +1,3 @@
-import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 // bootstrap
@@ -16,12 +15,7 @@ import { showCreateMessageDialog } from '../../../redux/ui/UISlices'
 import CreateMessageDialog from './CreateMessageDialog'
 
 // state-selectors
-import {
-	selectShowMessages,
-	selectHandleThreadID,
-	selectHandleThreadName,
-	selectDaten
-} from '../../../redux/ui/UISlices'
+import { selectShowMessages, selectHandleThreadID, selectHandleThreadName } from '../../../redux/ui/UISlices'
 import { useGetAllMessagesQuery } from '../../../redux/forum/ForumMessageSlice'
 
 export default function ForumMessagePage() {
@@ -37,7 +31,7 @@ export default function ForumMessagePage() {
 
 function ForumMessageBoard() {
 	const dispatch = useDispatch()
-	const { data: forumMessages, isLoading, isSuccess, isError, error } = useGetAllMessagesQuery()
+	const { data: forumMessages, isLoading, isSuccess } = useGetAllMessagesQuery()
 	const parentThreadName = useSelector(selectHandleThreadName)
 
 	if (isLoading) {
@@ -53,10 +47,9 @@ function ForumMessageBoard() {
 				<Messages key={'MessagesListInBoard'} messages={forumMessages} />
 				<Button
 					id='OpenCreateForumMessageDialogButton'
-					variant='success'
+					variant='primary'
 					type='submit'
 					onClick={() => {
-						console.log('clicked "Answer"')
 						dispatch(showCreateMessageDialog())
 					}}
 				>
@@ -67,14 +60,8 @@ function ForumMessageBoard() {
 	}
 }
 
-
 function Messages({ messages }) {
-	console.log('forumMessages von Messages:')
-	console.log(messages)
 	const parentThreadID = useSelector(selectHandleThreadID)
-	console.log('------->parentThreadID: in Messages: ' + JSON.stringify(parentThreadID, null, 4))
-	const daten = JSON.stringify(useSelector(selectDaten), null, 4)
-	console.log('------->daten in Messages: ' + daten)
 
 	return messages.map(message => {
 		if (message.forumThread == parentThreadID) {
@@ -89,7 +76,7 @@ function Messages({ messages }) {
 
 function AlertMessage({ message }) {
 	return (
-		<Alert variant='info'>
+		<Alert variant='dark  '>
 			<Alert.Heading>{message.title}</Alert.Heading>
 			<p>{message.text}</p>
 			<hr />

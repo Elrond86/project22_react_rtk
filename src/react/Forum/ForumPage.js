@@ -72,7 +72,7 @@ function ThreadList() {
 		)
 	} else if (isSuccess) {
 		return (
-			<Table style={styles} striped bordered hover id='ForumThreadList'>
+			<Table variant='secondary' style={styles} striped bordered hover id='ForumThreadList'>
 				<thead id='ThreadTableHead'>
 					<tr>
 						<th>ownerID</th>
