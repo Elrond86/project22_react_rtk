@@ -65,7 +65,6 @@ function CreateUserBody({ editUserID }) {
 	return (
 		<Modal.Body>
 			<Stack>
-				<CreateUserAlert />
 				<FloatingLabel controlId='UserIDInput' label='User ID' className='mb-3'>
 					<Form.Control
 						type='text'
@@ -92,8 +91,4 @@ function CreateUserBody({ editUserID }) {
 			</Stack>
 		</Modal.Body>
 	)
-}
-
-function CreateUserAlert() {
-	return null
 }

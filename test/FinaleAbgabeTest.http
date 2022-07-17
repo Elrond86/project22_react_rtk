@@ -156,9 +156,10 @@ Authorization: {{adminToken}}
 Content-Type: application/json
 
 {
+    "_id": "62d3b4d10ad4c80bd4d71f76",
     "forumThreadID": "{{forumThreadID}}",
     "title": "Meine erste Forumnachricht",
-    "text": "Das wollte ich nur kurz in das Forum schreiben."
+    "text": "Dgggggggggggggggggggggg"
 }
 ###
 @forumMessageID = {{createForumMessageRequest.response.body._id}}

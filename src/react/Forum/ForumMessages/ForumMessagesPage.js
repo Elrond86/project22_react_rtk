@@ -4,15 +4,18 @@ import { useDispatch, useSelector } from 'react-redux'
 import Spinner from 'react-bootstrap/Spinner'
 import Alert from 'react-bootstrap/Alert'
 import Button from 'react-bootstrap/Button'
+import { PencilFill, TrashFill } from 'react-bootstrap-icons'
 
 //utils
 import parseDate from '../../../utils/parseDate'
 
 // reducers
-import { showCreateMessageDialog } from '../../../redux/ui/UISlices'
+import { showCreateMessageDialog, showEditMessageDialog, showDeleteMessageDialog } from '../../../redux/ui/UISlices'
 
 //components
 import CreateMessageDialog from './CreateMessageDialog'
+import DeleteMessageDialog from './DeleteMessageDialog'
+import EditMessage from './EditMessage'
 
 // state-selectors
 import { selectShowMessages, selectHandleThreadID, selectHandleThreadName } from '../../../redux/ui/UISlices'
@@ -25,6 +28,8 @@ export default function ForumMessagePage() {
 		<>
 			<ForumMessageBoard />
 			<CreateMessageDialog />
+			<DeleteMessageDialog />
+			<EditMessage />
 		</>
 	)
 }
@@ -76,15 +81,18 @@ function Messages({ messages }) {
 
 function AlertMessage({ message }) {
 	return (
-		<Alert variant='dark' key={message._id} id={'ForumMessage' + message._id} className='forumMessage'>
-			<Alert.Heading>{message.title}</Alert.Heading>
-			<p>{message.text}</p>
-			<hr />
-			<p className='mb-0'>
-				posted: {parseDate(message.createdAt)} von {message.authorID}
-				<UpdatedInfo message={message} />
-			</p>
-		</Alert>
+		<>
+			<Alert variant='dark' key={message._id} id={'ForumMessage' + message._id} className='forumMessage'>
+				<Alert.Heading>{message.title}</Alert.Heading>
+				<p>{message.text}</p>
+				<hr />
+				<p className='mb-0'>
+					posted: {parseDate(message.createdAt)} von {message.authorID}
+					<UpdatedInfo message={message} />
+				</p>{' '}
+				<MessageButtons message={message} />
+			</Alert>
+		</>
 	)
 }
 
@@ -95,4 +103,28 @@ function UpdatedInfo({ message }) {
 				<br /> lastchange: {parseDate(message.updatedAt)}
 			</>
 		)
+}
+
+function MessageButtons({ message }) {
+	const dispatch = useDispatch()
+	return (
+		<>
+			<Button
+				variant='secondary'
+				id={'EditForumMessageButton' + message._id}
+				size='sm'
+				onClick={() => dispatch(showEditMessageDialog(message._id))}
+			>
+				<PencilFill /> Edit
+			</Button>
+			<Button
+				variant='dark'
+				size='sm'
+				id={'DeleteForumMessageButton' + message._id}
+				onClick={() => dispatch(showDeleteMessageDialog(message._id))}
+			>
+				<TrashFill /> Delete
+			</Button>
+		</>
+	)
 }

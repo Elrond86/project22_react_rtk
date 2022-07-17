@@ -10,7 +10,10 @@ import { useDispatch, useSelector } from 'react-redux'
 
 //import my reducers
 import { useUpdateThreadMutation, useGetAllThreadsQuery } from '../../redux/forum/ForumSlice'
-import { hideEditThreadDialog, selectEditThreadDialog, selectHandleThreadID } from '../../redux/ui/UISlices'
+import { hideEditThreadDialog } from '../../redux/ui/UISlices'
+
+//import selectors
+import { selectEditThreadDialog, selectHandleThreadID } from '../../redux/ui/UISlices'
 
 export default function ThreadEdit() {
 	const [editThread] = useUpdateThreadMutation()
@@ -67,7 +70,6 @@ function CreateThreadBody({ editThreadID }) {
 	return (
 		<Modal.Body>
 			<Stack>
-				<CreateThreadAlert />
 				<FloatingLabel controlId='ForumThreadNameInput' label='Thread Name' className='mb-3'>
 					<Form.Control
 						type='text'
@@ -95,8 +97,4 @@ function CreateThreadBody({ editThreadID }) {
 			</Stack>
 		</Modal.Body>
 	)
-}
-
-function CreateThreadAlert() {
-	return null
 }
