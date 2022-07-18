@@ -104,7 +104,7 @@ function UpdatedInfo({ message }) {
 	if (message.updatedAt != message.createdAt)
 		return (
 			<>
-				<br /> lastchange: {parseDate(message.updatedAt)}
+				<br /> last change: {parseDate(message.updatedAt)}
 			</>
 		)
 }
