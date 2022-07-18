@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Spinner from 'react-bootstrap/Spinner'
 import Alert from 'react-bootstrap/Alert'
 import Button from 'react-bootstrap/Button'
-import { Pen, TrashFill } from 'react-bootstrap-icons'
+import { PencilFill, TrashFill } from 'react-bootstrap-icons'
 
 //utils
 import parseDate from '../../../utils/parseDate'
@@ -51,14 +51,14 @@ function ForumMessageBoard() {
 				<h1>{parentThreadName}</h1>
 				<Messages key={'MessagesListInBoard'} messages={forumMessages} />
 				<Button
-					id='OpenCreateForumMessageDialogButton'
+					id='OPencilFillCreateForumMessageDialogButton'
 					variant='primary'
 					type='submit'
 					onClick={() => {
 						dispatch(showCreateMessageDialog())
 					}}
 				>
-					Answer
+					<PencilFill /> Answer
 				</Button>
 			</>
 		)
@@ -109,14 +109,16 @@ function MessageButtons({ message }) {
 	const dispatch = useDispatch()
 	return (
 		<>
+			<div className='inv'>_</div>
 			<Button
 				variant='secondary'
 				id={'EditForumMessageButton' + message._id}
 				size='sm'
 				onClick={() => dispatch(showEditMessageDialog(message._id))}
 			>
-				<Pen /> Edit
+				<PencilFill /> Edit
 			</Button>
+
 			<Button
 				variant='dark'
 				size='sm'

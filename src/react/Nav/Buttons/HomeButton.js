@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { hideAll } from '../../../redux/ui/UISlices'
-
+import { HouseFill } from 'react-bootstrap-icons'
 import { Button } from 'react-bootstrap'
 
 export default function HomeButton() {
@@ -13,7 +13,7 @@ export default function HomeButton() {
 	return (
 		<div>
 			<Button id='OpenPrivatePageButton' variant='outline-info' onClick={goHome}>
-				Home
+				<HouseFill /> Home
 			</Button>
 		</div>
 	)

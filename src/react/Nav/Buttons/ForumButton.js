@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { showForumOverview } from '../../../redux/ui/UISlices'
 
+import { Table } from 'react-bootstrap-icons'
 import { Button } from 'react-bootstrap'
 
 export default function OpenForumThreadOverviewButton() {
@@ -13,7 +14,7 @@ export default function OpenForumThreadOverviewButton() {
 	return (
 		<div>
 			<Button id='OpenForumThreadOverviewButton' variant='outline-info' onClick={showOverview}>
-				Forum
+				<Table /> Forum
 			</Button>
 		</div>
 	)

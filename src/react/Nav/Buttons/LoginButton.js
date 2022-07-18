@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux'
 import { showLoginModal } from '../../../redux/ui/UISlices'
 
 import { Button } from 'react-bootstrap'
+import { Key } from 'react-bootstrap-icons'
 
 export default function LoginButton() {
 	let dispatch = useDispatch()
@@ -13,7 +14,7 @@ export default function LoginButton() {
 	return (
 		<div>
 			<Button id='OpenLoginDialogButton' variant='outline-secondary' active onClick={showLoginDialog}>
-				Login
+				<Key size={20} /> Login
 			</Button>
 		</div>
 	)

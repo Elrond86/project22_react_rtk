@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import Button from 'react-bootstrap/Button'
+import { Key } from 'react-bootstrap-icons'
 import Modal from 'react-bootstrap/Modal'
 
 // import my reducers
@@ -38,12 +39,12 @@ export default function BestLogin() {
 	return (
 		<>
 			<Button id='OpenLoginDialogButton' variant='primary' onClick={handleShow}>
-				Login
+				<Key size={20} /> Login
 			</Button>
 
 			<Modal show={showLoginDialog} onHide={handleClose} backdrop='static' keyboard={false}>
 				<Modal.Header closeButton>
-					<Modal.Title>LOGIN</Modal.Title>
+					<Modal.Title> LOGIN</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
 					<Login />

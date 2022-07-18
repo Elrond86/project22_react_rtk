@@ -3,6 +3,8 @@ import { useFormik } from 'formik'
 // redux
 import { useDispatch, useSelector } from 'react-redux'
 import * as Yup from 'yup'
+import { Key } from 'react-bootstrap-icons'
+import Button from 'react-bootstrap/Button'
 
 // reducers
 import { loginUserAction } from '../../redux/authentication/AuthenticationSlices'
@@ -66,12 +68,13 @@ const Login = () => {
 				<div className='text-danger mb-2'>{formik.touched.password && formik.errors.password}</div>
 
 				<div>
+					{' '}
 					{userLoading ? (
 						<DisabledButton />
 					) : (
-						<button id='LoginButton' type='submit' className='btn btn-primary py-2 w-100 mb-4'>
-							Login
-						</button>
+						<Button id='LoginButton' type='submit' className='btn btn-primary py-2 w-100 mb-4'>
+							<Key size={20} /> Login
+						</Button>
 					)}
 				</div>
 			</form>

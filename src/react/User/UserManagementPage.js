@@ -1,6 +1,6 @@
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
-import { PencilFill, TrashFill } from 'react-bootstrap-icons'
+import { PencilFill, TrashFill, PersonPlus } from 'react-bootstrap-icons'
 import Alert from 'react-bootstrap/Alert'
 import Spinner from 'react-bootstrap/Spinner'
 import Stack from 'react-bootstrap/Stack'
@@ -47,7 +47,7 @@ export default function UserManagement() {
 					id='OpenCreateUserDialogButton'
 					onClick={() => dispatch(showCreateUserDialog())}
 				>
-					Create New User
+					<PersonPlus /> Add User
 				</Button>
 			</p>
 			<UserList />

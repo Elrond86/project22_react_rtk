@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { useDispatch } from 'react-redux'
 import { logoutUserAction } from '../../../redux/authentication/AuthenticationSlices'
 import { resetUI } from '../../../redux/ui/UISlices'
-//import {}
+import { BoxArrowDownRight } from 'react-bootstrap-icons'
 
 export default function LogoutButton() {
 	const dispatch = useDispatch()
@@ -16,7 +16,7 @@ export default function LogoutButton() {
 	return (
 		<div>
 			<Button id='LogoutButton' variant='outline-info' active onClick={handleLogout}>
-				Logout
+				Logout <BoxArrowDownRight />
 			</Button>
 		</div>
 	)

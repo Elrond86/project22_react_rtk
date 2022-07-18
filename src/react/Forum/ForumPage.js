@@ -1,6 +1,6 @@
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
-import { PencilFill, TrashFill } from 'react-bootstrap-icons'
+import { PencilFill, TrashFill, Table as TabletFill } from 'react-bootstrap-icons'
 import Alert from 'react-bootstrap/Alert'
 import Spinner from 'react-bootstrap/Spinner'
 import Stack from 'react-bootstrap/Stack'
@@ -49,7 +49,7 @@ export default function ForumOverview() {
 					id='OpenCreateForumThreadDialogButton'
 					onClick={() => dispatch(showCreateThreadDialog())}
 				>
-					Create New Thread
+					<TabletFill /> Add Thread
 				</Button>
 			</p>
 			<ThreadList />

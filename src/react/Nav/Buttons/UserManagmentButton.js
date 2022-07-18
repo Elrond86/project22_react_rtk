@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { showUserManagement } from '../../../redux/ui/UISlices'
-
+import { PeopleFill } from 'react-bootstrap-icons'
 import { Button } from 'react-bootstrap'
 
 export default function UserManagementButton() {
@@ -13,7 +13,7 @@ export default function UserManagementButton() {
 	return (
 		<div>
 			<Button id='OpenUserManagementButton' variant='outline-info' onClick={showManagement}>
-				UserManagement
+				<PeopleFill /> UserManagement
 			</Button>
 		</div>
 	)
