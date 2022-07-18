@@ -24,10 +24,10 @@ export const ForumMessagesSlice = api.injectEndpoints({
 		}),
 
 		editMessage: builder.mutation({
-			query: ({ _id, ...rest }) => ({
-				url: `/forumMessage/${_id}`,
+			query: changedForumMessage => ({
+				url: `/forumMessages`,
 				method: 'PUT',
-				body: rest
+				body: changedForumMessage
 			}),
 			invalidatesTags: ['ForumMessages']
 		}),
@@ -56,7 +56,6 @@ export const ForumMessagesSlice = api.injectEndpoints({
 export const {
 	useGetAllMessagesQuery,
 	useGetThreadMessagesQuery,
-	// useGetMessageQuery,
 	useCreateMessageMutation,
 	useEditMessageMutation,
 	useDeleteMessageMutation,
