@@ -48,7 +48,11 @@ function ForumMessageBoard() {
 	} else if (isSuccess) {
 		return (
 			<>
-				<h1>{parentThreadName}</h1>
+				<div className='Forumtitel'>
+					<hr />
+					<h1 className='pagename mb-5'>{parentThreadName}</h1>
+				</div>
+
 				<Messages key={'MessagesListInBoard'} messages={forumMessages} />
 				<Button
 					id='OPencilFillCreateForumMessageDialogButton'
