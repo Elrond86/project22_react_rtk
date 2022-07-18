@@ -22,7 +22,6 @@ let uiSlice = createSlice({
 	name: 'ui',
 	initialState,
 
-	/** reducer sind zum manipulieren vom State OHNE API-Zugriff */
 	reducers: {
 		showWelcome: state => {
 			state.showWelcome = true
@@ -34,7 +33,7 @@ let uiSlice = createSlice({
 		},
 
 		showLoginModal: state => {
-			state.showLoginDialog = true /** ...state not requiered... Denn es benutzt intern IMMER-Library!! :D */
+			state.showLoginDialog = true
 		},
 		hideLoginModal: state => {
 			state.showLoginDialog = false

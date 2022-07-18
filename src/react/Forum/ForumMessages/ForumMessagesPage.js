@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Spinner from 'react-bootstrap/Spinner'
 import Alert from 'react-bootstrap/Alert'
 import Button from 'react-bootstrap/Button'
-import { PencilFill, TrashFill } from 'react-bootstrap-icons'
+import { Pen, TrashFill } from 'react-bootstrap-icons'
 
 //utils
 import parseDate from '../../../utils/parseDate'
@@ -115,7 +115,7 @@ function MessageButtons({ message }) {
 				size='sm'
 				onClick={() => dispatch(showEditMessageDialog(message._id))}
 			>
-				<PencilFill /> Edit
+				<Pen /> Edit
 			</Button>
 			<Button
 				variant='dark'

@@ -16,6 +16,10 @@
 		{
 			"filePath": "node_modules\\.bin\\eslint",
 			"group": "Default"
+		},
+		{
+			"filePath": "node_modules\\react-bootstrap-icons\\dist\\index.d.ts",
+			"group": "Default"
 		}
 	],
 	"editor.tokenColorCustomizations": {

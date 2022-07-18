@@ -9,11 +9,6 @@ export const ForumMessagesSlice = api.injectEndpoints({
 			providesTags: ['ForumMessages']
 		}),
 
-		getForumThreadMessages: builder.query({
-			query: forumThreadID => `/forumThreads/${forumThreadID}/forumMessages`,
-			providesTags: ['ForumMessages']
-		}),
-
 		createMessage: builder.mutation({
 			query: newForumMessage => ({
 				url: '/forumMessages',
@@ -40,6 +35,7 @@ export const ForumMessagesSlice = api.injectEndpoints({
 			invalidatesTags: ['ForumMessages']
 		})
 	}),
+
 	extraReducers: builder => {
 		builder.addCase(logoutUserAction, state => {
 			state.query = null

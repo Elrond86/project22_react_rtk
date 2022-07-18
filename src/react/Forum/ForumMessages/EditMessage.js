@@ -27,7 +27,6 @@ export default function EditMessage() {
 			title: event.target.elements.ForumMessageTitleInput.value,
 			text: event.target.elements.ForumMessageTextInput.value
 		}
-		console.log(changedMessage)
 		editMessage(changedMessage)
 		dispatch(hideEditMessageDialog())
 	}

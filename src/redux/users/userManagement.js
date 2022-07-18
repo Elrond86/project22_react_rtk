@@ -7,17 +7,12 @@ export const userManagementSlice = api.injectEndpoints({
 			query: () => '/users',
 			providesTags: ['User']
 		}),
+
 		createUser: builder.mutation({
 			query: newUser => ({ url: '/users', method: 'POST', body: newUser }),
 			invalidatesTags: ['User']
 		}),
-		deleteUser: builder.mutation({
-			query: deleteUserID => ({
-				url: `/users/${deleteUserID}`,
-				method: 'DELETE'
-			}),
-			invalidatesTags: ['User']
-		}),
+
 		editUser: builder.mutation({
 			query: changedUser => ({
 				url: `/users/${changedUser.userID}`,
@@ -26,20 +21,16 @@ export const userManagementSlice = api.injectEndpoints({
 			}),
 			invalidatesTags: ['User']
 		}),
-		getUser: builder.query({
-			query: queryUser => ({
-				path: `/users/${queryUser.userID}`,
-				method: postMessage
+
+		deleteUser: builder.mutation({
+			query: deleteUserID => ({
+				url: `/users/${deleteUserID}`,
+				method: 'DELETE'
 			}),
 			invalidatesTags: ['User']
 		})
 	})
 })
 
-export const {
-	useGetAllUsersQuery,
-	useCreateUserMutation,
-	useDeleteUserMutation,
-	useEditUserMutation,
-	useGetUserQuery
-} = userManagementSlice
+export const { useGetAllUsersQuery, useCreateUserMutation, useDeleteUserMutation, useEditUserMutation } =
+	userManagementSlice
