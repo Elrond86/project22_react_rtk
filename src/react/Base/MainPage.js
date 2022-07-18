@@ -7,9 +7,8 @@ import { hideLoginModal } from '../../redux/ui/UISlices'
 import { selectAdminstatus, selectAuthStatus } from '../../redux/authentication/AuthenticationSlices'
 
 export default function MainPage() {
-	/** get State-Data from Redux Store */
 	let UsersState = useSelector(state => {
-		return state['auth'] // returns the auth-Segment of the state
+		return state['auth']
 	})
 
 	let isAdmin = useSelector(selectAdminstatus)

@@ -23,7 +23,6 @@ export default function PrivatPage() {
 }
 
 function Welcome() {
-	// get State-Data from Redux Store
 	const showWelcome = useSelector(selectShowWelcome)
 	const loggedUser = useSelector(selectUserID)
 

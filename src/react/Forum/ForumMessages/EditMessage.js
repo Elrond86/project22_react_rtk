@@ -20,7 +20,6 @@ export default function EditMessage() {
 	const dispatch = useDispatch()
 	const select = useSelector
 	const messageID = select(selectHandleMessageID)
-	/* const threadID = select(selectHandleThreadID) */
 	const handleSubmit = function (event) {
 		event.preventDefault()
 		const changedMessage = {

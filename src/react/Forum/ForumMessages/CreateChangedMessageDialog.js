@@ -20,16 +20,10 @@ import {
 	useCreateMessageMutation,
 	errorToState
 } from '../../../redux/forum/ForumMessageSlice'
-import { hideCreateMessageDialog, hideEditMessageDialog } from '../../../redux/ui/UISlices'
+import { hideCreateMessageDialog } from '../../../redux/ui/UISlices'
 
 // import selectors
-import {
-	selectHandleMessageID,
-	selectEditMessageDialog,
-	selectCreateMessageDialog,
-	selectHandleThreadID,
-	selectHandleThreadName
-} from '../../../redux/ui/UISlices'
+import { selectCreateMessageDialog, selectHandleThreadID, selectHandleThreadName } from '../../../redux/ui/UISlices'
 import { selectError } from '../../../redux/forum/ForumMessageSlice'
 
 export default function CreateMessageDialog() {
@@ -43,7 +37,6 @@ export default function CreateMessageDialog() {
 			_id: messageID,
 			title: event.target.elements.ForumMessageTitleInput.value,
 			text: event.target.elements.ForumMessageTextInput.value
-			/* forumThreadID: parentThreadID */
 		}
 
 		createMessage(newMessage)

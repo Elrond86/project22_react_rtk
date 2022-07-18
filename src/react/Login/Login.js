@@ -1,6 +1,10 @@
 import { useFormik } from 'formik'
+
+// redux
 import { useDispatch, useSelector } from 'react-redux'
 import * as Yup from 'yup'
+
+// reducers
 import { loginUserAction } from '../../redux/authentication/AuthenticationSlices'
 
 import DisabledButton from '../Nav/Buttons/DisabledButton'
@@ -12,10 +16,8 @@ const formSchema = Yup.object({
 })
 
 const Login = () => {
-	//dispatch
 	const dispatch = useDispatch()
 
-	//get data from store
 	const user = useSelector(state => state?.auth)
 	const { userAppErr, userServerErr, userLoading } = user
 
@@ -35,7 +37,6 @@ const Login = () => {
 		<div className='p-5 bg-light rounded text-center'>
 			<span className='text-muted'>Sign In</span>
 			<h3 className='fw-bold mb-5'>Login to your account</h3>
-			{/* Display Err */}
 
 			{userAppErr || userServerErr ? (
 				<div className='alert alert-danger' role='alert'>
@@ -52,7 +53,6 @@ const Login = () => {
 					type='userID'
 					placeholder='userID'
 				/>
-				{/* Err */}
 				<div className='text-danger mb-2'>{formik.touched.userID && formik.errors.userID}</div>
 				<input
 					id='LoginPasswordInput'
@@ -63,7 +63,6 @@ const Login = () => {
 					type='password'
 					placeholder='Password'
 				/>
-				{/* Err */}
 				<div className='text-danger mb-2'>{formik.touched.password && formik.errors.password}</div>
 
 				<div>

@@ -1,11 +1,14 @@
+//import my components
 import UserManagement from '../User/UserManagementPage'
 import ForumPage from '../Forum/ForumPage'
-
 import ForumMessagePage from '../Forum/ForumMessages/ForumMessagesPage'
 import Footer from '../Footer/Footer'
-import { useSelector } from 'react-redux'
-import { selectUserID } from '../../redux/authentication/AuthenticationSlices'
 
+// redux
+import { useSelector } from 'react-redux'
+
+// selectors
+import { selectUserID } from '../../redux/authentication/AuthenticationSlices'
 import { selectShowWelcome } from '../../redux/ui/UISlices'
 
 export default function AdminPage() {
@@ -23,7 +26,6 @@ export default function AdminPage() {
 }
 
 function Welcome() {
-	// get State-Data from Redux Store
 	const showWelcome = useSelector(selectShowWelcome)
 	const loggedUser = useSelector(selectUserID)
 

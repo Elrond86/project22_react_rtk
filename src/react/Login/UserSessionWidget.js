@@ -9,22 +9,19 @@ import { showLoginModal, hideLoginModal } from '../../redux/ui/UISlices'
 import Login from './Login'
 
 export default function BestLogin() {
-	/** to excecute actions */
 	const dispatch = useDispatch()
 
-	/** get State-Data from Redux Store */
 	let uiState = useSelector(state => {
-		return state['ui'] // returns the ui-Segment of the state
+		return state['ui']
 	})
 	let UsersState = useSelector(state => {
-		return state['auth'] // returns the auth-Segment of the state
+		return state['auth']
 	})
-	//get ShowLoginDialog-Value from ui-Segment
 	let { showLoginDialog } = uiState
 	if (showLoginDialog === undefined) {
 		showLoginDialog = false
 	}
-	//get userLoading-Value from UsersState-Segment
+
 	let { userLoading } = UsersState
 	if (userLoading == 'done') {
 		handleClose()
