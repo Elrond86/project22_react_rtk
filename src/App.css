@@ -7,11 +7,12 @@
 }
 
 #mainpage #PrivatePage,
-#PublicPage #usertable {
+#PublicPage #usertable,
+.forumtable {
 	background-color: hwb(200 25% 0% / 0.5);
 }
 
-#ForumThreadList {
+#ForumThreadList .UserTableList {
 	margin: 10px;
 }
 

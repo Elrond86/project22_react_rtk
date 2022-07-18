@@ -57,6 +57,11 @@ export default function UserManagement() {
 
 function UserList() {
 	const isAdmin = useSelector(selectAdminstatus)
+	let styles = {
+		marginRight: '20px',
+		width: '99%',
+		justifyContent: 'right'
+	}
 	if (!isAdmin) return
 	const { data: users, isLoading, isSuccess, isError, error } = useGetAllUsersQuery()
 
@@ -68,7 +73,7 @@ function UserList() {
 		)
 	} else if (isSuccess) {
 		return (
-			<Table variant='secondary' striped bordered hover>
+			<Table variant='secondary' style={styles} striped bordered hover id='UserTableList'>
 				<thead id='usertable'>
 					<tr>
 						<th>userID</th>

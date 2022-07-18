@@ -61,7 +61,7 @@ function ThreadList() {
 	const { data: forumThreads, isLoading, isSuccess, isError, error } = useGetAllThreadsQuery()
 	let styles = {
 		marginRight: '20px',
-		width: '97%',
+		width: '99%',
 		justifyContent: 'right'
 	}
 	if (isLoading) {
