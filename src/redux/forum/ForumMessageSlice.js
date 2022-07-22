@@ -3,6 +3,8 @@ import { logoutUserAction } from '../authentication/AuthenticationSlices'
 
 export const ForumMessagesSlice = api.injectEndpoints({
 	addTagTypes: ['ForumMessages'],
+	// tag ist erstmal nichts, als eine kennzeichnung, zur chacheverwaltung nützlich,
+	// wenn selber querry (mit selber kennzeichnung) wieder verwendet würde, kann er das ausm cache holen
 	endpoints: builder => ({
 		getAllMessages: builder.query({
 			query: () => '/forumMessages',
@@ -15,7 +17,7 @@ export const ForumMessagesSlice = api.injectEndpoints({
 				method: 'POST',
 				body: newForumMessage
 			}),
-			invalidatesTags: ['ForumMessages']
+			invalidatesTags: ['ForumMessages'] // kennzeichnung entfernen. damit er das nicht ausm cache holen kann und neu vom server abfragt
 		}),
 
 		editMessage: builder.mutation({

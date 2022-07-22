@@ -15,7 +15,13 @@ export default createApi({
 			return headers
 		}
 	}),
-	endpoints: () => ({}) // alles, was in injectEndpoints steht (bei den slices) würde in diese endpoint-funktion kommen
+	endpoints: () => ({
+		addTagTypes: ['ForumMessages'],
+		endpoints: builder => ({
+			getAllMessages: builder.query({
+				query: () => '/forumMessages',
+				providesTags: ['ForumMessages']
+			)} // alles, was in injectEndpoints steht (bei den slices) würde in diese endpoint-funktion kommen
 })
 
 // create api legt den api.slices an bzw. bringt auth-header zusammen mit den endpoints,
