@@ -55,7 +55,7 @@ function ForumMessageBoard() {
 
 				<Messages key={'MessagesListInBoard'} messages={forumMessages} />
 				<Button
-					id='OPencilFillCreateForumMessageDialogButton'
+					id='CreateForumMessageDialogButton'
 					variant='primary'
 					type='submit'
 					onClick={() => {
