@@ -8,7 +8,7 @@ import { selectAdminstatus, selectAuthStatus } from '../../redux/authentication/
 
 export default function MainPage() {
 	let UsersState = useSelector(state => {
-		return state['auth']
+		return state['auth'] // returns the auth-Segment of the state
 	})
 
 	let isAdmin = useSelector(selectAdminstatus)

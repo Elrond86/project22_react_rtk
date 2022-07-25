@@ -10,9 +10,11 @@ import { showLoginModal, hideLoginModal } from '../../redux/ui/UISlices'
 import Login from './Login'
 
 export default function BestLogin() {
+	/** to excecute actions */
 	const dispatch = useDispatch()
 
 	let uiState = useSelector(state => {
+		// returns the ui-Segment of the state
 		return state['ui']
 	})
 	let UsersState = useSelector(state => {
